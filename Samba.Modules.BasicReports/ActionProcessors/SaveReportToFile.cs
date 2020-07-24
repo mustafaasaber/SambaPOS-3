@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using Samba.Localization.Properties;
+﻿using Samba.Localization.Properties;
 using Samba.Services.Common;
+using System.Linq;
 
 namespace Samba.Modules.BasicReports.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class SaveReportToFile : ActionType
+    public class SaveReportToFile : ActionType
     {
         public override void Process(ActionData actionData)
         {

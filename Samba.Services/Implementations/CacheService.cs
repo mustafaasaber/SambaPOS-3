@@ -16,14 +16,12 @@ using Samba.Services.Common;
 
 namespace Samba.Services.Implementations
 {
-    [Export(typeof(ICacheService))]
-    class CacheService : ICacheService
+   public class CacheService : ICacheService
     {
         private readonly ICacheDao _cacheDao;
         private readonly IPrinterDao _printerDao;
         private readonly EntityCache _entityCache;
 
-        [ImportingConstructor]
         public CacheService(ICacheDao cacheDao, IPrinterDao printerDao)
         {
             _cacheDao = cacheDao;

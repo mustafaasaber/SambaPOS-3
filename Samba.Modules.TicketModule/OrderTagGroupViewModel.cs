@@ -22,7 +22,7 @@ namespace Samba.Modules.TicketModule
     {
         private readonly IMenuService _menuService;
 
-        [ImportingConstructor]
+        
         public OrderTagGroupViewModel(IMenuService menuService)
         {
             _menuService = menuService;
@@ -57,7 +57,7 @@ namespace Samba.Modules.TicketModule
         {
             InteractionService.UserIntraction.SortItems(Model.OrderTags, string.Format(Resources.Sort_f, Resources.OrderTag.ToPlural()), "");
             _orderTags = null;
-            RaisePropertyChanged(() => OrderTags);
+            RaisePropertyChanged(nameof( OrderTags));
         }
 
         private void OnDeletePropertyExecuted(string obj)

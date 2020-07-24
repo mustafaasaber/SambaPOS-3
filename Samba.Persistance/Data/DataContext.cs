@@ -1,5 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
 using Samba.Domain.Models.Accounts;
 using Samba.Domain.Models.Automation;
 using Samba.Domain.Models.Entities;
@@ -14,15 +18,82 @@ using Samba.Infrastructure.Settings;
 
 namespace Samba.Persistance.Data
 {
-    public class DataContext : CommonDbContext
+    public class DataContext :  CommonDbContext
     {
-        public DataContext(bool disableProxy)
-            : base(LocalSettings.AppName)
+        //public DataContext(bool disableProxy)
+        //  : base(LocalSettings.AppName)
+
+        public DataContext() : base("name=DataContext")
+        {
+
+        }
+        public DataContext(string Constring)
+        : base(Constring)
+        { }
+            public DataContext(bool disableProxy , string Constring)
+            : base(Constring)
         {
             if (disableProxy)
                 ObjContext().ContextOptions.ProxyCreationEnabled = false;
         }
 
+
+
+        //public IQueryable<T> ReadOnly<T>() where T : class
+        //{
+        //    ObjectSet<T> result = ObjContext().CreateObjectSet<T>();
+        //    result.MergeOption = MergeOption.NoTracking;
+        //    return result;
+        //}
+
+        //public IQueryable<T> Trackable<T>() where T : class
+        //{
+        //    return ObjContext().CreateObjectSet<T>();
+        //}
+
+        //public void Refresh(IEnumerable collection)
+        //{
+        //    ObjContext().Refresh(RefreshMode.StoreWins, collection);
+        //}
+
+        //public void Refresh(object item)
+        //{
+        //    ObjContext().Refresh(RefreshMode.StoreWins, item);
+        //}
+
+        //public void Detach(object item)
+        //{
+        //    ObjContext().Detach(item);
+        //}
+
+        //public void LoadProperty(object item, string propertyName)
+        //{
+        //    ObjContext().LoadProperty(item, propertyName);
+        //}
+
+        //public void Close()
+        //{
+        //    ObjContext().Connection.Close();
+        //}
+
+        //public ObjectContext ObjContext()
+        //{
+        //    return ((IObjectContextAdapter)this).ObjectContext;
+        //}
+
+        //public void AcceptAllChanges()
+        //{
+        //    ObjContext().AcceptAllChanges();
+        //}
+
+
+
+
+
+
+
+
+        //End of Interface migration
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<MenuItemPortion> MenuItemPortions { get; set; }
         public DbSet<ScreenMenuCategory> ScreenMenuCategories { get; set; }

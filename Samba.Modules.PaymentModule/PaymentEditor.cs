@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.Composition;
 using System.Linq;
-using Microsoft.Practices.Prism.Events;
+using Prism.Events;
 using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common.Services;
@@ -10,7 +10,7 @@ using Samba.Presentation.ViewModels;
 
 namespace Samba.Modules.PaymentModule
 {
-    [Export]
+    
     public class PaymentEditor
     {
         private readonly IApplicationState _applicationState;
@@ -18,7 +18,7 @@ namespace Samba.Modules.PaymentModule
         private readonly AccountBalances _accountBalances;
         private Ticket _selectedTicket;
 
-        [ImportingConstructor]
+        
         public PaymentEditor(IApplicationState applicationState, ITicketService ticketService, AccountBalances accountBalances)
         {
             _applicationState = applicationState;

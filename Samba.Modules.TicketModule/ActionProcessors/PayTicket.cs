@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.Composition;
-using Samba.Domain.Models.Tickets;
+﻿using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
 using Samba.Presentation.Services;
 using Samba.Services;
@@ -7,13 +6,12 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.TicketModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class PayTicket : ActionType
+    public class PayTicket : ActionType
     {
         private readonly ITicketService _ticketService;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+
         public PayTicket(ITicketService ticketService, ICacheService cacheService)
         {
             _ticketService = ticketService;

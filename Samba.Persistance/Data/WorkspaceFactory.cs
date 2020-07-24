@@ -1,17 +1,10 @@
-﻿using System;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using FluentMigrator.Runner;
-using FluentMigrator.Runner.Announcers;
-using FluentMigrator.Runner.Initialization;
-using Samba.Infrastructure.Data;
+﻿using Samba.Infrastructure.Data;
 using Samba.Infrastructure.Data.SQL;
 using Samba.Infrastructure.Data.Text;
 using Samba.Infrastructure.Settings;
+using System.Data.Entity;
+using System.IO;
+using System.Linq;
 
 namespace Samba.Persistance.Data
 {
@@ -22,6 +15,8 @@ namespace Samba.Persistance.Data
 
         static WorkspaceFactory()
         {
+            //TODO: Read connection string data from datafile 
+            //LocalSettings.DbCon = @"data source=.\AShoam;initial catalog=SambaPOS3;user id=sa;password=The99Admin;MultipleActiveResultSets=True;";
             UpdateConnection(LocalSettings.ConnectionString);
         }
 
@@ -41,7 +36,7 @@ namespace Samba.Persistance.Data
                 if (!_connectionString.ToLower().Contains("data source") && !_connectionString.Contains(":\\"))
                     _connectionString = string.Format("data source={0}\\{1}", LocalSettings.DocumentPath, _connectionString);
 
-                Database.DefaultConnectionFactory = new SqlCeConnectionFactory("System.Data.SqlServerCe.4.0", "", _connectionString);
+                //Database.DefaultConnectionFactory = new SqlCeConnectionFactory("System.Data.SqlServerCe.4.0", "", _connectionString);
             }
             else if (_connectionString.EndsWith(".txt"))
             {
@@ -49,31 +44,32 @@ namespace Samba.Persistance.Data
             }
             else if (!string.IsNullOrEmpty(_connectionString))
             {
-                var cs = _connectionString;
-                if (!cs.Trim().EndsWith(";"))
-                    cs += ";";
-                if (!cs.ToLower().Contains("multipleactiveresultsets"))
-                    cs += " MultipleActiveResultSets=True;";
-                if (!cs.ToLower(CultureInfo.InvariantCulture).Contains("user id") &&
-                    (!cs.ToLower(CultureInfo.InvariantCulture).Contains("integrated security")))
-                    cs += " Integrated Security=True;";
-                if (cs.ToLower(CultureInfo.InvariantCulture).Contains("user id") &&
-                    !cs.ToLower().Contains("persist security info"))
-                    cs += " Persist Security Info=True;";
-                Database.DefaultConnectionFactory = new SqlConnectionFactory(cs);
+                LocalSettings.DbCon = _connectionString;
+                //var cs = _connectionString;
+                //if (!cs.Trim().EndsWith(";"))
+                //    cs += ";";
+                //if (!cs.ToLower().Contains("multipleactiveresultsets"))
+                //    cs += " MultipleActiveResultSets=True;";
+                //if (!cs.ToLower(CultureInfo.InvariantCulture).Contains("user id") &&
+                //    (!cs.ToLower(CultureInfo.InvariantCulture).Contains("integrated security")))
+                //    cs += " Integrated Security=True;";
+                //if (cs.ToLower(CultureInfo.InvariantCulture).Contains("user id") &&
+                //    !cs.ToLower().Contains("persist security info"))
+                //    cs += " Persist Security Info=True;";
+                //Database.DefaultConnectionFactory = new SqlConnectionFactory(cs);
             }
         }
 
         public static IWorkspace Create()
         {
             if (_textFileWorkspace != null) return _textFileWorkspace;
-            return new EFWorkspace(new DataContext(false));
+            return new EFWorkspace(new DataContext(false, LocalSettings.DbCon));
         }
 
         public static IReadOnlyWorkspace CreateReadOnly()
         {
             if (_textFileWorkspace != null) return _textFileWorkspace;
-            return new ReadOnlyEFWorkspace(new DataContext(true));
+            return new ReadOnlyEFWorkspace(new DataContext(true, LocalSettings.DbCon));
         }
 
         private static TextFileWorkspace GetTextFileWorkspace()
@@ -118,11 +114,11 @@ namespace Samba.Persistance.Data
                 Migrate(context);
             }
             //#endif
-            var version = context.ObjContext().ExecuteStoreQuery<long>("select top(1) Version from VersionInfo order by version desc").FirstOrDefault();
-            LocalSettings.CurrentDbVersion = version;
+            //var version = context.ObjContext().ExecuteStoreQuery<long>("select top(1) Version from VersionInfo order by version desc").FirstOrDefault();
+            LocalSettings.CurrentDbVersion = 24;
         }
 
-        private static void Create(CommonDbContext context)
+        private static void Create(DataContext context)
         {
             context.Database.Create();
             context.ObjContext().ExecuteStoreCommand("CREATE TABLE VersionInfo (Version bigint not null)");
@@ -133,7 +129,7 @@ namespace Samba.Persistance.Data
             LocalSettings.CurrentDbVersion = LocalSettings.DbVersion;
         }
 
-        private static void GetMigrateVersions(CommonDbContext context)
+        private static void GetMigrateVersions(DataContext context)
         {
             for (var i = 0; i < LocalSettings.DbVersion; i++)
             {
@@ -141,31 +137,34 @@ namespace Samba.Persistance.Data
             }
         }
 
-        private static void Migrate(CommonDbContext context)
+        private static void Migrate(DataContext context)
         {
+
             if (!File.Exists(LocalSettings.UserPath + "\\migrate.txt")) return;
 
             var preVersion = context.ObjContext().ExecuteStoreQuery<long>("select top(1) Version from VersionInfo order by version desc").FirstOrDefault();
             var db = context.Database.Connection.ConnectionString.Contains(".sdf") ? "sqlserverce" : "sqlserver";
             if (preVersion < 18 && db == "sqlserverce") ApplyV16Fix(context);
 
-            IAnnouncer announcer = new TextWriterAnnouncer(Console.Out);
+            //IAnnouncer announcer = new TextWriterAnnouncer(Console.Out);
 
-            IRunnerContext migrationContext =
-                new RunnerContext(announcer)
-                {
-                    ApplicationContext = context,
-                    Connection = context.Database.Connection.ConnectionString,
-                    Database = db,
-                    Target = LocalSettings.AppPath + "\\Samba.Persistance.DbMigration.dll"
-                };
+            //IRunnerContext migrationContext =
+            //    new RunnerContext(announcer)
+            //    {
+            //        ApplicationContext = context,
+            //        Connection = context.Database.Connection.ConnectionString,
+            //        Database = db,
+            //        Target = LocalSettings.AppPath + "\\Samba.Persistance.DbMigration.dll"
+            //    };
 
-            new TaskExecutor(migrationContext).Execute();
+            //new TaskExecutor(migrationContext).Execute();
 
-            File.Delete(LocalSettings.UserPath + "\\migrate.txt");
+            //File.Delete(LocalSettings.UserPath + "\\migrate.txt");
+
+
         }
 
-        private static void ApplyV16Fix(CommonDbContext context)
+        private static void ApplyV16Fix(DataContext context)
         {
             try
             {

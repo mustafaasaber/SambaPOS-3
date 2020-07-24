@@ -9,10 +9,8 @@ using Samba.Persistance.Data;
 
 namespace Samba.Persistance.Implementations
 {
-    [Export(typeof(IPrinterDao))]
-    class PrinterDao : IPrinterDao
+   public class PrinterDao : IPrinterDao
     {
-        [ImportingConstructor]
         public PrinterDao()
         {
             ValidatorRegistry.RegisterDeleteValidator(new PrinterDeleteValidator());

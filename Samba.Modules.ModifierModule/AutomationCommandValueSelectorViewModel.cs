@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Linq;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Automation;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
@@ -11,10 +11,10 @@ using Samba.Presentation.ViewModels;
 
 namespace Samba.Modules.ModifierModule
 {
-    [Export]
+    
     public class AutomationCommandValueSelectorViewModel : ObservableObject
     {
-        [ImportingConstructor]
+        
         public AutomationCommandValueSelectorViewModel()
         {
             CloseCommand = new CaptionCommand<string>(Resources.Close, OnCloseCommandExecuted);
@@ -35,7 +35,7 @@ namespace Samba.Modules.ModifierModule
                     OnAutomationCommandValueSelected(CommandValues.ElementAt(0));
                     return;
                 }
-                RaisePropertyChanged(() => ColumnCount);
+                RaisePropertyChanged(nameof( ColumnCount));
             }
         }
 
@@ -65,7 +65,7 @@ namespace Samba.Modules.ModifierModule
         private void SetSelectedAutomationCommand(AutomationCommand command)
         {
             SelectedAutomationCommand = command;
-            RaisePropertyChanged(() => SelectedAutomationCommand);
+            RaisePropertyChanged(nameof( SelectedAutomationCommand));
         }
     }
 }

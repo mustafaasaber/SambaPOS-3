@@ -14,7 +14,7 @@ namespace Samba.Services.Implementations.Messaging
         public string Value { get; set; }
     }
 
-    [Export(typeof(IMessagingService))]
+    //[Export(typeof(IMessagingService))]
     public class MessagingService : IMessagingService
     {
         private IMessageListener _messageListener;

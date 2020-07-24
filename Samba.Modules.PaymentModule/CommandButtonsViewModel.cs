@@ -12,7 +12,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.PaymentModule
 {
-    [Export]
+    
     public class CommandButtonsViewModel : ObservableObject
     {
         private readonly ICaptionCommand _executeAutomationCommand;
@@ -25,7 +25,7 @@ namespace Samba.Modules.PaymentModule
         private readonly NumberPadViewModel _numberPadViewModel;
         private readonly IExpressionService _expressionService;
 
-        [ImportingConstructor]
+        
         public CommandButtonsViewModel(PaymentEditor paymentEditor, IApplicationState applicationState,
             TenderedValueViewModel tenderedValueViewModel, OrderSelectorViewModel orderSelectorViewModel, NumberPadViewModel numberPadViewModel,
             IExpressionService expressionService)
@@ -111,7 +111,7 @@ namespace Samba.Modules.PaymentModule
         public void Update()
         {
             CommandButtons = CreateCommandButtons();
-            RaisePropertyChanged(() => CommandButtons);
+            RaisePropertyChanged(nameof( CommandButtons));
         }
     }
 }

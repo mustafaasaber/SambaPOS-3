@@ -15,12 +15,14 @@ namespace Samba.Infrastructure.Data.Validation
 
         public static void RegisterDeleteValidator<T>(SpecificationValidator<T> validator) where T : class
         {
+            //TODO:
             DeleteValidators.Add(validator);
         }
 
         public static void RegisterDeleteValidator<T>(Func<T, bool> validationFunction, string modelName, string entityName) where T : class
         {
             SpecificationValidator<T> validator = new GenericDeleteValidator<T>(validationFunction, modelName, entityName);
+            //TODO:
             DeleteValidators.Add(validator);
         }
 

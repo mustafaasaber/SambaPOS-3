@@ -16,7 +16,7 @@ using Samba.Services;
 
 namespace Samba.Modules.TicketModule
 {
-    [Export]
+    
     public class TicketExplorerViewModel : ObservableObject
     {
         private readonly Timer _timer;
@@ -27,7 +27,7 @@ namespace Samba.Modules.TicketModule
 
         public ICaptionCommand DisplayTicketCommand { get; set; }
 
-        [ImportingConstructor]
+        
         public TicketExplorerViewModel(ITicketServiceBase ticketServiceBase,
             IUserService userService, ICacheService cacheService, IApplicationState applicationState)
         {
@@ -56,7 +56,7 @@ namespace Samba.Modules.TicketModule
             set
             {
                 _filters = value;
-                RaisePropertyChanged(() => Filters);
+                RaisePropertyChanged(nameof( Filters));
             }
         }
 
@@ -81,7 +81,7 @@ namespace Samba.Modules.TicketModule
             {
                 _startDate = value;
                 EndDate = value;
-                RaisePropertyChanged(() => StartDate);
+                RaisePropertyChanged(nameof( StartDate));
             }
         }
 
@@ -90,7 +90,7 @@ namespace Samba.Modules.TicketModule
         public DateTime EndDate
         {
             get { return _endDate; }
-            set { _endDate = value; RaisePropertyChanged(() => EndDate); }
+            set { _endDate = value; RaisePropertyChanged(nameof( EndDate)); }
         }
 
         private IList<TicketExplorerRowData> _tickets;
@@ -101,7 +101,7 @@ namespace Samba.Modules.TicketModule
             set
             {
                 _tickets = value;
-                RaisePropertyChanged(() => Tickets);
+                RaisePropertyChanged(nameof( Tickets));
             }
         }
 
@@ -122,8 +122,8 @@ namespace Samba.Modules.TicketModule
             set
             {
                 _total = value;
-                RaisePropertyChanged(() => Total);
-                RaisePropertyChanged(() => TotalStr);
+                RaisePropertyChanged(nameof( Total));
+                RaisePropertyChanged(nameof( TotalStr));
             }
         }
 
@@ -149,7 +149,7 @@ namespace Samba.Modules.TicketModule
                 tickets = tickets.Where(x => x.LastModifiedUserName == _applicationState.CurrentLoggedInUser.Name);
             Tickets = tickets.Select(x => new TicketExplorerRowData(x, _ticketServiceBase)).ToList();
             Total = Tickets.Sum(x => x.Sum);
-            RaisePropertyChanged(() => CanChanageDateFilter);
+            RaisePropertyChanged(nameof( CanChanageDateFilter));
         }
 
         void TimerElapsed(object sender, ElapsedEventArgs e)

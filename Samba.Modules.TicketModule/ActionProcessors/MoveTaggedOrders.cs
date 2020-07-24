@@ -11,12 +11,11 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.TicketModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class MoveTaggedOrders : ActionType
+public    class MoveTaggedOrders : ActionType
     {
         private readonly ITicketService _ticketService;
 
-        [ImportingConstructor]
+        
         public MoveTaggedOrders(ITicketService ticketService)
         {
             _ticketService = ticketService;

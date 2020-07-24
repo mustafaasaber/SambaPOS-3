@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using Samba.Domain.Models.Entities;
-using Samba.Domain.Models.Tickets;
+﻿using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
 using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
@@ -13,13 +7,12 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.EntityModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class UpdateEntityState : ActionType
+    public class UpdateEntityState : ActionType
     {
         private readonly IEntityServiceClient _entityServiceClient;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+
         public UpdateEntityState(IEntityServiceClient entityServiceClient, ICacheService cacheService)
         {
             _entityServiceClient = entityServiceClient;

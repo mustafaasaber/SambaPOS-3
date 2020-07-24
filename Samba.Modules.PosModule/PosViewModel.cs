@@ -4,8 +4,8 @@ using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using Microsoft.Practices.Prism.Events;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Events;
+using Prism.Regions;
 using Samba.Domain.Models.Entities;
 using Samba.Domain.Models.Tickets;
 using Samba.Infrastructure.Messaging;
@@ -20,7 +20,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.PosModule
 {
-    [Export]
+    
     public class PosViewModel : ObservableObject
     {
         private readonly ITicketService _ticketService;
@@ -73,7 +73,7 @@ namespace Samba.Modules.PosModule
             }
         }
 
-        [ImportingConstructor]
+        
         public PosViewModel(IRegionManager regionManager, IApplicationState applicationState, IApplicationStateSetter applicationStateSetter,
             ITicketService ticketService, ITicketServiceBase ticketServiceBase, IUserService userService, ICacheService cacheService, IMessagingService messagingService,
             TicketListViewModel ticketListViewModel, TicketTagListViewModel ticketTagListViewModel, MenuItemSelectorViewModel menuItemSelectorViewModel,

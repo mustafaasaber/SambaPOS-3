@@ -13,10 +13,10 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.ModifierModule
 {
-    [Export]
+    
     public class ProductTimerEditorViewModel : ObservableObject
     {
-        [ImportingConstructor]
+        
         public ProductTimerEditorViewModel()
         {
             SelectedOrder = Order.Null;
@@ -36,7 +36,7 @@ namespace Samba.Modules.ModifierModule
             set
             {
                 _stopTimer = value;
-                RaisePropertyChanged(() => ButtonColor);
+                RaisePropertyChanged(nameof( ButtonColor));
             }
         }
 
@@ -76,11 +76,11 @@ namespace Samba.Modules.ModifierModule
         {
             StopTimer = false;
             SelectedOrder = order;
-            RaisePropertyChanged(() => Start);
-            RaisePropertyChanged(() => End);
-            RaisePropertyChanged(() => Duration);
-            RaisePropertyChanged(() => Price);
-            RaisePropertyChanged(() => Value);
+            RaisePropertyChanged(nameof( Start));
+            RaisePropertyChanged(nameof( End));
+            RaisePropertyChanged(nameof( Duration));
+            RaisePropertyChanged(nameof( Price));
+            RaisePropertyChanged(nameof( Value));
         }
 
         public bool ShouldDisplay(Ticket ticket, IList<Order> selectedOrders)

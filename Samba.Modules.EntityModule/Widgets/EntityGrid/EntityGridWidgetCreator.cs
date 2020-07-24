@@ -13,7 +13,6 @@ using Samba.Services;
 
 namespace Samba.Modules.EntityModule.Widgets.EntityGrid
 {
-    [Export(typeof(IWidgetCreator))]
     public class EntityGridWidgetCreator : IWidgetCreator
     {
         private readonly IEntityService _entityService;
@@ -22,7 +21,7 @@ namespace Samba.Modules.EntityModule.Widgets.EntityGrid
         private readonly IAutomationDao _automationDao;
         private readonly IPrinterService _printerService;
 
-        [ImportingConstructor]
+        
         public EntityGridWidgetCreator(IEntityService entityService, IUserService userService, ICacheService cacheService, 
             IAutomationDao automationDao,IPrinterService printerService)
         {

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Domain.Models.Entities;
 using Samba.Domain.Models.Inventory;
 using Samba.Localization.Properties;
@@ -17,7 +18,7 @@ using Samba.Services;
 
 namespace Samba.Modules.InventoryModule
 {
-    [ModuleExport(typeof(InventoryModule))]
+    [Module(ModuleName = "InventoryModule")]
     public class InventoryModule : VisibleModuleBase
     {
         private readonly IRegionManager _regionManager;
@@ -28,7 +29,6 @@ namespace Samba.Modules.InventoryModule
         private readonly WarehouseInventoryViewModel _warehouseInventoryViewModel;
         private readonly ILogService _logService;
 
-        [ImportingConstructor]
         public InventoryModule(IRegionManager regionManager, ICacheService cacheService, IUserService userService, IInventoryService inventoryService,
             WarehouseInventoryView resourceInventoryView, WarehouseInventoryViewModel resourceInventoryViewModel, ILogService logService)
             : base(regionManager, AppScreens.InventoryView)
@@ -58,7 +58,10 @@ namespace Samba.Modules.InventoryModule
 
             PermissionRegistry.RegisterPermission(PermissionNames.OpenInventory, PermissionCategories.Navigation, string.Format(Resources.CanNavigate_f, Resources.Inventory));
         }
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
 
+        }
         private void OnResourceEvent(EventParameters<Entity> obj)
         {
             if (obj.Topic == EventTopicNames.DisplayInventory)

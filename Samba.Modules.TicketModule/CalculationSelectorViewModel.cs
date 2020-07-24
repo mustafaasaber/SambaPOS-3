@@ -15,7 +15,7 @@ namespace Samba.Modules.TicketModule
     [Export, PartCreationPolicy(CreationPolicy.NonShared)]
     class CalculationSelectorViewModel : EntityViewModelBaseWithMap<CalculationSelector,CalculationSelectorMap,AbstractMapViewModel<CalculationSelectorMap>>
     {
-        [ImportingConstructor]
+        
         public CalculationSelectorViewModel()
         {
             AddCalculationTypeCommand = new CaptionCommand<string>(Resources.Add, OnAddCalculationType);
@@ -61,7 +61,7 @@ namespace Samba.Modules.TicketModule
             }
 
             _calculationTypes = null;
-            RaisePropertyChanged(() => CalculationTypes);
+            RaisePropertyChanged(nameof( CalculationTypes));
         }
 
         public override Type GetViewType()

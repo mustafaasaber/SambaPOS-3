@@ -8,8 +8,8 @@ using Samba.Services.Common;
 
 namespace Samba.Services.Implementations.AutomationModule
 {
-    [Export]
-    internal class ActionDataBuilder
+    //
+    public class ActionDataBuilder
     {
         private readonly ICacheService _cacheService;
         private readonly Preprocessor _preprocessor;
@@ -18,7 +18,7 @@ namespace Samba.Services.Implementations.AutomationModule
         private string _containerParameterValues;
         private object _dataObject;
 
-        [ImportingConstructor]
+        //
         public ActionDataBuilder(ICacheService cacheService, Preprocessor preprocessor)
         {
             _cacheService = cacheService;

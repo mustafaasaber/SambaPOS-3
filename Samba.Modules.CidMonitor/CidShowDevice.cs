@@ -1,22 +1,21 @@
-﻿using System;
-using System.ComponentModel.Composition;
-using Axcidv5callerid;
+﻿using Axcidv5callerid;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common.Services;
 using Samba.Presentation.Services;
 using Samba.Services;
 using Samba.Services.Common;
+using System;
 
 namespace Samba.Modules.CidMonitor
 {
-    [Export(typeof(IDevice))]
-    class CidShowDevice : AbstractCidDevice
+    //[Export(typeof(IDevice))]
+    public class CidShowDevice : AbstractCidDevice
     {
         private FrmMain _frmMain;
         private AbstractCidSettings _settings;
         public AbstractCidSettings Settings { get { return _settings ?? (_settings = LoadSettings<AbstractCidSettings>()); } }
 
-        [ImportingConstructor]
+
         public CidShowDevice(IApplicationState applicationState, IEntityService entityService, ICacheService cacheService)
             : base(cacheService, applicationState, entityService)
         {

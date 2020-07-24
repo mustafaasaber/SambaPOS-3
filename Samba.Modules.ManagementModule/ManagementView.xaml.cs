@@ -11,10 +11,10 @@ namespace Samba.Modules.ManagementModule
     /// </summary>
     /// 
 
-    [Export]
+    
     public partial class ManagementView : UserControl
     {
-        [ImportingConstructor]
+        
         public ManagementView(ManagementViewModel viewModel)
         {
             InitializeComponent();

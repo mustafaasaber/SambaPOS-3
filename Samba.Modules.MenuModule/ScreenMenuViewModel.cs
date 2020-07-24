@@ -61,7 +61,8 @@ namespace Samba.Modules.MenuModule
         }
 
         [Browsable(false)]
-        public ObservableCollection<ScreenMenuCategoryViewModel> Categories { get; set; }
+        public ObservableCollection<ScreenMenuCategoryViewModel> Categories { get; 
+            set; }
 
         [Browsable(false)]
         public ScreenMenuCategoryViewModel SelectedCategory { get; set; }
@@ -199,7 +200,7 @@ namespace Samba.Modules.MenuModule
             InteractionService.UserIntraction.SortItems(Model.Categories, Resources.SortCategories,
                 string.Format(Resources.SortCategoriesDialogHint_f, Model.Name));
             Categories = new ObservableCollection<ScreenMenuCategoryViewModel>(Categories.OrderBy(x => x.Model.SortOrder));
-            RaisePropertyChanged(() => Categories);
+            RaisePropertyChanged(nameof( Categories));
         }
 
         private bool CanSortCategories(string arg)

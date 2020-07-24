@@ -18,7 +18,7 @@ namespace Samba.Modules.InventoryModule
         public ICaptionCommand TestRecipesCommand { get; set; }
         public ICaptionCommand TestAllRecipesCommand { get; set; }
 
-        [ImportingConstructor]
+        
         public RecipeListViewModel(IInventoryService inventoryService)
         {
             _inventoryService = inventoryService;

@@ -29,7 +29,7 @@ namespace Samba.Modules.InventoryModule
             {
                 Model.WarehouseTypeId = value.Id;
                 _warehouseType = null;
-                RaisePropertyChanged(() => WarehouseType);
+                RaisePropertyChanged(nameof( WarehouseType));
             }
         }
 

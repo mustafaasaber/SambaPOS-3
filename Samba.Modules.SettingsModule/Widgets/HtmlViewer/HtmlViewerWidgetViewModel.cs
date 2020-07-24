@@ -22,7 +22,7 @@ namespace Samba.Modules.SettingsModule.Widgets.HtmlViewer
             {
                 _url = value;
                 if (!string.IsNullOrEmpty(_url)) _url = _url.Replace("\r\n", " ");
-                RaisePropertyChanged(() => Url);
+                RaisePropertyChanged(nameof( Url));
             }
         }
 

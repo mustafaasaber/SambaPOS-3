@@ -1,18 +1,24 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
-     xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:local="clr-namespace:DataGridFilterLibrary"
-     xmlns:support="clr-namespace:DataGridFilterLibrary.Support">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DataGridFilterLibrary"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib"
+                    xmlns:support="clr-namespace:DataGridFilterLibrary.Support"
+                    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
     <Style TargetType="{x:Type local:DataGridColumnFilter}">
         <Style.Resources>
-            <support:EnumDisplayer Type="{x:Type support:FilterOperator}" x:Key="filterOperators">
-                <support:EnumDisplayEntry EnumValue="Undefined" DisplayString="" />
-                <support:EnumDisplayEntry EnumValue="LessThan" DisplayString="&lt;" />
-                <support:EnumDisplayEntry EnumValue="GreaterThan" DisplayString="&gt;" />
-                <support:EnumDisplayEntry EnumValue="Equals" DisplayString="=" />
-                <support:EnumDisplayEntry EnumValue="Like" DisplayString="" ExcludeFromDisplay="True" />
-                <support:EnumDisplayEntry EnumValue="Between" DisplayString="" ExcludeFromDisplay="True" />
-                <support:EnumDisplayEntry EnumValue="LessThanOrEqual" DisplayString="&lt;=" />
-                <support:EnumDisplayEntry EnumValue="GreaterThanOrEqual" DisplayString="&gt;=" />
+            <support:EnumDisplayer x:Key="filterOperators" Type="{x:Type support:FilterOperator}">
+                <support:EnumDisplayEntry DisplayString="" EnumValue="Undefined" />
+                <support:EnumDisplayEntry DisplayString="&lt;" EnumValue="LessThan" />
+                <support:EnumDisplayEntry DisplayString="&gt;" EnumValue="GreaterThan" />
+                <support:EnumDisplayEntry DisplayString="=" EnumValue="Equals" />
+                <support:EnumDisplayEntry DisplayString=""
+                                          EnumValue="Like"
+                                          ExcludeFromDisplay="True" />
+                <support:EnumDisplayEntry DisplayString=""
+                                          EnumValue="Between"
+                                          ExcludeFromDisplay="True" />
+                <support:EnumDisplayEntry DisplayString="&lt;=" EnumValue="LessThanOrEqual" />
+                <support:EnumDisplayEntry DisplayString="&gt;=" EnumValue="GreaterThanOrEqual" />
             </support:EnumDisplayer>
             <support:CheckBoxValueConverter x:Key="checkBoxValueConverter" />
             <support:ComboBoxToQueryStringConverter x:Key="comboBoxToQueryStringConverter" />
@@ -40,20 +46,24 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:DataGridColumnFilter}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                         BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid Name="PART_FilterContainer" Visibility="{Binding Path=AssignedDataGridColumn.DoNotGenerateFilterControl, RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Converter={StaticResource oppositeBooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <!-- Clear Filter Button -->
-                            <Button VerticalAlignment="Top" Height="{Binding  RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
-                                 ToolTip="{LocText ClearFilter}" Command="{Binding Path=(local:DataGridExtensions.ClearFilterCommand), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                 Grid.Column="0" Name="PART_ClearFilterButton">
+                            <!--  Clear Filter Button  -->
+                            <Button Name="PART_ClearFilterButton"
+                                    Grid.Column="0"
+                                    Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
+                                    VerticalAlignment="Top"
+                                    Command="{Binding Path=(local:DataGridExtensions.ClearFilterCommand), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    ToolTip="{LocText ClearFilter}">
                                 <Button.Content>
-                                    <LocText ResourceIdentifierKey="ClearFilter"/>
+                                    <LocText ResourceIdentifierKey="ClearFilter" />
                                 </Button.Content>
                                 <Button.Visibility>
                                     <MultiBinding Converter="{StaticResource clearFilterButtonVisibilityConverter}">
@@ -62,79 +72,114 @@
                                     </MultiBinding>
                                 </Button.Visibility>
                             </Button>
-                            <!-- Clear Filter Button -->
-                            <!-- Numeric and Text-->
-                            <ComboBox Visibility="Collapsed" VerticalAlignment="Stretch" 
-                                 Grid.Column="1" Name="PART_ComboBoxFilterOperator" ItemsSource="{Binding Source={StaticResource filterOperators},Path=DisplayNames}"
-                                 SelectedItem="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.Operator, Mode=TwoWay, Converter={StaticResource filterOperators}}">
-                            </ComboBox>
-                            <support:DelayTextBox Visibility="Collapsed" VerticalAlignment="Top" VerticalContentAlignment="Center"
-                                 Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
-                                 Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryString, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
-                                 Grid.Column="2" x:Name="PART_TextBoxFilter">
-                            </support:DelayTextBox>
-                            <!-- Numeric -->
-                            <!-- List -->
-                            <ComboBox Visibility="Collapsed" IsTextSearchEnabled="True" 
-                                 IsReadOnly="False" Height="{Binding  RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
-                                 SelectedValue="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryString, Mode=TwoWay, Converter={StaticResource comboBoxToQueryStringConverter}}"
-                                 Name="PART_ComboBoxFilter" Grid.Column="2">
-                            </ComboBox>
-                            <!-- List -->
-                            <!-- Boolean -->
-                            <CheckBox Visibility="Collapsed" VerticalAlignment="Center" Height="Auto" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource checkBoxValueConverter}}"
-                                 IsThreeState="True" Name="PART_CheckBoxFilter" ClickMode="Press" HorizontalAlignment="Center"
-                                 Grid.Column="2">
-                            </CheckBox>
-                            <!-- Boolean -->
-                            <!-- DateTime -->
-                            <DatePicker Visibility="Collapsed" VerticalAlignment="Top" Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
-                                 SelectedDate="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource datePickerToQueryStringConverter}}"
-                                 Name="PART_DatePickerFilter" Grid.Column="2" />
-                            <!-- DateTime -->
-                            <!-- NumericBetween -->
-                            <Grid Grid.Column="2" Visibility="Collapsed" Name="PART_GridTextFilterBetween" Width="{Binding RelativeSource={RelativeSource Self}, Path=Visibility, FallbackValue=0, Converter={StaticResource visibilityToWidthConverter}}">
+                            <!--  Clear Filter Button  -->
+                            <!--  Numeric and Text  -->
+                            <ComboBox Name="PART_ComboBoxFilterOperator"
+                                      Grid.Column="1"
+                                      VerticalAlignment="Stretch"
+                                      ItemsSource="{Binding Source={StaticResource filterOperators}, Path=DisplayNames}"
+                                      SelectedItem="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.Operator, Mode=TwoWay, Converter={StaticResource filterOperators}}"
+                                      Visibility="Collapsed" />
+                            <support:DelayTextBox x:Name="PART_TextBoxFilter"
+                                                  Grid.Column="2"
+                                                  Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
+                                                  VerticalAlignment="Top"
+                                                  VerticalContentAlignment="Center"
+                                                  Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryString, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                                                  Visibility="Collapsed" />
+                            <!--  Numeric  -->
+                            <!--  List  -->
+                            <ComboBox Name="PART_ComboBoxFilter"
+                                      Grid.Column="2"
+                                      Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
+                                      IsReadOnly="False"
+                                      IsTextSearchEnabled="True"
+                                      SelectedValue="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryString, Mode=TwoWay, Converter={StaticResource comboBoxToQueryStringConverter}}"
+                                      Visibility="Collapsed" />
+                            <!--  List  -->
+                            <!--  Boolean  -->
+                            <CheckBox Name="PART_CheckBoxFilter"
+                                      Grid.Column="2"
+                                      Height="Auto"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      ClickMode="Press"
+                                      IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource checkBoxValueConverter}}"
+                                      IsThreeState="True"
+                                      Visibility="Collapsed" />
+                            <!--  Boolean  -->
+                            <!--  DateTime  -->
+                            <DatePicker Name="PART_DatePickerFilter"
+                                        Grid.Column="2"
+                                        Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
+                                        VerticalAlignment="Top"
+                                        SelectedDate="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource datePickerToQueryStringConverter}}"
+                                        Visibility="Collapsed" />
+                            <!--  DateTime  -->
+                            <!--  NumericBetween  -->
+                            <Grid Name="PART_GridTextFilterBetween"
+                                  Grid.Column="2"
+                                  Width="{Binding RelativeSource={RelativeSource Self}, Path=Visibility, FallbackValue=0, Converter={StaticResource visibilityToWidthConverter}}"
+                                  Visibility="Collapsed">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Margin="1" Grid.Column="0" VerticalAlignment="Center" Height="Auto" Text="{LocText From}">
-                                </TextBlock>
-                                <support:DelayTextBox Grid.Column="1" VerticalAlignment="Top" VerticalContentAlignment="Center"
-                                     Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
-                                     Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryString, Mode=TwoWay, UpdateSourceTrigger=Explicit}">
-                                </support:DelayTextBox>
-                                <TextBlock Margin="1" Grid.Column="2" VerticalAlignment="Center" Height="Auto" Text="{LocText To}">
-                                </TextBlock>
-                                <support:DelayTextBox Grid.Column="3" VerticalAlignment="Top" VerticalContentAlignment="Center"
-                                     Height="{Binding  RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
-                                     Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryStringTo, Mode=TwoWay, UpdateSourceTrigger=Explicit}">
-                                </support:DelayTextBox>
+                                <TextBlock Grid.Column="0"
+                                           Height="Auto"
+                                           Margin="1"
+                                           VerticalAlignment="Center"
+                                           Text="{LocText From}" />
+                                <support:DelayTextBox Grid.Column="1"
+                                                      Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
+                                                      VerticalAlignment="Top"
+                                                      VerticalContentAlignment="Center"
+                                                      Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryString, Mode=TwoWay, UpdateSourceTrigger=Explicit}" />
+                                <TextBlock Grid.Column="2"
+                                           Height="Auto"
+                                           Margin="1"
+                                           VerticalAlignment="Center"
+                                           Text="{LocText To}" />
+                                <support:DelayTextBox Grid.Column="3"
+                                                      Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
+                                                      VerticalAlignment="Top"
+                                                      VerticalContentAlignment="Center"
+                                                      Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryStringTo, Mode=TwoWay, UpdateSourceTrigger=Explicit}" />
                             </Grid>
-                            <!-- NumericBetween -->
-                            <!-- DateTimeBetween -->
-                            <Grid Grid.Column="2" Name="PART_GridDatePickerFilterBetween" Visibility="Collapsed"
-                                 Width="{Binding RelativeSource={RelativeSource Self}, Path=Visibility, FallbackValue=0, Converter={StaticResource visibilityToWidthConverter}}">
+                            <!--  NumericBetween  -->
+                            <!--  DateTimeBetween  -->
+                            <Grid Name="PART_GridDatePickerFilterBetween"
+                                  Grid.Column="2"
+                                  Width="{Binding RelativeSource={RelativeSource Self}, Path=Visibility, FallbackValue=0, Converter={StaticResource visibilityToWidthConverter}}"
+                                  Visibility="Collapsed">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" VerticalAlignment="Center" Height="Auto" Text="{LocText From}">
-                                </TextBlock>
-                                <DatePicker Grid.Column="1" VerticalAlignment="Top" VerticalContentAlignment="Center"
-                                     Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
-                                     SelectedDate="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource datePickerToQueryStringConverter}}" />
-                                <TextBlock Grid.Column="2" VerticalAlignment="Center" Height="Auto" Text="{LocText To}">
-                                </TextBlock>
-                                <DatePicker Grid.Column="3" VerticalAlignment="Top" VerticalContentAlignment="Center"
-                                     Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}},  Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
-                                     SelectedDate="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryStringTo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource datePickerToQueryStringConverter}}" />
+                                <TextBlock Grid.Column="0"
+                                           Height="Auto"
+                                           VerticalAlignment="Center"
+                                           Text="{LocText From}" />
+                                <DatePicker Grid.Column="1"
+                                            Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
+                                            VerticalAlignment="Top"
+                                            VerticalContentAlignment="Center"
+                                            SelectedDate="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource datePickerToQueryStringConverter}}" />
+                                <TextBlock Grid.Column="2"
+                                           Height="Auto"
+                                           VerticalAlignment="Center"
+                                           Text="{LocText To}" />
+                                <DatePicker Grid.Column="3"
+                                            Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource fontSizeToHeightConverter}, Path=FontSize}"
+                                            VerticalAlignment="Top"
+                                            VerticalContentAlignment="Center"
+                                            SelectedDate="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DataGridColumnFilter}}, Path=FilterCurrentData.QueryStringTo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource datePickerToQueryStringConverter}}" />
                             </Grid>
-                            <!-- DateTimeBetween -->
+                            <!--  DateTimeBetween  -->
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -206,8 +251,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:DataGridHeaderFilterControl}, ResourceId=DataGridHeaderFilterControlStyle}"
-         TargetType="{x:Type DataGridColumnHeader}">
+    <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:DataGridHeaderFilterControl}, ResourceId=DataGridHeaderFilterControlStyle}" TargetType="{x:Type DataGridColumnHeader}">
         <Style.Resources>
             <ResourceDictionary>
                 <support:MyBooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
@@ -221,28 +265,42 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <local:DataGridColumnFilter Margin="1" Grid.Column="0" Grid.Row="0" FilterCurrentData="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridColumnHeader}}, Path=Tag, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                             AssignedDataGridColumnHeader="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridColumnHeader}}, Path=.}"
-                             AssignedDataGridColumn="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridColumnHeader}}, Path=Column}"
-                             DataGrid="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=.}"
-                             DataGridItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=ItemsSource}"
-                             Visibility="{Binding Path=(local:DataGridExtensions.IsFilterVisible), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource booleanToVisibilityConverter}}">
-                        </local:DataGridColumnFilter>
-                        <theme:DataGridHeaderBorder Grid.Column="0" Grid.Row="1" SortDirection="{TemplateBinding SortDirection}"
-                             IsHovered="{TemplateBinding IsMouseOver}" IsPressed="{TemplateBinding IsPressed}"
-                             IsClickable="{TemplateBinding CanUserSort}" Background="{TemplateBinding Background}"
-                             BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
-                             Padding="{TemplateBinding Padding}" SeparatorVisibility="{TemplateBinding SeparatorVisibility}"
-                             SeparatorBrush="{TemplateBinding SeparatorBrush}">
-                            <TextBlock Grid.Column="0" Grid.Row="1" Text="{TemplateBinding  Content}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                 TextWrapping="Wrap">
-                            </TextBlock>
+                        <local:DataGridColumnFilter Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Margin="1"
+                                                    AssignedDataGridColumn="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridColumnHeader}}, Path=Column}"
+                                                    AssignedDataGridColumnHeader="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridColumnHeader}}, Path=.}"
+                                                    DataGrid="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=.}"
+                                                    DataGridItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=ItemsSource}"
+                                                    FilterCurrentData="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridColumnHeader}}, Path=Tag, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                    Visibility="{Binding Path=(local:DataGridExtensions.IsFilterVisible), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource booleanToVisibilityConverter}}" />
+                        <theme:DataGridHeaderBorder Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Padding="{TemplateBinding Padding}"
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    IsClickable="{TemplateBinding CanUserSort}"
+                                                    IsHovered="{TemplateBinding IsMouseOver}"
+                                                    IsPressed="{TemplateBinding IsPressed}"
+                                                    SeparatorBrush="{TemplateBinding SeparatorBrush}"
+                                                    SeparatorVisibility="{TemplateBinding SeparatorVisibility}"
+                                                    SortDirection="{TemplateBinding SortDirection}">
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                       Text="{TemplateBinding Content}"
+                                       TextWrapping="Wrap" />
                         </theme:DataGridHeaderBorder>
-                        <Thumb Grid.Column="0" Grid.Row="1" Name="PART_LeftHeaderGripper" HorizontalAlignment="Left">
+                        <Thumb Name="PART_LeftHeaderGripper"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               HorizontalAlignment="Left">
                             <Thumb.Style>
                                 <Style TargetType="Thumb">
                                     <Style.Resources>
@@ -273,7 +331,10 @@
                                 </Style>
                             </Thumb.Style>
                         </Thumb>
-                        <Thumb Grid.Column="0" Grid.Row="1" Name="PART_RightHeaderGripper" HorizontalAlignment="Right">
+                        <Thumb Name="PART_RightHeaderGripper"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               HorizontalAlignment="Right">
                             <Thumb.Style>
                                 <Style TargetType="Thumb">
                                     <Style.Resources>

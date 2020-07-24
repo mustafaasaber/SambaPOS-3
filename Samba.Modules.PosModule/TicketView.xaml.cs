@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Microsoft.Practices.Prism.Events;
+using Prism.Events;
 using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.PosModule
@@ -11,14 +11,14 @@ namespace Samba.Modules.PosModule
     /// Interaction logic for TicketView.xaml
     /// </summary>
     /// 
-    [Export]
+    
     public partial class TicketView : UserControl
     {
         private readonly GridLength _buttonColumnLenght = new GridLength(2, GridUnitType.Star);
         private readonly GridLength _ticketColumnLenght = new GridLength(7, GridUnitType.Star);
         private TicketViewModel _ticketViewModel;
 
-        [ImportingConstructor]
+        
         public TicketView(TicketViewModel viewModel)
         {
             DataContext = viewModel;

@@ -13,7 +13,7 @@ namespace Samba.Modules.SettingsModule
     {
         private readonly ISettingService _settingService;
 
-        [ImportingConstructor]
+        
         public TerminalViewModel(ISettingService settingService)
         {
             _settingService = settingService;

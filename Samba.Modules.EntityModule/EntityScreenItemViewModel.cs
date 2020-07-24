@@ -49,7 +49,7 @@ namespace Samba.Modules.EntityModule
                 if (_buttonColor != value)
                 {
                     _buttonColor = value;
-                    RaisePropertyChanged(() => ButtonColor);
+                    RaisePropertyChanged(nameof( ButtonColor));
                 }
             }
         }
@@ -70,7 +70,7 @@ namespace Samba.Modules.EntityModule
         public bool IsEnabled
         {
             get { return _isEnabled; }
-            set { _isEnabled = value; RaisePropertyChanged(() => IsEnabled); }
+            set { _isEnabled = value; RaisePropertyChanged(nameof( IsEnabled)); }
         }
 
         public void UpdateButtonColor()

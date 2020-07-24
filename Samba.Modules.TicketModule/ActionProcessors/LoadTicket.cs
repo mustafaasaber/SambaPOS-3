@@ -10,12 +10,12 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.TicketModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class LoadTicket : ActionType
+    
+  public  class LoadTicket : ActionType
     {
         private readonly ITicketService _ticketService;
 
-        [ImportingConstructor]
+        
         public LoadTicket(ITicketService ticketService)
         {
             _ticketService = ticketService;

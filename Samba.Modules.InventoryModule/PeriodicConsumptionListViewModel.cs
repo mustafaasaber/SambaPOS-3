@@ -14,7 +14,7 @@ namespace Samba.Modules.InventoryModule
         private readonly IApplicationState _applicationState;
         private readonly IInventoryService _inventoryService;
 
-        [ImportingConstructor]
+        
         public PeriodicConsumptionListViewModel(IApplicationState applicationState, IInventoryService inventoryService)
         {
             _applicationState = applicationState;

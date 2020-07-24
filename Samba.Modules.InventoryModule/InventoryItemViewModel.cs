@@ -13,7 +13,7 @@ namespace Samba.Modules.InventoryModule
     {
         private readonly IInventoryService _inventoryService;
 
-        [ImportingConstructor]
+        
         public InventoryItemViewModel(IInventoryService inventoryService)
         {
             _inventoryService = inventoryService;
@@ -55,8 +55,8 @@ namespace Samba.Modules.InventoryModule
             get { return Model.BaseUnit; }
             set
             {
-                Model.BaseUnit = value; RaisePropertyChanged(() => BaseUnit);
-                RaisePropertyChanged(() => PredictionUnit);
+                Model.BaseUnit = value; RaisePropertyChanged(nameof( BaseUnit));
+                RaisePropertyChanged(nameof( PredictionUnit));
             }
         }
 
@@ -66,8 +66,8 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 Model.TransactionUnit = value;
-                RaisePropertyChanged(() => TransactionUnit);
-                RaisePropertyChanged(() => PredictionUnit);
+                RaisePropertyChanged(nameof( TransactionUnit));
+                RaisePropertyChanged(nameof( PredictionUnit));
             }
         }
 
@@ -77,8 +77,8 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 Model.TransactionUnitMultiplier = value;
-                RaisePropertyChanged(() => TransactionUnitMultiplier);
-                RaisePropertyChanged(() => PredictionUnit);
+                RaisePropertyChanged(nameof( TransactionUnitMultiplier));
+                RaisePropertyChanged(nameof( PredictionUnit));
             }
         }
 

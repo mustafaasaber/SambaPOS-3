@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Events;
+using Prism.Commands;
+using Prism.Events;
 using Samba.Domain.Models.Users;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.BasicReports
 {
-    [Export]
+    
     public class BasicReportViewModel : ObservableObject
     {
         public IEnumerable<ReportViewModelBase> Reports { get { return ReportContext.Reports; } }
@@ -21,8 +21,8 @@ namespace Samba.Modules.BasicReports
             set
             {
                 _activeReport = value;
-                RaisePropertyChanged(()=>ActiveReport);
-                RaisePropertyChanged(()=>IsReportVisible);
+                RaisePropertyChanged(nameof( ActiveReport));
+                RaisePropertyChanged(nameof(IsReportVisible));
             }
         }
 

@@ -1,17 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
+﻿using Prism.Ioc;
 using Samba.Infrastructure;
 using Samba.Infrastructure.Helpers;
 using Samba.Services.Implementations.AutomationModule;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Samba.Services.Common
 {
-    [Export]
+
     public class RuleActionTypeRegistry
     {
+        public RuleActionTypeRegistry(IEnumerable<IActionType> _ActionTypes)
+        {
+
+            ActionTypes = _ActionTypes;
+
+        }
         public IDictionary<string, RuleEvent> RuleEvents = new Dictionary<string, RuleEvent>();
+   
 
         public IEnumerable<string> GetParameterNames(string eventKey)
         {
@@ -30,7 +37,7 @@ namespace Samba.Services.Common
                 });
         }
 
-        [ImportMany]
+        //[ImportMany]
         public IEnumerable<IActionType> ActionTypes { get; set; }
 
         public IEnumerable<RuleConstraint> GetEventConstraints(string eventName)

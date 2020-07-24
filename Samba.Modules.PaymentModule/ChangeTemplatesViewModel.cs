@@ -12,12 +12,12 @@ using Samba.Services;
 
 namespace Samba.Modules.PaymentModule
 {
-    [Export]
+    
     public class ChangeTemplatesViewModel : ObservableObject
     {
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public ChangeTemplatesViewModel(ICacheService cacheService)
         {
             _cacheService = cacheService;

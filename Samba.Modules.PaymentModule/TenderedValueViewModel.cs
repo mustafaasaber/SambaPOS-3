@@ -4,12 +4,12 @@ using Samba.Presentation.Common;
 
 namespace Samba.Modules.PaymentModule
 {
-    [Export]
+    
     public class TenderedValueViewModel : ObservableObject
     {
         private readonly PaymentEditor _paymentEditor;
 
-        [ImportingConstructor]
+        
         public TenderedValueViewModel(PaymentEditor paymentEditor)
         {
             _paymentEditor = paymentEditor;
@@ -22,7 +22,7 @@ namespace Samba.Modules.PaymentModule
             set
             {
                 _tenderedAmount = value;
-                RaisePropertyChanged(() => TenderedAmount);
+                RaisePropertyChanged(nameof( TenderedAmount));
             }
         }
 
@@ -35,7 +35,7 @@ namespace Samba.Modules.PaymentModule
                 if (_paymentDueAmount != value)
                 {
                     _paymentDueAmount = value;
-                    RaisePropertyChanged(() => PaymentDueAmount);
+                    RaisePropertyChanged(nameof( PaymentDueAmount));
                     OnPaymentDueChanged();
                 }
             }

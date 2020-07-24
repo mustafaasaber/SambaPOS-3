@@ -14,14 +14,14 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.WorkperiodModule
 {
-    [Export]
+    
     public class WorkPeriodsViewModel : ObservableObject
     {
         private readonly IWorkPeriodService _workPeriodService;
         private readonly IApplicationState _applicationState;
         private readonly ITicketServiceBase _ticketService;
 
-        [ImportingConstructor]
+        
         public WorkPeriodsViewModel(IWorkPeriodService workPeriodService, IApplicationState applicationState, ITicketServiceBase ticketService)
         {
             _workPeriodService = workPeriodService;
@@ -60,21 +60,21 @@ namespace Samba.Modules.WorkperiodModule
         public int OpenTicketCount
         {
             get { return _openTicketCount; }
-            set { _openTicketCount = value; RaisePropertyChanged(() => OpenTicketCount); }
+            set { _openTicketCount = value; RaisePropertyChanged(nameof( OpenTicketCount)); }
         }
 
         private string _openTicketLabel;
         public string OpenTicketLabel
         {
             get { return _openTicketLabel; }
-            set { _openTicketLabel = value; RaisePropertyChanged(() => OpenTicketLabel); }
+            set { _openTicketLabel = value; RaisePropertyChanged(nameof( OpenTicketLabel)); }
         }
 
         private int _activeScreen;
         public int ActiveScreen
         {
             get { return _activeScreen; }
-            set { _activeScreen = value; RaisePropertyChanged(() => ActiveScreen); }
+            set { _activeScreen = value; RaisePropertyChanged(nameof( ActiveScreen)); }
         }
 
         public string StartDescription { get; set; }
@@ -176,9 +176,9 @@ namespace Samba.Modules.WorkperiodModule
             }
             else OpenTicketLabel = "";
 
-            RaisePropertyChanged(() => WorkPeriods);
-            RaisePropertyChanged(() => LastEndOfDayLabel);
-            RaisePropertyChanged(() => WorkPeriods);
+            RaisePropertyChanged(nameof( WorkPeriods));
+            RaisePropertyChanged(nameof( LastEndOfDayLabel));
+            RaisePropertyChanged(nameof( WorkPeriods));
 
             StartDescription = "";
             EndDescription = "";

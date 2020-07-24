@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using System.Globalization;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Events;
+using Prism.Commands;
+using Prism.Events;
 using Samba.Infrastructure.Helpers;
 using Samba.Infrastructure.Settings;
 using Samba.Localization.Properties;
@@ -14,7 +14,7 @@ using Samba.Services;
 
 namespace Samba.Modules.PaymentModule
 {
-    [Export]
+    
     public class NumberPadViewModel : ObservableObject
     {
         private readonly ISettingService _settingService;
@@ -25,7 +25,7 @@ namespace Samba.Modules.PaymentModule
         private readonly ForeignCurrencyButtonsViewModel _foreignCurrencyButtonsViewModel;
         private readonly TicketTotalsViewModel _paymentTotals;
 
-        [ImportingConstructor]
+        
         public NumberPadViewModel(ISettingService settingService, PaymentEditor paymentEditor, TenderedValueViewModel tenderedValueViewModel,
             OrderSelectorViewModel orderSelectorViewModel, AccountBalances accountBalances,
             ForeignCurrencyButtonsViewModel foreignCurrencyButtonsViewModel, TicketTotalsViewModel paymentTotals)
@@ -54,7 +54,7 @@ namespace Samba.Modules.PaymentModule
             if (obj.Topic == EventTopicNames.ResetCache)
             {
                 _paymentScreenValues = null;
-                RaisePropertyChanged(() => PaymentScreenValues);
+                RaisePropertyChanged(nameof( PaymentScreenValues));
             }
         }
 
@@ -71,7 +71,7 @@ namespace Samba.Modules.PaymentModule
         public string LastTenderedAmount
         {
             get { return _lastTenderedAmount; }
-            set { _lastTenderedAmount = value; RaisePropertyChanged(() => LastTenderedAmount); }
+            set { _lastTenderedAmount = value; RaisePropertyChanged(nameof( LastTenderedAmount)); }
         }
 
         private bool _balanceMode;
@@ -82,7 +82,7 @@ namespace Samba.Modules.PaymentModule
             {
                 _balanceMode = value;
                 _paymentEditor.AccountMode = value;
-                RaisePropertyChanged(() => BalanceModeCaption);
+                RaisePropertyChanged(nameof( BalanceModeCaption));
             }
         }
 
@@ -228,7 +228,7 @@ namespace Samba.Modules.PaymentModule
             _paymentTotals.Refresh();
             _accountBalances.Refresh();
             _tenderedValueViewModel.TenderedAmount = "";
-            RaisePropertyChanged(() => BalanceModeCaption);
+            RaisePropertyChanged(nameof( BalanceModeCaption));
         }
     }
 }

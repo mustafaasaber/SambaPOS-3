@@ -42,7 +42,7 @@ namespace Samba.Modules.EntityModule
             set
             {
                 Model.Name = value;
-                RaisePropertyChanged(() => Name);
+                RaisePropertyChanged(nameof( Name));
             }
         }
 

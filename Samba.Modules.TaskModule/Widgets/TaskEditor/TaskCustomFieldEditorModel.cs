@@ -17,7 +17,7 @@ namespace Samba.Modules.TaskModule.Widgets.TaskEditor
         public string Value
         {
             get { return _value; }
-            set { _value = value; RaisePropertyChanged(() => Value); }
+            set { _value = value; RaisePropertyChanged(nameof( Value)); }
         }
     }
 }

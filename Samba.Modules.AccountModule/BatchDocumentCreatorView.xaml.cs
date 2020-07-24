@@ -14,10 +14,10 @@ namespace Samba.Modules.AccountModule
     /// Interaction logic for BatchDocumentCreatorView.xaml
     /// </summary>
 
-    [Export]
+    
     public partial class BatchDocumentCreatorView : UserControl
     {
-        [ImportingConstructor]
+        
         public BatchDocumentCreatorView(BatchDocumentCreatorViewModel viewModel)
         {
             DataContext = viewModel;

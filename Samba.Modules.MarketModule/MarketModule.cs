@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services;
@@ -8,7 +9,8 @@ using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.MarketModule
 {
-    [ModuleExport(typeof(MarketModule))]
+  
+    [Module(ModuleName = "MarketModule")]
     public class MarketModule : VisibleModuleBase
     {
         private readonly IRegionManager _regionManager;
@@ -16,7 +18,6 @@ namespace Samba.Modules.MarketModule
         private readonly MarketModuleView _marketModuleView;
         private readonly MarketModuleViewModel _marketModuleViewModel;
 
-        [ImportingConstructor]
         public MarketModule(IRegionManager regionManager, IUserService userService, MarketModuleView marketModuleView, MarketModuleViewModel marketModuleViewModel)
             : base(regionManager, AppScreens.MarketView)
         {
@@ -49,6 +50,10 @@ namespace Samba.Modules.MarketModule
         public override object GetVisibleView()
         {
             return _marketModuleView;
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
         }
     }
 }

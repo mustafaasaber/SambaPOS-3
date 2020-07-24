@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Domain.Models.Users;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
@@ -8,17 +9,22 @@ using Samba.Presentation.Common.ModelBase;
 
 namespace Samba.Modules.UserModule
 {
-    [ModuleExport(typeof(UserModule))]
+    [Module(ModuleName = "UserModule")]
     public class UserModule : ModuleBase
     {
         private readonly IRegionManager _regionManager;
 
-        [ImportingConstructor]
+        
         public UserModule(IRegionManager regionManager)
         {
             AddDashboardCommand<EntityCollectionViewModelBase<UserRoleViewModel, UserRole>>(Resources.UserRoleList, Resources.Users, 50);
             AddDashboardCommand<EntityCollectionViewModelBase<UserViewModel, User>>(Resources.UserList, Resources.Users);
             _regionManager = regionManager;
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+
         }
 
         protected override void OnInitialization()

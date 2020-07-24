@@ -24,10 +24,10 @@ namespace Samba.Modules.PaymentModule
 
         public void Refresh()
         {
-            RaisePropertyChanged(() => Quantity);
-            RaisePropertyChanged(() => Description);
-            RaisePropertyChanged(() => Total);
-            RaisePropertyChanged(() => IsSelected);
+            RaisePropertyChanged(nameof( Quantity));
+            RaisePropertyChanged(nameof( Description));
+            RaisePropertyChanged(nameof( Total));
+            RaisePropertyChanged(nameof( IsSelected));
         }
     }
 }

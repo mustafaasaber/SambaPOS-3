@@ -7,13 +7,13 @@ using Samba.Persistance;
 
 namespace Samba.ApiServer.Controllers
 {
-    [Export]
+    
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class LoginController : ApiController
     {
         private readonly IUserDao _userDao;
 
-        [ImportingConstructor]
+        
         public LoginController(IUserDao userDao)
         {
             _userDao = userDao;

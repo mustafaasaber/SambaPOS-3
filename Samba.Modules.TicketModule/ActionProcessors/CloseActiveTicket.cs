@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.Composition;
-using Samba.Domain.Models.Tickets;
+﻿using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common.Services;
 using Samba.Presentation.Services;
@@ -8,12 +7,11 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.TicketModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class CloseActiveTicket : ActionType
+    public class CloseActiveTicket : ActionType
     {
         private readonly ITicketService _ticketService;
 
-        [ImportingConstructor]
+
         public CloseActiveTicket(ITicketService ticketService)
         {
             _ticketService = ticketService;

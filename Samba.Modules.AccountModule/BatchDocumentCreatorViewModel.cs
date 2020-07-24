@@ -15,7 +15,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.AccountModule
 {
-    [Export]
+    
     public class BatchDocumentCreatorViewModel : ObservableObject
     {
         public event EventHandler OnUpdate;
@@ -35,7 +35,7 @@ namespace Samba.Modules.AccountModule
         public CaptionCommand<string> GoBack { get; set; }
         public CaptionCommand<string> Print { get; set; }
 
-        [ImportingConstructor]
+        
         public BatchDocumentCreatorViewModel(IAccountService accountService, ICacheService cacheService,
             IPrinterService printerService, IApplicationState applicationState)
         {
@@ -61,9 +61,9 @@ namespace Samba.Modules.AccountModule
             {
                 if (Equals(value, _selectedDocumentType)) return;
                 _selectedDocumentType = value;
-                RaisePropertyChanged(() => SelectedDocumentType);
-                RaisePropertyChanged(() => Title);
-                RaisePropertyChanged(() => IsPrintButtonVisible);
+                RaisePropertyChanged(nameof( SelectedDocumentType));
+                RaisePropertyChanged(nameof( Title));
+                RaisePropertyChanged(nameof( IsPrintButtonVisible));
             }
         }
 

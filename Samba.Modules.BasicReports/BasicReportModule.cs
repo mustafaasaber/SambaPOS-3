@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.Composition;
 using System.Linq;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services;
@@ -10,14 +11,13 @@ using Samba.Services;
 
 namespace Samba.Modules.BasicReports
 {
-    [ModuleExport(typeof(BasicReportModule))]
+    [Module(ModuleName = "BasicReportModule")]
     public class BasicReportModule : VisibleModuleBase
     {
         private readonly IRegionManager _regionManager;
         private readonly BasicReportView _basicReportView;
         private readonly IUserService _userService;
 
-        [ImportingConstructor]
         public BasicReportModule(IRegionManager regionManager, BasicReportView basicReportView,
             IWorkPeriodService workPeriodService, IPrinterService printerService, ICacheService cacheService,
             IInventoryService inventoryService, IUserService userService, IAutomationService automationService,
@@ -68,6 +68,11 @@ namespace Samba.Modules.BasicReports
         protected override void OnInitialization()
         {
             _regionManager.RegisterViewWithRegion(RegionNames.MainRegion, typeof(BasicReportView));
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+
         }
     }
 }

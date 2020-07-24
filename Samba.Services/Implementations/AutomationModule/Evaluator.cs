@@ -2,13 +2,13 @@
 
 namespace Samba.Services.Implementations.AutomationModule
 {
-    [Export]
-    internal class Evaluator
+    //
+    public class Evaluator
     {
         private readonly IExpressionService _expressionService;
         private readonly Preprocessor _preprocessor;
 
-        [ImportingConstructor]
+        //
         public Evaluator(IExpressionService expressionService, Preprocessor preprocessor)
         {
             _expressionService = expressionService;

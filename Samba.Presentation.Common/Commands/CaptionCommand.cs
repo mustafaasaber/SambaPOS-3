@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Input;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Presentation.Common.Annotations;
 
 namespace Samba.Presentation.Common.Commands

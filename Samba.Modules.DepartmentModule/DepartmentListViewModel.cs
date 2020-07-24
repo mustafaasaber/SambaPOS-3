@@ -4,7 +4,7 @@ using Samba.Presentation.Common.ModelBase;
 
 namespace Samba.Modules.DepartmentModule
 {
-    [Export, PartCreationPolicy(CreationPolicy.NonShared)]
+    //[Export, PartCreationPolicy(CreationPolicy.NonShared)]
     public class DepartmentListViewModel : EntityCollectionViewModelBase<DepartmentViewModel, Department>
     {
 

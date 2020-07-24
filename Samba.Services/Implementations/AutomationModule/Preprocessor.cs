@@ -7,14 +7,14 @@ using Samba.Domain.Models.Tickets;
 
 namespace Samba.Services.Implementations.AutomationModule
 {
-    [Export]
-    internal class Preprocessor
+    //
+    public class Preprocessor
     {
         private readonly ISettingService _settingService;
         private readonly IExpressionService _expressionService;
         private readonly IPrinterService _printerService;
 
-        [ImportingConstructor]
+        //
         public Preprocessor(ISettingService settingService, IExpressionService expressionService, IPrinterService printerService)
         {
             _settingService = settingService;

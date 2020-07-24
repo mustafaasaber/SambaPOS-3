@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Modules.PosModule\PosModule.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Presentation\App.xaml.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Modules.PosModule\TicketView.xaml</string>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Modules.PosModule\TicketViewModel.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Modules.PosModule\TicketOrdersView.xaml</string>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Modules.PosModule\TicketOrdersView.xaml.cs</string>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Modules.PosModule\TicketOrdersViewModel.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Modules.PosModule\TicketListView.xaml</string>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Modules.PosModule\TicketListView.xaml.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Modules.PosModule\PosView.xaml</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Presentation.Common\RegionNames.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Domain\Models\Tickets\Ticket.cs</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>

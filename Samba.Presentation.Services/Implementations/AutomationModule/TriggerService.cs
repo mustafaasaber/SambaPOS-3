@@ -9,13 +9,13 @@ using Samba.Services.Common;
 
 namespace Samba.Presentation.Services.Implementations.AutomationModule
 {
-    [Export(typeof(ITriggerService))]
+    //[Export(typeof(ITriggerService))]
     public class TriggerService : ITriggerService
     {
         private readonly List<CronObject> _cronObjects;
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
+        //
         public TriggerService(IApplicationState applicationState)
         {
             _applicationState = applicationState;

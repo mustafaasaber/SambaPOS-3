@@ -37,15 +37,15 @@ namespace Samba.Modules.EntityModule
             var actionResult = SetValueAction(CustomField, Model.Value, value);
             if (!actionResult)
                 Model.Value = value;
-            RaisePropertyChanged(() => Value);
+            RaisePropertyChanged(nameof( Value));
         }
 
-        public EntityCustomField CustomField { get { return Model.CustomField; } set { Model.CustomField = value; RaisePropertyChanged(() => CustomField); } }
+        public EntityCustomField CustomField { get { return Model.CustomField; } set { Model.CustomField = value; RaisePropertyChanged(nameof( CustomField)); } }
         public Func<EntityCustomField, string, string, bool> SetValueAction { get; set; }
         public void SetValue(string value)
         {
             Model.Value = value;
-            RaisePropertyChanged(() => Value);
+            RaisePropertyChanged(nameof( Value));
         }
     }
 
@@ -177,10 +177,10 @@ namespace Samba.Modules.EntityModule
             if (_customData != null)
             {
                 Model.CustomData = JsonHelper.Serialize(_customData.Select(x => x.Model).ToList());
-                RaisePropertyChanged(() => IsMaskedTextBoxVisible);
-                RaisePropertyChanged(() => IsTextBoxVisible);
-                RaisePropertyChanged(() => PrimaryFieldName);
-                RaisePropertyChanged(() => PrimaryFieldFormat);
+                RaisePropertyChanged(nameof( IsMaskedTextBoxVisible));
+                RaisePropertyChanged(nameof( IsTextBoxVisible));
+                RaisePropertyChanged(nameof( PrimaryFieldName));
+                RaisePropertyChanged(nameof( PrimaryFieldFormat));
             }
         }
 

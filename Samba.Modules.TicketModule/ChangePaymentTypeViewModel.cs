@@ -13,7 +13,7 @@ namespace Samba.Modules.TicketModule
     [Export, PartCreationPolicy(CreationPolicy.NonShared)]
     public class ChangePaymentTypeViewModel : EntityViewModelBaseWithMap<ChangePaymentType, ChangePaymentTypeMap, AbstractMapViewModel<ChangePaymentTypeMap>>
     {
-        [ImportingConstructor]
+        
         public ChangePaymentTypeViewModel()
         {
         }
@@ -48,7 +48,7 @@ namespace Samba.Modules.TicketModule
                 Model.AccountTransactionType = value;
                 Account = null;
                 _accounts = null;
-                RaisePropertyChanged(() => Accounts);
+                RaisePropertyChanged(nameof( Accounts));
             }
         }
 
@@ -58,7 +58,7 @@ namespace Samba.Modules.TicketModule
             set
             {
                 Model.Account = value;
-                RaisePropertyChanged(() => Account);
+                RaisePropertyChanged(nameof( Account));
             }
         }
 

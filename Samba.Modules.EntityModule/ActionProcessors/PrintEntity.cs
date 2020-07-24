@@ -1,22 +1,20 @@
-﻿using System.ComponentModel.Composition;
-using System.Linq;
-using Samba.Domain.Models.Entities;
+﻿using Samba.Domain.Models.Entities;
 using Samba.Localization.Properties;
 using Samba.Presentation.Services.Common;
 using Samba.Services;
 using Samba.Services.Common;
+using System.Linq;
 
 namespace Samba.Modules.EntityModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class PrintEntity : ActionType
+    public class PrintEntity : ActionType
     {
         private readonly ICacheService _cacheService;
         private readonly IPrinterService _printerService;
         private readonly IEntityService _entityService;
 
-        [ImportingConstructor]
-        public PrintEntity(ICacheService cacheService, IPrinterService printerService,IEntityService entityService)
+
+        public PrintEntity(ICacheService cacheService, IPrinterService printerService, IEntityService entityService)
         {
             _cacheService = cacheService;
             _printerService = printerService;

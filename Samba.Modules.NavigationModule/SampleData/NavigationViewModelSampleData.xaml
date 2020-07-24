@@ -1,2 +1,3 @@
-<Samba_Modules_NavigationModule:NavigationViewModel xmlns:Samba_Modules_NavigationModule="clr-namespace:Samba.Modules.NavigationModule"
-                                                    x:Class="Samba.Modules.NavigationModule.SampleData.c__users_emree_000_documents_github_sambapos_3_samba_modules_navigationmodule_sampledata_navigationviewmodelsampledata_xaml" />
+<Samba_Modules_NavigationModule:NavigationViewModel x:Class="Samba.Modules.NavigationModule.SampleData.c__users_emree_000_documents_github_sambapos_3_samba_modules_navigationmodule_sampledata_navigationviewmodelsampledata_xaml"
+                                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                                    xmlns:Samba_Modules_NavigationModule="clr-namespace:Samba.Modules.NavigationModule" />

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services.Common;
@@ -8,13 +9,13 @@ using Samba.Services;
 
 namespace Samba.Modules.DepartmentModule
 {
-    [ModuleExport(typeof(DepartmentModule))]
+    [Module(ModuleName = "DepartmentModule")]
     public class DepartmentModule : ModuleBase
     {
         private readonly IRegionManager _regionManager;
         private readonly IDepartmentService _departmentService;
 
-        [ImportingConstructor]
+
         public DepartmentModule(IRegionManager regionManager, IDepartmentService departmentService)
         {
             _departmentService = departmentService;
@@ -26,6 +27,11 @@ namespace Samba.Modules.DepartmentModule
             {
                 PermissionRegistry.RegisterPermission(PermissionNames.UseDepartment + department.Id, PermissionCategories.Department, department.Name);
             }
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+
         }
 
         protected override void OnInitialization()

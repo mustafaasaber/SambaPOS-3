@@ -11,7 +11,7 @@ namespace Samba.Modules.TaskModule.Widgets.TaskEditor
     /// Interaction logic for TaskEditorView.xaml
     /// </summary>
     /// 
-    [Export]
+    
     public partial class TaskEditorView : UserControl
     {
         public TaskEditorView()

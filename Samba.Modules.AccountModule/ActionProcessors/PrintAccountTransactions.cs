@@ -7,13 +7,12 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.AccountModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class PrintAccountTransactions : ActionType
+   public class PrintAccountTransactions : ActionType
     {
         private readonly IAccountService _accountService;
         private readonly IReportServiceClient _reportServiceClient;
 
-        [ImportingConstructor]
+        
         public PrintAccountTransactions(IAccountService accountService, IReportServiceClient reportServiceClient)
         {
             _accountService = accountService;

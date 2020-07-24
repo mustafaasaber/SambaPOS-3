@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using Samba.Domain.Models.Tickets;
+﻿using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
 using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
 using Samba.Services;
 using Samba.Services.Common;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Samba.Modules.TicketModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class UpdateOrder : ActionType
+    public class UpdateOrder : ActionType
     {
         private readonly ITicketService _ticketService;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+
         public UpdateOrder(ITicketService ticketService, ICacheService cacheService)
         {
             _ticketService = ticketService;
@@ -66,17 +62,17 @@ namespace Samba.Modules.TicketModule.ActionProcessors
         protected override object GetDefaultData()
         {
             return new
-                    {
-                        Quantity = 0m,
-                        Price = 0m,
-                        PortionName = "",
-                        PriceTag = "",
-                        IncreaseInventory = false,
-                        DecreaseInventory = false,
-                        CalculatePrice = false,
-                        Locked = false,
-                        AccountTransactionType = ""
-                    };
+            {
+                Quantity = 0m,
+                Price = 0m,
+                PortionName = "",
+                PriceTag = "",
+                IncreaseInventory = false,
+                DecreaseInventory = false,
+                CalculatePrice = false,
+                Locked = false,
+                AccountTransactionType = ""
+            };
         }
 
         protected override string GetActionName()

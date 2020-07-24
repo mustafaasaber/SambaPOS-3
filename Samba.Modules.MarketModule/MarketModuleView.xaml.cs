@@ -7,10 +7,10 @@ namespace Samba.Modules.MarketModule
     /// Interaction logic for MenuModuleView.xaml
     /// </summary>
     
-    [Export]
+    
     public partial class MarketModuleView : UserControl
     {
-        [ImportingConstructor]
+        
         public MarketModuleView(MarketModuleViewModel viewModel)
         {
             DataContext = viewModel;

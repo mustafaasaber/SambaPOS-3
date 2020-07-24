@@ -17,7 +17,7 @@ namespace Samba.Modules.PrinterModule
         private readonly IPrinterService _printerService;
         private readonly IUserInteraction _userInteraction;
 
-        [ImportingConstructor]
+        
         public PrinterViewModel(IPrinterService printerService, IUserInteraction userInteraction)
         {
             _printerService = printerService;
@@ -48,7 +48,7 @@ namespace Samba.Modules.PrinterModule
                     CustomPrinterName = "";
                     CustomPrinterData = "";
                 }
-                RaisePropertyChanged(() => IsCustomPrinter);
+                RaisePropertyChanged(nameof( IsCustomPrinter));
             }
         }
 
@@ -60,7 +60,7 @@ namespace Samba.Modules.PrinterModule
         public string Description
         {
             get { return _description; }
-            set { _description = value; RaisePropertyChanged(() => Description); }
+            set { _description = value; RaisePropertyChanged(nameof( Description)); }
         }
 
         public string CustomPrinterName { get { return Model.CustomPrinterName; } set { Model.CustomPrinterName = value; } }

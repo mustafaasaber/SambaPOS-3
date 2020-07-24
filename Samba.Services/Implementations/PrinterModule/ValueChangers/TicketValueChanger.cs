@@ -6,7 +6,7 @@ using Samba.Domain.Models.Tickets;
 
 namespace Samba.Services.Implementations.PrinterModule.ValueChangers
 {
-    [Export]
+    //
     public class TicketValueChanger : AbstractValueChanger<Ticket>
     {
         private readonly TicketEntityValueChanger _entityValueChanger;
@@ -17,7 +17,7 @@ namespace Samba.Services.Implementations.PrinterModule.ValueChangers
         private readonly OrderValueChanger _orderValueChanger;
         private readonly TaxValueChanger _taxValueChanger;
 
-        [ImportingConstructor]
+        //
         public TicketValueChanger(TicketEntityValueChanger entityValueChanger, PreCalculationValueChanger preCalculationValueChanger, PostCalculationValueChanger postCalculationValueChanger,
             PaymentValueChanger paymentValueChanger, ChangePaymentValueChanger changePaymentValueChanger, OrderValueChanger orderValueChanger, TaxValueChanger taxValueChanger)
         {

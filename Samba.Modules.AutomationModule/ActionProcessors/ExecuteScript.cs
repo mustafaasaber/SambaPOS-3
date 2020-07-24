@@ -10,12 +10,12 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.AutomationModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class ExecuteScript : ActionType
+    
+  public  class ExecuteScript : ActionType
     {
         private readonly IExpressionService _expressionService;
 
-        [ImportingConstructor]
+        
         public ExecuteScript(IExpressionService expressionService)
         {
             _expressionService = expressionService;

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services;
@@ -9,7 +10,7 @@ using Samba.Services;
 
 namespace Samba.Modules.WorkperiodModule
 {
-    [ModuleExport(typeof(WorkPeriodsModule))]
+    [Module(ModuleName = "WorkPeriodsModule")]
     public class WorkPeriodsModule : VisibleModuleBase
     {
         private readonly IRegionManager _regionManager;
@@ -21,7 +22,7 @@ namespace Samba.Modules.WorkperiodModule
             _regionManager.RegisterViewWithRegion(RegionNames.MainRegion, typeof(WorkPeriodsView));
         }
 
-        [ImportingConstructor]
+        
         public WorkPeriodsModule(IRegionManager regionManager, WorkPeriodsView workPeriodsView,IUserService userService)
             : base(regionManager, AppScreens.WorkPeriods)
         {
@@ -48,6 +49,11 @@ namespace Samba.Modules.WorkperiodModule
         {
             base.OnNavigate(obj);
             ((WorkPeriodsViewModel)_workPeriodsView.DataContext).Refresh();
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+
         }
     }
 }

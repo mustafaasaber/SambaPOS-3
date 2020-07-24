@@ -1,8 +1,8 @@
+using Omu.ValueInjecter;
 using System;
 using System.Collections;
 using System.Diagnostics;
 using System.Linq;
-using Omu.ValueInjecter;
 
 namespace Samba.Infrastructure.Data.Injection
 {
@@ -33,11 +33,14 @@ namespace Samba.Infrastructure.Data.Injection
                     if (targetChildType.GetInterfaces().Any(x => x == typeof(IValueClass)))
                     {
                         var deleteMethod = c.TargetProp.Value.GetType().GetMethod("Remove");
+
                         var rmvItems = (c.TargetProp.Value as IEnumerable).Cast<IValueClass>()
                             .Where(x => x.Id > 0 && !(c.SourceProp.Value as IEnumerable).Cast<IValueClass>().Any(y => y.Id == x.Id));
                         rmvItems.ToList().ForEach(x => deleteMethod.Invoke(c.TargetProp.Value, new[] { x }));
+
                         rmvItems = (c.TargetProp.Value as IEnumerable).Cast<IValueClass>()
                             .Where(x => !(c.SourceProp.Value as IEnumerable).Cast<IValueClass>().Contains(x));
+
                         rmvItems.ToList().ForEach(x => deleteMethod.Invoke(c.TargetProp.Value, new[] { x }));
 
                         var sourceCollection = (c.SourceProp.Value as IEnumerable).Cast<IValueClass>();

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Entities;
 using Samba.Domain.Models.Tickets;
 using Samba.Infrastructure.Helpers;
@@ -235,7 +235,7 @@ namespace Samba.Modules.TicketModule.Widgets.TicketLister
                 worker.RunWorkerCompleted += (sender, eventArgs) =>
                 {
                     IsRefreshing = false;
-                    RaisePropertyChanged(() => TicketList);
+                    RaisePropertyChanged(nameof( TicketList));
                 };
 
                 worker.RunWorkerAsync();
@@ -252,8 +252,8 @@ namespace Samba.Modules.TicketModule.Widgets.TicketLister
             set
             {
                 _isSelected = value;
-                RaisePropertyChanged(() => BackgroundValue);
-                RaisePropertyChanged(() => ForegroundValue);
+                RaisePropertyChanged(nameof( BackgroundValue));
+                RaisePropertyChanged(nameof( ForegroundValue));
             }
         }
 

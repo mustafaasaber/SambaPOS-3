@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+﻿using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Domain.Models.Automation;
 using Samba.Domain.Models.Tickets;
 using Samba.Presentation.Common;
@@ -10,11 +8,13 @@ using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
 using Samba.Presentation.ViewModels;
 using Samba.Services.Common;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Samba.Modules.ModifierModule
 {
-    [ModuleExport(typeof(ModifierModule))]
-    class ModifierModule : ModuleBase
+    [Module(ModuleName = "ModifierModule")]
+    public class ModifierModule : ModuleBase
     {
         private IEnumerable<Order> _selectedOrders;
 
@@ -34,7 +34,7 @@ namespace Samba.Modules.ModifierModule
         private readonly TicketTagEditorView _ticketTagEditorView;
         private readonly TicketTagEditorViewModel _ticketTagEditorViewModel;
 
-        [ImportingConstructor]
+
         public ModifierModule(IRegionManager regionManager, IUserService userService,
             TicketNoteEditorView ticketNoteEditorView, TicketNoteEditorViewModel ticketNoteEditorViewModel,
             TicketTagEditorView ticketTagEditorView, TicketTagEditorViewModel ticketTagEditorViewModel,
@@ -169,6 +169,11 @@ namespace Samba.Modules.ModifierModule
                 }
                 else EventServiceFactory.EventService.PublishEvent(EventTopicNames.RefreshSelectedTicket);
             }
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+
         }
     }
 }

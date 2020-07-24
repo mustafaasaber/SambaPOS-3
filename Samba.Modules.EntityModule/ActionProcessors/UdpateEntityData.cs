@@ -8,13 +8,13 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.EntityModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class UdpateEntityData : ActionType
+   
+  public  class UdpateEntityData : ActionType
     {
         private readonly IEntityServiceClient _entityServiceClient;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public UdpateEntityData(IEntityServiceClient entityServiceClient, ICacheService cacheService)
         {
             _entityServiceClient = entityServiceClient;

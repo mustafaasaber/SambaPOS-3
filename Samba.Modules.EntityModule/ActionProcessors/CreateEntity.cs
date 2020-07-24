@@ -1,20 +1,18 @@
-﻿using System.ComponentModel.Composition;
-using System.Linq;
-using Samba.Localization.Properties;
+﻿using Samba.Localization.Properties;
 using Samba.Presentation.Services.Common;
 using Samba.Services;
 using Samba.Services.Common;
+using System.Linq;
 
 namespace Samba.Modules.EntityModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class CreateEntity : ActionType
+    public class CreateEntity : ActionType
     {
         private readonly ICacheService _cacheService;
         private readonly IEntityService _entityService;
         private readonly IAccountService _accountService;
 
-        [ImportingConstructor]
+
         public CreateEntity(ICacheService cacheService, IEntityService entityService, IAccountService accountService)
         {
             _cacheService = cacheService;

@@ -22,7 +22,7 @@ namespace Samba.Modules.AccountModule.Dashboard
         public event EventHandler RowInserted;
         public event EventHandler RowDeleted;
 
-        [ImportingConstructor]
+        
         public AccountTransactionDocumentViewModel(ICacheService cacheService, IPrinterService printerService, IApplicationState applicationState)
         {
             _cacheService = cacheService;
@@ -55,7 +55,7 @@ namespace Samba.Modules.AccountModule.Dashboard
         public AccountTransactionViewModel SelectedTransaction
         {
             get { return _selectedTransaction; }
-            set { _selectedTransaction = value; RaisePropertyChanged(() => SelectedTransaction); }
+            set { _selectedTransaction = value; RaisePropertyChanged(nameof( SelectedTransaction)); }
         }
 
         private ObservableCollection<AccountTransactionViewModel> _accountTransactions;

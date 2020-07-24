@@ -11,7 +11,7 @@ namespace Samba.Modules.ManagementModule
     /// Interaction logic for KeyboardButtonView.xaml
     /// </summary>
     /// 
-    [Export]
+    
     public partial class KeyboardButtonView : UserControl
     {
         private readonly ManagementView _dashboardView;
@@ -19,7 +19,7 @@ namespace Samba.Modules.ManagementModule
         private readonly GridLength _zeroGridLength = new GridLength(0);
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
+        
         public KeyboardButtonView(IApplicationState applicationState, ManagementView dashboardView)
         {
             InitializeComponent();
@@ -34,23 +34,31 @@ namespace Samba.Modules.ManagementModule
 
         private void ToggleKeyboard()
         {
-            if (_applicationState.ActiveAppScreen == AppScreens.Management)
-            {
-                if (_dashboardView.Splitter.Height == _zeroGridLength)
-                {
-                    _dashboardView.Splitter.Height = _gridLength;
-                    _dashboardView.KeyboardPanel.Height = GridLength.Auto;
-                }
-                else
-                {
-                    _dashboardView.Splitter.Height = _zeroGridLength;
-                    _dashboardView.KeyboardPanel.Height = _zeroGridLength;
-                }
-            }
-            else
-            {
-                InteractionService.ToggleKeyboard();
-            }
+
+            //TODO: Fire Event and listen to it in Shell Window 
+
+
+            EventServiceFactory.EventService.PublishEvent(EventTopicNames.KeyboardToggled);
+
+
+
+        //    if (_applicationState.ActiveAppScreen == AppScreens.Management)
+        //    {
+        //        if (_dashboardView.Splitter.Height == _zeroGridLength)
+        //        {
+        //            _dashboardView.Splitter.Height = _gridLength;
+        //            _dashboardView.KeyboardPanel.Height = GridLength.Auto;
+        //        }
+        //        else
+        //        {
+        //            _dashboardView.Splitter.Height = _zeroGridLength;
+        //            _dashboardView.KeyboardPanel.Height = _zeroGridLength;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        InteractionService.ToggleKeyboard();
+        //    }
         }
     }
 }

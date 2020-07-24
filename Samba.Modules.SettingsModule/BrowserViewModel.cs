@@ -22,7 +22,7 @@ namespace Samba.Modules.SettingsModule
             set
             {
                 _activeUrl = value;
-                RaisePropertyChanged(() => ActiveUrl);
+                RaisePropertyChanged(nameof( ActiveUrl));
             }
         }
 

@@ -1,10 +1,10 @@
 ﻿using System;
-using Microsoft.Practices.Prism.Events;
+using Prism.Events;
 
 namespace Samba.Presentation.Services.Common
 {
-    public class GenericEvent<TValue> : CompositePresentationEvent<EventParameters<TValue>> { }
-    public class GenericIdEvent : CompositePresentationEvent<EventParameters<int>> { }
+    public class GenericEvent<TValue> : PubSubEvent<EventParameters<TValue>> { }
+    public class GenericIdEvent : PubSubEvent<EventParameters<int>> { }
 
     public class EventParameters<TValue>
     {

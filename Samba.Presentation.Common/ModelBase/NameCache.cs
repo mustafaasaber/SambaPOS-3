@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Practices.Prism.Events;
+using Prism.Events;
 using Samba.Infrastructure.Data;
 using Samba.Persistance.Data;
 using Samba.Presentation.Services.Common;

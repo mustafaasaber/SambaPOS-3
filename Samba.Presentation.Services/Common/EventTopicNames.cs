@@ -117,6 +117,10 @@
         public const string SetSelectedTicket = "SetSelectedTicket";
         public const string SetWidgetValue = "SetWidgetValue";
         public const string SelectAutomationCommand = "SelectAutomationCommand";
+
+        public const string KeyboardToggled = "KeyboardToggled";
+
+
     }
 
     public static class FunctionNames

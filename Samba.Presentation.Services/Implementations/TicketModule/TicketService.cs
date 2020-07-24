@@ -19,7 +19,7 @@ using Samba.Services.Common;
 
 namespace Samba.Presentation.Services.Implementations.TicketModule
 {
-    [Export(typeof(ITicketService))]
+  
     public class TicketService : ITicketService
     {
         private readonly ITicketDao _ticketDao;
@@ -31,7 +31,7 @@ namespace Samba.Presentation.Services.Implementations.TicketModule
         private readonly IAccountService _accountService;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public TicketService(ITicketDao ticketDao, ITicketServiceBase ticketServiceBase, IDepartmentService departmentService, IApplicationState applicationState,
             IUserService userService, ISettingService settingService, IExpressionService expressionService, IAccountService accountService, ICacheService cacheService)
         {

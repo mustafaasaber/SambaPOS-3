@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Events;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Commands;
+using Prism.Events;
+using Prism.Regions;
 using Samba.Domain.Models.Entities;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services;
@@ -12,7 +12,7 @@ using Samba.Services;
 
 namespace Samba.Modules.EntityModule
 {
-    [Export]
+    
     public class EntitySwitcherViewModel : ObservableObject
     {
         private readonly IRegionManager _regionManager;
@@ -28,7 +28,7 @@ namespace Samba.Modules.EntityModule
 
         private OperationRequest<Entity> _currentOperationRequest;
 
-        [ImportingConstructor]
+        
         public EntitySwitcherViewModel(IRegionManager regionManager,
             IApplicationState applicationState, IApplicationStateSetter applicationStateSetter, ICacheService cacheService,
             EntitySelectorView entitySelectorView, EntitySelectorViewModel entitySelectorViewModel,
@@ -55,7 +55,7 @@ namespace Samba.Modules.EntityModule
                 {
                     _entityScreens = null;
                     _entitySwitcherButtons = null;
-                    RaisePropertyChanged(() => EntitySwitcherButtons);
+                    RaisePropertyChanged(nameof( EntitySwitcherButtons));
                 }
             });
 
@@ -145,7 +145,7 @@ namespace Samba.Modules.EntityModule
                     ActivateDashboard(entityScreen);
                 else ActivateButtonSelector(entityScreen);
             }
-            RaisePropertyChanged(() => EntitySwitcherButtons);
+            RaisePropertyChanged(nameof( EntitySwitcherButtons));
             EntitySwitcherButtons.ForEach(x => x.Refresh());
         }
 

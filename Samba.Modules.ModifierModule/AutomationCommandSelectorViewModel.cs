@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
@@ -13,7 +13,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.ModifierModule
 {
-    [Export]
+    
     public class AutomationCommandSelectorViewModel : ObservableObject
     {
         private readonly IApplicationState _applicationState;
@@ -22,7 +22,7 @@ namespace Samba.Modules.ModifierModule
         public DelegateCommand<AutomationCommandData> SelectAutomationCommand { get; set; }
         public ICaptionCommand CloseCommand { get; set; }
 
-        [ImportingConstructor]
+        
         public AutomationCommandSelectorViewModel(IApplicationState applicationState, IExpressionService expressionService)
         {
             _applicationState = applicationState;
@@ -64,8 +64,8 @@ namespace Samba.Modules.ModifierModule
         private void UpdateAutomationCommands()
         {
             AutomationCommands = _applicationState.GetAutomationCommands().Where(x => x.DisplayOnCommandSelector && x.CanDisplay(_selectedTicket));
-            RaisePropertyChanged(() => AutomationCommands);
-            RaisePropertyChanged(() => ColumnCount);
+            RaisePropertyChanged(nameof( AutomationCommands));
+            RaisePropertyChanged(nameof( ColumnCount));
         }
     }
 }

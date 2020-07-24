@@ -7,10 +7,10 @@ namespace Samba.Modules.EntityModule
     /// Interaction logic for ResourceSwitcherView.xaml
     /// </summary>
 
-    [Export]
+    
     public partial class EntitySwitcherView : UserControl
     {
-        [ImportingConstructor]
+        
         public EntitySwitcherView(EntitySwitcherViewModel viewModel)
         {
             DataContext = viewModel;

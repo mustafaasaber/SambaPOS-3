@@ -17,10 +17,9 @@ using Samba.Persistance.Specification;
 
 namespace Samba.Persistance.Implementations
 {
-    [Export(typeof(ITicketDao))]
-    class TicketDao : ITicketDao
+    //[Export(typeof(ITicketDao))]
+   public class TicketDao : ITicketDao
     {
-        [ImportingConstructor]
         public TicketDao()
         {
             ValidatorRegistry.RegisterDeleteValidator<TicketType>(x => Dao.Exists<EntityScreen>(y => y.TicketTypeId == x.Id), Resources.TicketType, Resources.EntityScreen);

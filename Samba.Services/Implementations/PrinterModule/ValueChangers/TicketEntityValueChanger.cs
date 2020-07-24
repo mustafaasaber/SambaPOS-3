@@ -3,12 +3,12 @@ using Samba.Domain.Models.Tickets;
 
 namespace Samba.Services.Implementations.PrinterModule.ValueChangers
 {
-    [Export]
+    //
     public class TicketEntityValueChanger : AbstractValueChanger<TicketEntity>
     {
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        //
         public TicketEntityValueChanger(ICacheService cacheService)
         {
             _cacheService = cacheService;

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 using Samba.Infrastructure.Data;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common.Commands;

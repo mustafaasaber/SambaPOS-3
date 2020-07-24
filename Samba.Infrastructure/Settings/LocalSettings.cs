@@ -105,6 +105,7 @@ html
             get { return _settingsObject.ConnectionString; }
             set { _settingsObject.ConnectionString = value; }
         }
+        public static string DbCon { get; set; }
 
         public static bool StartMessagingClient
         {

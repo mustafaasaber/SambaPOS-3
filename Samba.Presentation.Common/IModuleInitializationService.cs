@@ -60,7 +60,7 @@ namespace Samba.Presentation.Common
         void Initialize();
     }
 
-    [Export(typeof(IModuleInitializationService))]
+    //[Export(typeof(IModuleInitializationService))]
     public class ModuleInitializationService : StagedSequenceService<ModuleInitializationStage>, IModuleInitializationService
     {
         public virtual void Initialize()

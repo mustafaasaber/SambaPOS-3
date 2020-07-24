@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Users;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services;
@@ -7,13 +7,13 @@ using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.UserModule
 {
-    [Export]
+    
     public class LoggedInUserViewModel : ObservableObject
     {
         private readonly IUserService _userService;
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
+        
         public LoggedInUserViewModel(IApplicationState applicationState, IUserService userService)
         {
             _userService = userService;
@@ -51,13 +51,13 @@ namespace Samba.Modules.UserModule
         private void UserLoggedIn(User user)
         {
             LoggedInUser = user;
-            RaisePropertyChanged(() => LoggedInUserName);
+            RaisePropertyChanged(nameof( LoggedInUserName));
         }
 
         private void UserLoggedOut(User user)
         {
             LoggedInUser = User.Nobody;
-            RaisePropertyChanged(() => LoggedInUserName);
+            RaisePropertyChanged(nameof( LoggedInUserName));
         }
     }
 }

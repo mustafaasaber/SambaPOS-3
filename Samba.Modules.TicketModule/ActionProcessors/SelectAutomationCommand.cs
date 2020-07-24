@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using Samba.Domain.Models.Tickets;
+﻿using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services.Common;
@@ -11,8 +6,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.TicketModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class SelectAutomationCommand : ActionType
+    public class SelectAutomationCommand : ActionType
     {
         public override void Process(ActionData actionData)
         {

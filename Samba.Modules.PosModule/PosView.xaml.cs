@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Events;
+using Prism.Events;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services.Common;
 
@@ -11,13 +11,13 @@ namespace Samba.Modules.PosModule
     /// Interaction logic for TicketEditorView.xaml
     /// </summary>
     /// 
-    [Export]
+    
     public partial class PosView : UserControl
     {
         private bool _isLandscape;
         private bool IsPortrait { get { return !_isLandscape; } }
 
-        [ImportingConstructor]
+        
         public PosView(PosViewModel viewModel)
         {
             InitializeComponent();

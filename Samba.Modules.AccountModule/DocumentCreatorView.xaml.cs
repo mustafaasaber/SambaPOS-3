@@ -20,11 +20,11 @@ namespace Samba.Modules.AccountModule
     /// Interaction logic for DocumentCreatorView.xaml
     /// </summary>
     
-    [Export]
+    
     public partial class DocumentCreatorView : UserControl
     {
 
-        [ImportingConstructor]
+        
         public DocumentCreatorView(DocumentCreatorViewModel viewModel)
         {
             DataContext = viewModel;

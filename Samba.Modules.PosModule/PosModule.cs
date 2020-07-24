@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Events;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Events;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Domain.Models.Entities;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
@@ -10,8 +11,8 @@ using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.PosModule
 {
-    [ModuleExport(typeof(PosModule))]
-    class PosModule : VisibleModuleBase
+    [Module(ModuleName = "PosModule")]
+  public  class PosModule : VisibleModuleBase
     {
         private readonly PosView _posView;
         private readonly MenuItemSelectorView _menuItemSelectorView;
@@ -23,7 +24,7 @@ namespace Samba.Modules.PosModule
         private readonly TicketListView _ticketListView;
         private readonly TicketTagListView _ticketTagListView;
 
-        [ImportingConstructor]
+        
         public PosModule(IRegionManager regionManager, IApplicationState applicationState,
             PosView posView, TicketView ticketView, TicketListView ticketListView, TicketTagListView ticketTagListView,
             MenuItemSelectorView menuItemSelectorView, TicketEntityListView ticketEntityListView, TicketTypeListView ticketTypeListView)
@@ -84,6 +85,41 @@ namespace Samba.Modules.PosModule
         public override object GetVisibleView()
         {
             return _posView;
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            ////Inventory
+
+            ////Views
+            //containerRegistry.RegisterSingleton<TicketOrdersView>();
+            //containerRegistry.RegisterSingleton<TicketListView>();
+            //containerRegistry.RegisterSingleton<TicketView>();
+            //containerRegistry.RegisterSingleton<MenuItemSelectorView>();
+            //containerRegistry.RegisterSingleton<TicketTypeListView>();
+            //containerRegistry.RegisterSingleton<TicketTotalsView>();
+            //containerRegistry.RegisterSingleton<TicketTagListView>();
+            //containerRegistry.RegisterSingleton<TicketInfoView>();
+            //containerRegistry.RegisterSingleton<TicketEntityListView>();
+            //containerRegistry.RegisterSingleton<PosView>();
+
+
+            ////ViewModels
+            //containerRegistry.RegisterSingleton<TicketOrdersViewModel>();
+            //containerRegistry.RegisterSingleton<TicketListViewModel>();
+            //containerRegistry.RegisterSingleton<TicketViewModel>();
+            //containerRegistry.RegisterSingleton<MenuItemSelectorViewModel>();
+            //containerRegistry.RegisterSingleton<TicketTypeListViewModel>();
+            //containerRegistry.RegisterSingleton<TicketTotalsViewModel>();
+
+            //containerRegistry.RegisterSingleton<TicketTagListViewModel>();
+            //containerRegistry.RegisterSingleton<TicketInfoViewModel>();
+            //containerRegistry.RegisterSingleton<TicketEntityListViewModel>();
+            //containerRegistry.RegisterSingleton<PosViewModel>();
+
+            
+
+
         }
     }
 }

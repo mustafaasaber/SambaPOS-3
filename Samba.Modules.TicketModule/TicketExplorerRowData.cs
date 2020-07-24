@@ -45,7 +45,7 @@ namespace Samba.Modules.TicketModule
                     .GetOrders(Model.Id)
                     .OrderBy(x => x.MenuItemName)
                     .Select(x => string.Format("{0:#} {1} {2}", x.Quantity, x.Description, x.GetVisiblePrice()));
-                RaisePropertyChanged(() => Details);
+                RaisePropertyChanged(nameof( Details));
             }
         }
     }

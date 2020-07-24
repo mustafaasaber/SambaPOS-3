@@ -7,7 +7,7 @@ using Samba.Presentation.Common.Services;
 
 namespace Samba.Modules.ManagementModule
 {
-    [Export]
+    
     public class ManagementViewModel : ModelListViewModelBase
     {
         public ObservableCollection<DashboardCommandCategory> CategoryView
@@ -27,7 +27,7 @@ namespace Samba.Modules.ManagementModule
 
         public void Refresh()
         {
-            RaisePropertyChanged(() => CategoryView);
+            RaisePropertyChanged(nameof( CategoryView));
         }
     }
 }

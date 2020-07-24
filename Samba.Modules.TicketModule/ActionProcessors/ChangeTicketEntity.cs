@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using Samba.Domain.Models.Entities;
+﻿using Samba.Domain.Models.Entities;
 using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
@@ -11,18 +6,18 @@ using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
 using Samba.Services;
 using Samba.Services.Common;
+using System.Linq;
 
 namespace Samba.Modules.TicketModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class ChangeTicketEntity : ActionType
+    public class ChangeTicketEntity : ActionType
     {
         private readonly ITicketService _ticketService;
         private readonly IApplicationState _applicationState;
         private readonly ICacheService _cacheService;
         private readonly IEntityService _entityService;
 
-        [ImportingConstructor]
+
         public ChangeTicketEntity(ITicketService ticketService, IApplicationState applicationState, ICacheService cacheService, IEntityService entityService)
         {
             _ticketService = ticketService;

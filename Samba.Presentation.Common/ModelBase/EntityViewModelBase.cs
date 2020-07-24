@@ -38,7 +38,7 @@ namespace Samba.Presentation.Common.ModelBase
             set
             {
                 Model.Name = value.Trim();
-                RaisePropertyChanged(() => Name);
+                RaisePropertyChanged(nameof( Name));
             }
         }
 
@@ -51,7 +51,7 @@ namespace Samba.Presentation.Common.ModelBase
             set
             {
                 _error = value;
-                RaisePropertyChanged(() => Error);
+                RaisePropertyChanged(nameof( Error));
             }
         }
 
@@ -159,7 +159,7 @@ namespace Samba.Presentation.Common.ModelBase
             if (Model.Id > 0)
             {
                 Workspace.Refresh(Model);
-                RaisePropertyChanged(() => Name);
+                RaisePropertyChanged(nameof( Name));
             }
         }
     }

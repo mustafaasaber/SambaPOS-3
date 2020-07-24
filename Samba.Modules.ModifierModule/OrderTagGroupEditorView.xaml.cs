@@ -10,10 +10,10 @@ namespace Samba.Modules.ModifierModule
     /// Interaction logic for SelectedOrdersView.xaml
     /// </summary>
     /// 
-    [Export]
+    
     public partial class OrderTagGroupEditorView : UserControl
     {
-        [ImportingConstructor]
+        
         public OrderTagGroupEditorView(OrderTagGroupEditorViewModel viewModel)
         {
             DataContext = viewModel;

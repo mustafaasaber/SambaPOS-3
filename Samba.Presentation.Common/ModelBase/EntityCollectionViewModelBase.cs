@@ -6,8 +6,8 @@ using System.ComponentModel.Composition;
 using System.Text;
 using System.Windows;
 using System.Linq;
-using Microsoft.Practices.Prism.Events;
-using Microsoft.Practices.ServiceLocation;
+using Prism.Events;
+//using CommonServiceLocator;
 using Samba.Infrastructure.Data;
 using Samba.Infrastructure.Data.Serializer;
 using Samba.Infrastructure.Data.Validation;
@@ -17,6 +17,7 @@ using Samba.Persistance.Data;
 using Samba.Presentation.Common.Commands;
 using Samba.Presentation.Common.Services;
 using Samba.Presentation.Services.Common;
+using CommonServiceLocator;
 
 namespace Samba.Presentation.Common.ModelBase
 {
@@ -25,7 +26,7 @@ namespace Samba.Presentation.Common.ModelBase
         where TViewModel : EntityViewModelBase<TModel>
         where TModel : class, IEntityClass, new()
     {
-        [ImportingConstructor]
+        
         public EntityCollectionViewModelBase()
         {
             Limit = LocalSettings.DefaultRecordLimit;
@@ -86,8 +87,8 @@ namespace Samba.Presentation.Common.ModelBase
         {
             Limit = 0;
             _items = null;
-            RaisePropertyChanged(() => Items);
-            RaisePropertyChanged(() => DisplayLimitWarning);
+            RaisePropertyChanged(nameof( Items));
+            RaisePropertyChanged(nameof(DisplayLimitWarning));
         }
 
         private void OnSortItems(TModel obj)
@@ -96,7 +97,7 @@ namespace Samba.Presentation.Common.ModelBase
             InteractionService.UserIntraction.SortItems(list.Cast<IOrderable>(), string.Format(Resources.Sort_f, PluralModelTitle), Resources.ChangeSortOrderHint);
             Workspace.CommitChanges();
             _items = null;
-            RaisePropertyChanged(() => Items);
+            RaisePropertyChanged(nameof(Items));
         }
 
         private static bool CanBatchCreateItems(TModel arg)
@@ -115,7 +116,7 @@ namespace Samba.Presentation.Common.ModelBase
                 foreach (var item in items) Workspace.Add(item);
                 Workspace.CommitChanges();
                 _items = null;
-                RaisePropertyChanged(() => Items);
+                RaisePropertyChanged(nameof(Items));
             }
         }
 
@@ -143,7 +144,7 @@ namespace Samba.Presentation.Common.ModelBase
                 if (_items == null)
                 {
                     _items = GetItemsList();
-                    RaisePropertyChanged(() => DisplayLimitWarning);
+                    RaisePropertyChanged(nameof(DisplayLimitWarning));
                 }
                 return _items;
             }
@@ -160,7 +161,7 @@ namespace Samba.Presentation.Common.ModelBase
         public override void RefreshItems()
         {
             _items = null;
-            RaisePropertyChanged(() => Items);
+            RaisePropertyChanged(nameof(Items));
         }
 
         protected virtual ObservableCollection<TViewModel> GetItemsList()
@@ -199,7 +200,7 @@ namespace Samba.Presentation.Common.ModelBase
             set
             {
                 _selectedItem = value;
-                RaisePropertyChanged(() => SelectedItem);
+                RaisePropertyChanged(nameof(SelectedItem));
             }
         }
 
@@ -336,6 +337,7 @@ namespace Samba.Presentation.Common.ModelBase
             }
             catch (Exception)
             {
+                var ty = typeof(TViewModel);
                 result = Activator.CreateInstance<TViewModel>();
             }
             result.Model = model;
@@ -364,7 +366,7 @@ namespace Samba.Presentation.Common.ModelBase
         {
             OrderByDescending = !OrderByDescending;
             _items = null;
-            RaisePropertyChanged(() => Items);
+            RaisePropertyChanged(nameof(Items));
         }
 
         public int GetCount()

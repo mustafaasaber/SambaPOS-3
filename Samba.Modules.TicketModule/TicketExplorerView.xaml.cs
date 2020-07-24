@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Samba.Modules.TicketModule
 {
-    [Export]
+    
     public partial class TicketExplorerView : UserControl
     {
         private bool _scrolled;

@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Linq.Expressions;
-using Samba.Domain.Models.Accounts;
+﻿using Samba.Domain.Models.Accounts;
 using Samba.Domain.Models.Entities;
 using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
 using Samba.Persistance;
 using Samba.Persistance.Common;
 using Samba.Persistance.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Samba.Services.Implementations.TicketModule
 {
-    [Export(typeof(ITicketServiceBase))]
-    class TicketServiceBase : ITicketServiceBase
+    public class TicketServiceBase : ITicketServiceBase
     {
         private readonly ITicketDao _ticketDao;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
         public TicketServiceBase(ITicketDao ticketDao, ICacheService cacheService)
         {
             _ticketDao = ticketDao;

@@ -9,10 +9,10 @@ using Samba.Persistance.Data;
 
 namespace Samba.Persistance.Implementations
 {
-    [Export(typeof(IAutomationDao))]
-    class AutomationDao : IAutomationDao
+    //[Export(typeof(IAutomationDao))]
+   public class AutomationDao : IAutomationDao
     {
-        [ImportingConstructor]
+        //
         public AutomationDao()
         {
             ValidatorRegistry.RegisterDeleteValidator<AppAction>(x => Dao.Exists<ActionContainer>(y => y.AppActionId == x.Id), Resources.Action, Resources.Rule);

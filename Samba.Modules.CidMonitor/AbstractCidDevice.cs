@@ -14,7 +14,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.CidMonitor
 {
-    abstract class AbstractCidDevice : IDevice
+   public abstract class AbstractCidDevice : IDevice
     {
         private readonly ICacheService _cacheService;
         private readonly IApplicationState _applicationState;

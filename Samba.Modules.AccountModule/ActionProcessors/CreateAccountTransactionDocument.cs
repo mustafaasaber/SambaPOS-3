@@ -10,13 +10,12 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.AccountModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class CreateAccountTransactionDocument : ActionType
+   public class CreateAccountTransactionDocument : ActionType
     {
         private readonly ICacheService _cacheService;
         private readonly IAccountService _accountService;
 
-        [ImportingConstructor]
+        
         public CreateAccountTransactionDocument(ICacheService cacheService, IAccountService accountService)
         {
             _cacheService = cacheService;

@@ -11,7 +11,7 @@ namespace Samba.Modules.AccountModule.Dashboard
     public class AccountTypeViewModel : EntityViewModelBase<AccountType>
     {
 
-        [ImportingConstructor]
+        
         public AccountTypeViewModel()
         {
         }

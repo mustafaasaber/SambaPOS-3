@@ -1,6 +1,6 @@
 ﻿namespace Samba.Modules.CidMonitor
 {
-    class AbstractCidSettings
+    public class AbstractCidSettings
     {
         public AbstractCidSettings()
         {

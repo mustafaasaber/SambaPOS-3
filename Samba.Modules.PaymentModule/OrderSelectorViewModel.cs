@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Linq;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Tickets;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services;
 
 namespace Samba.Modules.PaymentModule
 {
-    [Export]
+    
     public class OrderSelectorViewModel : ObservableObject
     {
         private readonly TenderedValueViewModel _tenderedValueViewModel;
         
-        [ImportingConstructor]
+        
         public OrderSelectorViewModel(TenderedValueViewModel tenderedValueViewModel)
         {
             _tenderedValueViewModel = tenderedValueViewModel;

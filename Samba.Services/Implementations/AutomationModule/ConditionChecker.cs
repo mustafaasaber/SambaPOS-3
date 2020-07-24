@@ -9,14 +9,14 @@ using Samba.Services.Common;
 
 namespace Samba.Services.Implementations.AutomationModule
 {
-    [Export]
-    internal class ConditionChecker
+    //
+    public class ConditionChecker
     {
         private readonly Evaluator _evaluator;
         private readonly Preprocessor _preprocessor;
         private object _dataObject;
 
-        [ImportingConstructor]
+        //
         public ConditionChecker(Evaluator evaluator, Preprocessor preprocessor)
         {
             _evaluator = evaluator;

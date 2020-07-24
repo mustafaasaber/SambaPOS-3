@@ -1,21 +1,17 @@
-﻿using System.ComponentModel.Composition;
-using System.Globalization;
-using System.IO;
-using Samba.Domain.Models.Entities;
-using Samba.Domain.Models.Tickets;
-using Samba.Localization.Properties;
+﻿using Samba.Localization.Properties;
 using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
 using Samba.Services.Common;
+using System.Globalization;
+using System.IO;
 
 namespace Samba.Presentation.Common.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class LoopValues : ActionType
+    public class LoopValues : ActionType
     {
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
+
         public LoopValues(IApplicationState applicationState)
         {
             _applicationState = applicationState;

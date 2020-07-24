@@ -17,7 +17,7 @@ using Samba.Services.Implementations.PrinterModule.ValueChangers;
 
 namespace Samba.Services.Implementations.PrinterModule
 {
-    [Export(typeof(IPrinterService))]
+    //[Export(typeof(IPrinterService))]
     public class PrinterService : IPrinterService
     {
         private readonly ICacheService _cacheService;
@@ -26,8 +26,8 @@ namespace Samba.Services.Implementations.PrinterModule
         private readonly FunctionRegistry _functionRegistry;
         private readonly TicketPrintTaskBuilder _ticketPrintTaskBuilder;
 
-        [ImportingConstructor]
-        PrinterService(ISettingService settingService, ICacheService cacheService, IExpressionService expressionService, ILogService logService,
+        //
+       public PrinterService(ISettingService settingService, ICacheService cacheService, IExpressionService expressionService, ILogService logService,
             TicketFormatter ticketFormatter, FunctionRegistry functionRegistry, TicketPrintTaskBuilder ticketPrintTaskBuilder)
         {
             _cacheService = cacheService;

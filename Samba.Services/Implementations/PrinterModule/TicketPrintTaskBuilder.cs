@@ -11,14 +11,14 @@ using Samba.Localization.Properties;
 
 namespace Samba.Services.Implementations.PrinterModule
 {
-    [Export]
+    //
     public class TicketPrintTaskBuilder
     {
         private readonly ILogService _logService;
         private readonly ICacheService _cacheService;
         private readonly TicketFormatter _ticketFormatter;
 
-        [ImportingConstructor]
+        //
         public TicketPrintTaskBuilder(ILogService logService, ICacheService cacheService, TicketFormatter ticketFormatter)
         {
             _logService = logService;

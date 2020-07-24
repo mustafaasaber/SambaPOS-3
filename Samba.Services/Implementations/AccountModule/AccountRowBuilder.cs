@@ -11,13 +11,13 @@ using Samba.Services.Common;
 
 namespace Samba.Services.Implementations.AccountModule
 {
-    [Export]
+    
     public class AccountRowBuilder
     {
         private readonly IAccountDao _accountDao;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public AccountRowBuilder(IAccountDao accountDao, ICacheService cacheService)
         {
             _accountDao = accountDao;

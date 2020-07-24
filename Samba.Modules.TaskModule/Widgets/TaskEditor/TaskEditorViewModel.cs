@@ -77,7 +77,7 @@ namespace Samba.Modules.TaskModule.Widgets.TaskEditor
         public string NewTask
         {
             get { return _newTask; }
-            set { _newTask = value; RaisePropertyChanged(() => NewTask); }
+            set { _newTask = value; RaisePropertyChanged(nameof( NewTask)); }
         }
 
         [Browsable(false)]

@@ -30,7 +30,7 @@ namespace Samba.Modules.MenuModule
             set
             {
                 Model.SortOrder = value;
-                RaisePropertyChanged(() => Order);
+                RaisePropertyChanged(nameof( Order));
             }
         }
 
@@ -41,7 +41,7 @@ namespace Samba.Modules.MenuModule
             set
             {
                 Model.AutoSelect = value;
-                RaisePropertyChanged(() => AutoSelect);
+                RaisePropertyChanged(nameof( AutoSelect));
             }
         }
 
@@ -57,7 +57,7 @@ namespace Samba.Modules.MenuModule
             set
             {
                 Model.ButtonColor = value != Colors.Transparent ? value.ToString() : string.Empty;
-                RaisePropertyChanged(() => ButtonColor);
+                RaisePropertyChanged(nameof( ButtonColor));
             }
         }
 
@@ -70,7 +70,7 @@ namespace Samba.Modules.MenuModule
             set
             {
                 Model.ImagePath = value != null ? value.Trim('\b') : null;
-                RaisePropertyChanged(() => ImagePath);
+                RaisePropertyChanged(nameof( ImagePath));
             }
         }
 
@@ -78,21 +78,21 @@ namespace Samba.Modules.MenuModule
         public double FontSize
         {
             get { return Model.FontSize; }
-            set { Model.FontSize = value; RaisePropertyChanged(() => FontSize); }
+            set { Model.FontSize = value; RaisePropertyChanged(nameof( FontSize)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.Header)]
         public string Name
         {
             get { return Model.Name; }
-            set { Model.Name = value; RaisePropertyChanged(() => Name); }
+            set { Model.Name = value; RaisePropertyChanged(nameof( Name)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.Quantity)]
         public int Quantity
         {
             get { return Model.Quantity; }
-            set { Model.Quantity = value; RaisePropertyChanged(() => Quantity); }
+            set { Model.Quantity = value; RaisePropertyChanged(nameof( Quantity)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.SubMenuTags)]
@@ -104,7 +104,7 @@ namespace Samba.Modules.MenuModule
                 Model.SubMenuTag = value == null 
                     ? "" 
                     : value.Trim(new[] { ' ', '\b' });
-                RaisePropertyChanged(() => Tag);
+                RaisePropertyChanged(nameof( Tag));
             }
         }
 
@@ -112,35 +112,35 @@ namespace Samba.Modules.MenuModule
         public string Portion
         {
             get { return Model.ItemPortion; }
-            set { Model.ItemPortion = value; RaisePropertyChanged(() => Portion); }
+            set { Model.ItemPortion = value; RaisePropertyChanged(nameof( Portion)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.OrderTags)]
         public string OrderTags
         {
             get { return Model.OrderTags; }
-            set { Model.OrderTags = value; RaisePropertyChanged(() => OrderTags); }
+            set { Model.OrderTags = value; RaisePropertyChanged(nameof( OrderTags)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.OrderStates)]
         public string OrderStates
         {
             get { return Model.OrderStates; }
-            set { Model.OrderStates = value; RaisePropertyChanged(() => OrderStates); }
+            set { Model.OrderStates = value; RaisePropertyChanged(nameof( OrderStates)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.AutomationCommand)]
         public string AutomationCommand
         {
             get { return Model.AutomationCommand; }
-            set { Model.AutomationCommand = value; RaisePropertyChanged(() => AutomationCommand); }
+            set { Model.AutomationCommand = value; RaisePropertyChanged(nameof( AutomationCommand)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.AutomationCommandValue)]
         public string AutomationCommandValue
         {
             get { return Model.AutomationCommandValue; }
-            set { Model.AutomationCommandValue = value; RaisePropertyChanged(() => AutomationCommandValue); }
+            set { Model.AutomationCommandValue = value; RaisePropertyChanged(nameof( AutomationCommandValue)); }
         }
     }
 }

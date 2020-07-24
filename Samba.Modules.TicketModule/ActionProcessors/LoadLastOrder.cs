@@ -6,8 +6,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.TicketModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class LoadLastOrder : ActionType
+public    class LoadLastOrder : ActionType
     {
         public override void Process(ActionData actionData)
         {

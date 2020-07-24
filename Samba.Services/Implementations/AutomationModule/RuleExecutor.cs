@@ -6,8 +6,8 @@ using Samba.Services.Common;
 
 namespace Samba.Services.Implementations.AutomationModule
 {
-    [Export]
-    internal class RuleExecutor
+    //
+    public class RuleExecutor
     {
         private readonly ICacheService _cacheService;
         private readonly ConditionChecker _conditionChecker;
@@ -18,7 +18,7 @@ namespace Samba.Services.Implementations.AutomationModule
         private int _userRoleId;
         private int _ticketTypeId;
 
-        [ImportingConstructor]
+        //
         public RuleExecutor(ICacheService cacheService, ConditionChecker conditionChecker, ActionDataBuilder actionDataBuilder)
         {
             _cacheService = cacheService;

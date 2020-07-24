@@ -21,7 +21,7 @@ namespace Samba.Modules.AccountModule.Dashboard
         private readonly IAccountService _accountService;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public AccountTransactionDocumentTypeViewModel(IAccountService accountService, ICacheService cacheService)
         {
             _accountService = accountService;
@@ -40,10 +40,10 @@ namespace Samba.Modules.AccountModule.Dashboard
 
         public string ButtonHeader { get { return Model.ButtonHeader; } set { Model.ButtonHeader = value; } }
         public string ButtonColor { get { return Model.ButtonColor; } set { Model.ButtonColor = value; } }
-        public string DefaultAmount { get { return Model.DefaultAmount; } set { Model.DefaultAmount = value; RaisePropertyChanged(() => DefaultAmount); } }
+        public string DefaultAmount { get { return Model.DefaultAmount; } set { Model.DefaultAmount = value; RaisePropertyChanged(nameof( DefaultAmount)); } }
         public string DescriptionTemplate { get { return Model.DescriptionTemplate; } set { Model.DescriptionTemplate = value; } }
         public string ExchangeTemplate { get { return Model.ExchangeTemplate; } set { Model.ExchangeTemplate = value; } }
-        public bool BatchCreateDocuments { get { return Model.BatchCreateDocuments; } set { Model.BatchCreateDocuments = value; RaisePropertyChanged(() => BatchCreateDocuments); } }
+        public bool BatchCreateDocuments { get { return Model.BatchCreateDocuments; } set { Model.BatchCreateDocuments = value; RaisePropertyChanged(nameof( BatchCreateDocuments)); } }
         public int Filter { get { return Model.Filter; } set { Model.Filter = value; } } //0 All Accounts , 1 Balanced Accounts
         public string FilterStr { get { return FilterDescriptions[Filter]; } set { Filter = Array.IndexOf(FilterDescriptions, value); } }
         public int? PrinterTemplateId { get { return Model.PrinterTemplateId; } set { Model.PrinterTemplateId = value.GetValueOrDefault(0); } }
@@ -97,8 +97,8 @@ namespace Samba.Modules.AccountModule.Dashboard
             {
                 _defaultAmounts = null;
                 Model.MasterAccountTypeId = value.Id;
-                RaisePropertyChanged(() => MasterAccountType);
-                RaisePropertyChanged(() => DefaultAmounts);
+                RaisePropertyChanged(nameof( MasterAccountType));
+                RaisePropertyChanged(nameof( DefaultAmounts));
             }
         }
 
@@ -173,7 +173,7 @@ namespace Samba.Modules.AccountModule.Dashboard
             }
 
             _transactionTypes = null;
-            RaisePropertyChanged(() => TransactionTypes);
+            RaisePropertyChanged(nameof( TransactionTypes));
         }
 
         private IEnumerable<string> GetDefaultAmounts()

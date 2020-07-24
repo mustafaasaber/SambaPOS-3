@@ -22,7 +22,7 @@ namespace Samba.Services.Implementations.PrinterModule.CustomPrinters
     {
         private readonly ISettingService _settingService;
 
-        [ImportingConstructor]
+        
         public SettingPrinter(ISettingService settingService)
         {
             _settingService = settingService;

@@ -31,7 +31,7 @@ namespace Samba.Modules.AccountModule.Dashboard
             set
             {
                 Model.ForeignCurrencyId = value != null ? value.Id : 0;
-                RaisePropertyChanged(() => ForeignCurrency);
+                RaisePropertyChanged(nameof( ForeignCurrency));
             }
         }
         public AccountType SourceAccountType
@@ -41,8 +41,8 @@ namespace Samba.Modules.AccountModule.Dashboard
             {
                 Model.SourceAccountTypeId = value != null ? value.Id : 0;
                 _sourceAccounts = null;
-                RaisePropertyChanged(() => SourceAccountType);
-                RaisePropertyChanged(() => SourceAccounts);
+                RaisePropertyChanged(nameof( SourceAccountType));
+                RaisePropertyChanged(nameof( SourceAccounts));
             }
         }
         public AccountType TargetAccountType
@@ -52,8 +52,8 @@ namespace Samba.Modules.AccountModule.Dashboard
             {
                 Model.TargetAccountTypeId = value != null ? value.Id : 0;
                 _targetAccounts = null;
-                RaisePropertyChanged(() => TargetAccountType);
-                RaisePropertyChanged(() => TargetAccounts);
+                RaisePropertyChanged(nameof( TargetAccountType));
+                RaisePropertyChanged(nameof( TargetAccounts));
             }
         }
 

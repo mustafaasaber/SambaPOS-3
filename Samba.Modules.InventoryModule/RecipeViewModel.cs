@@ -19,7 +19,7 @@ namespace Samba.Modules.InventoryModule
         private readonly IInventoryService _inventoryService;
         private readonly IMenuService _menuService;
 
-        [ImportingConstructor]
+        
         public RecipeViewModel(IInventoryService inventoryService, IMenuService menuService)
         {
             _inventoryService = inventoryService;
@@ -55,7 +55,7 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 _selectedRecipeItem = value;
-                RaisePropertyChanged(() => SelectedRecipeItem);
+                RaisePropertyChanged(nameof( SelectedRecipeItem));
             }
         }
 
@@ -75,7 +75,7 @@ namespace Samba.Modules.InventoryModule
                     if (mi != null && mi.Portions.Count == 1)
                         Portion = mi.Portions[0];
                 }
-                RaisePropertyChanged(() => SelectedMenuItemName);
+                RaisePropertyChanged(nameof( SelectedMenuItemName));
             }
         }
 
@@ -95,7 +95,7 @@ namespace Samba.Modules.InventoryModule
                 if (value != null)
                 { SelectedMenuItemName = value.Name; }
                 else Portion = null;
-                RaisePropertyChanged(() => SelectedMenuItem);
+                RaisePropertyChanged(nameof( SelectedMenuItem));
             }
         }
 
@@ -115,7 +115,7 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 Model.Portion = value;
-                RaisePropertyChanged(() => Portion);
+                RaisePropertyChanged(nameof( Portion));
             }
         }
 

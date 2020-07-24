@@ -8,13 +8,13 @@ using Samba.Persistance.Data;
 
 namespace Samba.Services.Implementations.EntityModule
 {
-    [Export(typeof(IEntityService))]
-    class EntityService : IEntityService
+    //[Export(typeof(IEntityService))]
+   public class EntityService : IEntityService
     {
         private readonly IEntityDao _entityDao;
         private IWorkspace _resoureceWorkspace;
 
-        [ImportingConstructor]
+        //
         public EntityService(IEntityDao entityDao)
         {
             _entityDao = entityDao;

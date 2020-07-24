@@ -4,8 +4,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.Linq;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Events;
+using System.Windows;
+using System.Windows.Input;
+using Prism.Commands;
+using Prism.Events;
 using Samba.Domain.Models.Automation;
 using Samba.Domain.Models.Entities;
 using Samba.Domain.Models.Menus;
@@ -22,7 +24,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.PosModule
 {
-    [Export]
+    
     public class TicketViewModel : ObservableObject
     {
         private readonly ITicketService _ticketService;
@@ -74,6 +76,17 @@ namespace Samba.Modules.PosModule
             }
         }
 
+
+        public ICommand NotifyMeCommand { get { return m_NotifyMeCommand ?? (m_NotifyMeCommand = new DelegateCommand(NotifyMeMethod)); } }
+        private DelegateCommand m_NotifyMeCommand;
+
+        void NotifyMeMethod()
+        {
+            MessageBox.Show(_selectedTicketTitle);
+        }
+
+
+
         private Ticket _selectedTicket;
         public Ticket SelectedTicket
         {
@@ -86,8 +99,8 @@ namespace Samba.Modules.PosModule
                 _totals.Model = _selectedTicket;
                 _ticketOrdersViewModel.SelectedTicket = _selectedTicket;
                 _ticketInfo.SelectedTicket = _selectedTicket;
-                RaisePropertyChanged(() => EntityButtons);
-                RaisePropertyChanged(() => TicketAutomationCommands);
+                RaisePropertyChanged(nameof( EntityButtons));
+                RaisePropertyChanged(nameof( TicketAutomationCommands));
             }
         }
 
@@ -167,7 +180,7 @@ namespace Samba.Modules.PosModule
             }
         }
 
-        [ImportingConstructor]
+        
         public TicketViewModel(IApplicationState applicationState, IExpressionService expressionService,
             ITicketService ticketService, IAccountService accountService, IEntityServiceClient locationService, IUserService userService,
             ICacheService cacheService, TicketOrdersViewModel ticketOrdersViewModel,
@@ -303,7 +316,7 @@ namespace Samba.Modules.PosModule
         private void OnDepartmentChanged(EventParameters<Department> obj)
         {
             _entityButtons = null;
-            RaisePropertyChanged(() => EntityButtons);
+            RaisePropertyChanged(nameof( EntityButtons));
         }
 
         private void ClearSelectedItems()
@@ -459,7 +472,7 @@ namespace Samba.Modules.PosModule
             _ticketOrdersViewModel.Refresh();
             _allAutomationCommands = null;
             _entityButtons = null;
-            RaisePropertyChanged(() => EntityButtons);
+            RaisePropertyChanged(nameof( EntityButtons));
             RefreshVisuals();
         }
 
@@ -556,7 +569,7 @@ namespace Samba.Modules.PosModule
         public string SelectedTicketTitle
         {
             get { return _selectedTicketTitle; }
-            set { _selectedTicketTitle = value; RaisePropertyChanged(() => SelectedTicketTitle); }
+            set { _selectedTicketTitle = value; RaisePropertyChanged(nameof( SelectedTicketTitle)); }
         }
 
         public void UpdateSelectedTicketTitle()
@@ -582,7 +595,7 @@ namespace Samba.Modules.PosModule
         public void RefreshSelectedTicket()
         {
             _totals.Refresh();
-            RaisePropertyChanged(() => IsTicketSelected);
+            RaisePropertyChanged(nameof( IsTicketSelected));
             ExecuteAutomationCommnand.RaiseCanExecuteChanged();
         }
 
@@ -596,33 +609,33 @@ namespace Samba.Modules.PosModule
         public void RefreshVisuals()
         {
             RefreshSelectedTicket();
-            RaisePropertyChanged(() => IsNothingSelectedAndTicketLocked);
-            RaisePropertyChanged(() => IsNothingSelectedAndTicketTagged);
-            RaisePropertyChanged(() => TicketTagButtons);
-            RaisePropertyChanged(() => TicketAutomationCommands);
-            RaisePropertyChanged(() => UnderTicketAutomationCommands);
-            RaisePropertyChanged(() => UnderTicketRow2AutomationCommands);
+            RaisePropertyChanged(nameof( IsNothingSelectedAndTicketLocked));
+            RaisePropertyChanged(nameof( IsNothingSelectedAndTicketTagged));
+            RaisePropertyChanged(nameof( TicketTagButtons));
+            RaisePropertyChanged(nameof( TicketAutomationCommands));
+            RaisePropertyChanged(nameof( UnderTicketAutomationCommands));
+            RaisePropertyChanged(nameof( UnderTicketRow2AutomationCommands));
         }
 
         public void RefreshSelectedItems()
         {
-            RaisePropertyChanged(() => IsItemsSelected);
-            RaisePropertyChanged(() => IsNothingSelected);
-            RaisePropertyChanged(() => IsNothingSelectedAndTicketLocked);
-            RaisePropertyChanged(() => IsItemsSelectedAndUnlocked);
-            RaisePropertyChanged(() => IsItemsSelectedAndLocked);
-            RaisePropertyChanged(() => IsTicketSelected);
-            RaisePropertyChanged(() => OrderAutomationCommands);
-            RaisePropertyChanged(() => IsAddOrderButtonVisible);
-            RaisePropertyChanged(() => IsModifyOrderButtonVisible);
+            RaisePropertyChanged(nameof( IsItemsSelected));
+            RaisePropertyChanged(nameof( IsNothingSelected));
+            RaisePropertyChanged(nameof( IsNothingSelectedAndTicketLocked));
+            RaisePropertyChanged(nameof( IsItemsSelectedAndUnlocked));
+            RaisePropertyChanged(nameof( IsItemsSelectedAndLocked));
+            RaisePropertyChanged(nameof( IsTicketSelected));
+            RaisePropertyChanged(nameof( OrderAutomationCommands));
+            RaisePropertyChanged(nameof( IsAddOrderButtonVisible));
+            RaisePropertyChanged(nameof( IsModifyOrderButtonVisible));
         }
 
         public void RefreshLayout()
         {
-            RaisePropertyChanged(() => IsPortrait);
-            RaisePropertyChanged(() => IsLandscape);
-            RaisePropertyChanged(() => IsAddOrderButtonVisible);
-            RaisePropertyChanged(() => IsModifyOrderButtonVisible);
+            RaisePropertyChanged(nameof( IsPortrait));
+            RaisePropertyChanged(nameof( IsLandscape));
+            RaisePropertyChanged(nameof( IsAddOrderButtonVisible));
+            RaisePropertyChanged(nameof( IsModifyOrderButtonVisible));
         }
 
         private void RefreshSelectedOrders()

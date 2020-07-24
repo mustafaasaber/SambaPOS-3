@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Linq;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
@@ -12,7 +12,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.PosModule
 {
-    [Export]
+    
     public class TicketTagListViewModel : ObservableObject
     {
         private Ticket _selectedTicket;
@@ -20,7 +20,7 @@ namespace Samba.Modules.PosModule
         public DelegateCommand<TicketTagGroup> SelectionCommand { get; set; }
         public CaptionCommand<string> CloseCommand { get; set; }
 
-        [ImportingConstructor]
+        
         public TicketTagListViewModel(IApplicationState applicationState)
         {
             _applicationState = applicationState;
@@ -52,7 +52,7 @@ namespace Samba.Modules.PosModule
             var tags = _applicationState.GetTicketTagGroups().Where(x => x.AskBeforeCreatingTicket).ToList();
             TicketTagValueViewModels.Clear();
             TicketTagValueViewModels.AddRange(tags.Select(x => new TicketTagValueViewModel(x, selectedTicket)));
-            RaisePropertyChanged(() => RowCount);
+            RaisePropertyChanged(nameof( RowCount));
             OnSelectTicketTagGroup(TicketTagValueViewModels.First().Model);
         }
 

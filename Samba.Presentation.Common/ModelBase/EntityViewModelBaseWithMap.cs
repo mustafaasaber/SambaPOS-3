@@ -22,7 +22,7 @@ namespace Samba.Presentation.Common.ModelBase
         protected override void OnSave(string value)
         {
             base.OnSave(value);
-            RaisePropertyChanged(() => Foreground);
+            RaisePropertyChanged(nameof( Foreground));
         }
     }
 }

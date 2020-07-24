@@ -14,7 +14,7 @@ namespace Samba.Services.Implementations.PrinterModule.ObjectFormatters
         private readonly ISettingService _settingService;
         private readonly EntityValueChanger _valueChanger;
 
-        [ImportingConstructor]
+        
         public EntityFormatter(IExpressionService expressionService, ISettingService settingService,
             EntityValueChanger valueChanger)
         {

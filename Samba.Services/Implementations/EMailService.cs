@@ -8,12 +8,11 @@ using System.Threading;
 
 namespace Samba.Services.Implementations
 {
-    [Export(typeof(IEmailService))]
     public class EMailService : IEmailService
     {
         private readonly ILogService _logService;
 
-        [ImportingConstructor]
+        
         public EMailService(ILogService logService)
         {
             _logService = logService;

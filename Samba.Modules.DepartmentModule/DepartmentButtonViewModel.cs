@@ -30,7 +30,7 @@ namespace Samba.Modules.DepartmentModule
 
         public void Refresh()
         {
-            RaisePropertyChanged(() => ButtonColor);
+            RaisePropertyChanged(nameof( ButtonColor));
         }
     }
 }

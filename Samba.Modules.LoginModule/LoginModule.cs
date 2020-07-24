@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Events;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Events;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Domain.Models.Users;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
@@ -10,14 +11,13 @@ using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.LoginModule
 {
-    [ModuleExport(typeof(LoginModule))]
+    [Module(ModuleName = "LoginModule")]
     public class LoginModule : VisibleModuleBase
     {
         readonly IRegionManager _regionManager;
         private readonly LoginView _loginView;
         private readonly IUserService _userService;
 
-        [ImportingConstructor]
         public LoginModule(IRegionManager regionManager, LoginView loginView, IUserService userService)
             : base(regionManager, AppScreens.LoginScreen)
         {
@@ -39,7 +39,7 @@ namespace Samba.Modules.LoginModule
 
         protected override void OnInitialization()
         {
-            _regionManager.RegisterViewWithRegion("MainRegion", typeof(LoginView));
+            _regionManager.RegisterViewWithRegion("MainRegion", typeof(Samba.Modules.LoginModule. LoginView));
 
             EventServiceFactory.EventService.GetEvent<GenericEvent<User>>().Subscribe(
                 x =>
@@ -51,7 +51,8 @@ namespace Samba.Modules.LoginModule
             EventServiceFactory.EventService.GetEvent<GenericEvent<EventAggregator>>().Subscribe(
                 x =>
                 {
-                    if (x.Topic == EventTopicNames.ShellInitialized) Activate();
+                    if (x.Topic == EventTopicNames.ShellInitialized)
+                        Activate();
                 });
 
             EventServiceFactory.EventService.GetEvent<GenericEvent<string>>().Subscribe(
@@ -70,6 +71,10 @@ namespace Samba.Modules.LoginModule
         public override object GetVisibleView()
         {
             return _loginView;
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
         }
     }
 }

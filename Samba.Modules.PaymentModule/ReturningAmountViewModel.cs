@@ -9,14 +9,14 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.PaymentModule
 {
-    [Export]
+    
     public class ReturningAmountViewModel : ObservableObject
     {
         private readonly ICacheService _cacheService;
         private readonly IApplicationState _applicationState;
         private readonly PaymentEditor _paymentEditor;
 
-        [ImportingConstructor]
+        
         public ReturningAmountViewModel(ICacheService cacheService, IApplicationState applicationState,
              PaymentEditor paymentEditor)
         {
@@ -29,7 +29,7 @@ namespace Samba.Modules.PaymentModule
         public string ReturningAmount
         {
             get { return _returningAmount; }
-            set { _returningAmount = value; RaisePropertyChanged(() => ReturningAmount); }
+            set { _returningAmount = value; RaisePropertyChanged(nameof( ReturningAmount)); }
         }
 
         public decimal GetReturningAmount(decimal tenderedAmount, decimal paymentDueAmount, ChangePaymentType changeTemplate)

@@ -1,16 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Globalization;
-using System.Windows;
-using System.ComponentModel.Composition;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Input;
-using System.Windows.Interop;
-using System.Windows.Markup;
-using System.Windows.Media;
-using System.Windows.Threading;
-using Microsoft.Practices.Prism.Events;
+﻿using Prism.Events;
 using Samba.Domain.Models.Users;
 using Samba.Infrastructure.Settings;
 using Samba.Presentation.Common;
@@ -18,6 +6,17 @@ using Samba.Presentation.Common.Services;
 using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
 using Samba.Services.Common;
+using System;
+using System.ComponentModel;
+using System.Globalization;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
+using System.Windows.Interop;
+using System.Windows.Markup;
+using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace Samba.Presentation
 {
@@ -25,19 +24,20 @@ namespace Samba.Presentation
     /// Interaction logic for Shell.xaml
     /// </summary>
 
-    [Export]
+
     public partial class Shell : Window
     {
         private readonly DispatcherTimer _timer;
         private readonly IApplicationState _applicationState;
         private readonly IMethodQueue _methodQueue;
 
-        [ImportingConstructor]
+
         public Shell(IApplicationState applicationState, IMethodQueue methodQueue)
         {
 
             _applicationState = applicationState;
             _methodQueue = methodQueue;
+
             InitializeComponent();
             LanguageProperty.OverrideMetadata(
                                   typeof(FrameworkElement),
@@ -93,6 +93,35 @@ namespace Samba.Presentation
             WindowStyle = WindowStyle.None;
             WindowState = WindowState.Maximized;
 #endif
+
+            //ToggleKeyBoard
+
+            EventServiceFactory.EventService.GetEvent<GenericEvent<EventAggregator>>().Subscribe(
+            x =>
+            {
+                if (x.Topic == EventTopicNames.KeyboardToggled)
+                    KeyBoardToggled();
+            });
+            KeyBoardToggled();
+        }
+        private readonly GridLength _gridLength = new GridLength(5);
+        private readonly GridLength _zeroGridLength = new GridLength(0);
+        private void KeyBoardToggled()
+        {
+
+
+            if (Splitter.Height == _zeroGridLength)
+            {
+                Splitter.Height = _gridLength;
+                KeyboardPanel.Height = new GridLength(300);
+                //KeyboardPanel.Height = GridLength.Auto;
+            }
+            else
+            {
+                Splitter.Height = _zeroGridLength;
+                KeyboardPanel.Height = _zeroGridLength;
+            }
+
         }
 
         void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)

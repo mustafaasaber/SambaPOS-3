@@ -37,28 +37,28 @@ namespace Samba.Modules.MenuModule
         public string Name
         {
             get { return Model.Name; }
-            set { Model.Name = value; RaisePropertyChanged(() => Name); }
+            set { Model.Name = value; RaisePropertyChanged(nameof( Name)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.FastMenu), LocalizedCategory(ResourceStrings.CategoryProperties)]
         public bool MostUsedItemsCategory
         {
             get { return Model.MostUsedItemsCategory; }
-            set { Model.MostUsedItemsCategory = value; RaisePropertyChanged(() => MostUsedItemsCategory); }
+            set { Model.MostUsedItemsCategory = value; RaisePropertyChanged(nameof( MostUsedItemsCategory)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.ButtonHeight), LocalizedCategory(ResourceStrings.CategoryProperties)]
         public int MainButtonHeight
         {
             get { return Model.MainButtonHeight; }
-            set { Model.MainButtonHeight = value; RaisePropertyChanged(() => MainButtonHeight); }
+            set { Model.MainButtonHeight = value; RaisePropertyChanged(nameof( MainButtonHeight)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.FontSize), LocalizedCategory(ResourceStrings.CategoryProperties)]
         public double MainFontSize
         {
             get { return Model.MainFontSize; }
-            set { Model.MainFontSize = value; RaisePropertyChanged(() => MainFontSize); }
+            set { Model.MainFontSize = value; RaisePropertyChanged(nameof( MainFontSize)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.ButtonColor), LocalizedCategory(ResourceStrings.CategoryProperties)]
@@ -73,7 +73,7 @@ namespace Samba.Modules.MenuModule
             set
             {
                 Model.MainButtonColor = value != Colors.Transparent ? value.ToString() : string.Empty;
-                RaisePropertyChanged(() => MainButtonColor);
+                RaisePropertyChanged(nameof( MainButtonColor));
             }
         }
 
@@ -81,63 +81,63 @@ namespace Samba.Modules.MenuModule
         public int SubButtonHeight
         {
             get { return Model.SubButtonHeight; }
-            set { Model.SubButtonHeight = value; RaisePropertyChanged(() => SubButtonHeight); }
+            set { Model.SubButtonHeight = value; RaisePropertyChanged(nameof( SubButtonHeight)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.SubButtonRows), LocalizedCategory(ResourceStrings.CategoryProperties)]
         public int SubButtonRows
         {
             get { return Model.SubButtonRows; }
-            set { Model.SubButtonRows = value; RaisePropertyChanged(() => SubButtonRows); }
+            set { Model.SubButtonRows = value; RaisePropertyChanged(nameof( SubButtonRows)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.SubButtonColorDef), LocalizedCategory(ResourceStrings.CategoryProperties)]
         public string SubButtonColorDef
         {
             get { return Model.SubButtonColorDef; }
-            set { Model.SubButtonColorDef = value; RaisePropertyChanged(() => SubButtonColorDef); }
+            set { Model.SubButtonColorDef = value; RaisePropertyChanged(nameof( SubButtonColorDef)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.ImagePath), LocalizedCategory(ResourceStrings.CategoryProperties)]
         public string ImagePath
         {
             get { return Model.ImagePath ?? ""; }
-            set { Model.ImagePath = value; RaisePropertyChanged(() => ImagePath); }
+            set { Model.ImagePath = value; RaisePropertyChanged(nameof( ImagePath)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.ColumnCount), LocalizedCategory(ResourceStrings.MenuProperties)]
         public int ColumnCount
         {
             get { return Model.ColumnCount; }
-            set { Model.ColumnCount = value; RaisePropertyChanged(() => ColumnCount); }
+            set { Model.ColumnCount = value; RaisePropertyChanged(nameof( ColumnCount)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.ButtonHeight), LocalizedCategory(ResourceStrings.MenuProperties)]
         public int ButtonHeight
         {
             get { return Model.MenuItemButtonHeight; }
-            set { Model.MenuItemButtonHeight = value; RaisePropertyChanged(() => ButtonHeight); }
+            set { Model.MenuItemButtonHeight = value; RaisePropertyChanged(nameof( ButtonHeight)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.FontSize), LocalizedCategory(ResourceStrings.MenuProperties)]
         public double FontSize
         {
             get { return Model.MenuItemFontSize; }
-            set { Model.MenuItemFontSize = value; RaisePropertyChanged(() => FontSize); }
+            set { Model.MenuItemFontSize = value; RaisePropertyChanged(nameof( FontSize)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.PageCount), LocalizedCategory(ResourceStrings.MenuProperties)]
         public int PageCount
         {
             get { return Model.PageCount; }
-            set { Model.PageCount = value; RaisePropertyChanged(() => PageCount); }
+            set { Model.PageCount = value; RaisePropertyChanged(nameof( PageCount)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.WrapText), LocalizedCategory(ResourceStrings.MenuProperties)]
         public bool WrapText
         {
             get { return Model.WrapText; }
-            set { Model.WrapText = value; RaisePropertyChanged(() => WrapText); }
+            set { Model.WrapText = value; RaisePropertyChanged(nameof( WrapText)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.ButtonColor), LocalizedCategory(ResourceStrings.MenuProperties)]
@@ -150,7 +150,7 @@ namespace Samba.Modules.MenuModule
             set
             {
                 Model.MenuItemButtonColor = value != Colors.Transparent ? value.ToString() : string.Empty;
-                RaisePropertyChanged(() => ButtonColor);
+                RaisePropertyChanged(nameof( ButtonColor));
             }
         }
 
@@ -158,33 +158,33 @@ namespace Samba.Modules.MenuModule
         public int MaxItems
         {
             get { return Model.MaxItems; }
-            set { Model.MaxItems = value; RaisePropertyChanged(() => MaxItems); }
+            set { Model.MaxItems = value; RaisePropertyChanged(nameof( MaxItems)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.NumeratorType), LocalizedCategory(ResourceStrings.NumeratorProperties)]
         public NumeratorType NumeratorType
         {
             get { return (NumeratorType)Model.NumeratorType; }
-            set { Model.NumeratorType = (int)value; RaisePropertyChanged(() => NumeratorType); }
+            set { Model.NumeratorType = (int)value; RaisePropertyChanged(nameof( NumeratorType)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.NumeratorValue), LocalizedCategory(ResourceStrings.NumeratorProperties)]
         public string NumeratorValues
         {
             get { return Model.NumeratorValues; }
-            set { Model.NumeratorValues = value; RaisePropertyChanged(() => NumeratorValues); }
+            set { Model.NumeratorValues = value; RaisePropertyChanged(nameof( NumeratorValues)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.AlphanumericButtonValues), LocalizedCategory(ResourceStrings.NumeratorProperties)]
         public string AlphaButtonValues
         {
             get { return Model.AlphaButtonValues; }
-            set { Model.AlphaButtonValues = value; RaisePropertyChanged(() => AlphaButtonValues); }
+            set { Model.AlphaButtonValues = value; RaisePropertyChanged(nameof( AlphaButtonValues)); }
         }
 
         internal void UpdateDisplay()
         {
-            RaisePropertyChanged(() => CategoryListDisplay);
+            RaisePropertyChanged(nameof( CategoryListDisplay));
         }
 
         public bool ContainsMenuItem(MenuItem item)

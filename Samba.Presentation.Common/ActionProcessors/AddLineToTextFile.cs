@@ -7,11 +7,10 @@ using Samba.Services.Common;
 
 namespace Samba.Presentation.Common.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class AddLineToTextFile : ActionType
+public    class AddLineToTextFile : ActionType
     {
         private readonly ILogService _logService;
-        [ImportingConstructor]
+        
         public AddLineToTextFile(ILogService logService)
         {
             _logService = logService;

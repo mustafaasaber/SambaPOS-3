@@ -1,16 +1,16 @@
-﻿using System.ComponentModel.Composition;
-using Samba.Localization.Properties;
+﻿using Samba.Localization.Properties;
 using Samba.Presentation.Common;
 using Samba.Services.Common;
+using System.ComponentModel.Composition;
 
 namespace Samba.Presentation.Controls.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class DisplayPopup : ActionType
+    //[Export(typeof(IActionType))]
+    public class DisplayPopup : ActionType
     {
         private readonly IUserInteraction _userInteraction;
 
-        [ImportingConstructor]
+
         public DisplayPopup(IUserInteraction userInteraction)
         {
             _userInteraction = userInteraction;

@@ -12,7 +12,7 @@ using Samba.Services.Common;
 
 namespace Samba.Presentation.Services.Implementations.UserModule
 {
-    [Export(typeof(IUserService))]
+    //[Export(typeof(IUserService))]
     public class UserService : AbstractService, IUserService
     {
         private readonly IUserDao _userDao;
@@ -20,7 +20,7 @@ namespace Samba.Presentation.Services.Implementations.UserModule
         private readonly IApplicationStateSetter _applicationStateSetter;
         private readonly IDepartmentService _departmentService;
 
-        [ImportingConstructor]
+        //
         public UserService(IUserDao userDao, IApplicationState applicationState, IApplicationStateSetter applicationStateSetter,
             IDepartmentService departmentService)
         {

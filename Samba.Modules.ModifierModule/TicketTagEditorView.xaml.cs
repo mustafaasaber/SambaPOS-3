@@ -20,10 +20,10 @@ namespace Samba.Modules.ModifierModule
     /// Interaction logic for TicketTagEditorView.xaml
     /// </summary>
     
-    [Export]
+    
     public partial class TicketTagEditorView : UserControl
     {
-        [ImportingConstructor]
+        
         public TicketTagEditorView(TicketTagEditorViewModel viewModel)
         {
             DataContext = viewModel;

@@ -34,7 +34,7 @@ namespace Samba.Modules.AccountModule
             set
             {
                 _description = value;
-                RaisePropertyChanged(() => Description);
+                RaisePropertyChanged(nameof( Description));
             }
         }
 
@@ -46,7 +46,7 @@ namespace Samba.Modules.AccountModule
             {
                 _amount = value;
                 IsSelected = _amount != 0;
-                RaisePropertyChanged(() => Amount);
+                RaisePropertyChanged(nameof( Amount));
             }
         }
 
@@ -57,7 +57,7 @@ namespace Samba.Modules.AccountModule
             set
             {
                 _isSelected = value;
-                RaisePropertyChanged(() => IsSelected);
+                RaisePropertyChanged(nameof( IsSelected));
             }
         }
 

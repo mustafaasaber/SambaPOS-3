@@ -12,13 +12,12 @@ using Samba.Services;
 
 namespace Samba.Modules.EntityModule.Widgets.EntityButton
 {
-    [Export(typeof(IWidgetCreator))]
     public class EntityButtonWidgetCreator : IWidgetCreator
     {
         private readonly ICacheService _cacheService;
         private readonly IEntityService _entityService;
 
-        [ImportingConstructor]
+        
         public EntityButtonWidgetCreator(ICacheService cacheService, IEntityService entityService)
         {
             _cacheService = cacheService;

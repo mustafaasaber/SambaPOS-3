@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Microsoft.Practices.Prism.Events;
+using Prism.Events;
 using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.LoginModule
@@ -13,10 +13,10 @@ namespace Samba.Modules.LoginModule
     /// Interaction logic for LoginView.xaml
     /// </summary>
 
-    [Export]
+    
     public partial class LoginView : UserControl
     {
-        [ImportingConstructor]
+        
         public LoginView(LoginViewModel viewModel)
         {
             InitializeComponent();

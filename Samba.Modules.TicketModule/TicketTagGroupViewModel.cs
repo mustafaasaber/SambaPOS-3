@@ -37,7 +37,7 @@ namespace Samba.Modules.TicketModule
         public string ButtonColorWhenTagSelected { get { return Model.ButtonColorWhenTagSelected; } set { Model.ButtonColorWhenTagSelected = value; } }
         public string ButtonColorWhenNoTagSelected { get { return Model.ButtonColorWhenNoTagSelected; } set { Model.ButtonColorWhenNoTagSelected = value; } }
 
-        [ImportingConstructor]
+        
         public TicketTagGroupViewModel(IUserInteraction userInteraction)
         {
             _userInteraction = userInteraction;
@@ -51,7 +51,7 @@ namespace Samba.Modules.TicketModule
         {
             _userInteraction.SortItems(Model.TicketTags, string.Format(Resources.Sort_f, Resources.TicketTag), "");
             _ticketTags = null;
-            RaisePropertyChanged(() => TicketTags);
+            RaisePropertyChanged(nameof( TicketTags));
         }
 
         private bool CanSortTicketTags(string arg)

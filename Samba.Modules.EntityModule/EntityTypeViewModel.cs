@@ -15,7 +15,7 @@ namespace Samba.Modules.EntityModule
     [Export, PartCreationPolicy(CreationPolicy.NonShared)]
     public class EntityTypeViewModel : EntityViewModelBase<EntityType>
     {
-        [ImportingConstructor]
+        
         public EntityTypeViewModel()
         {
             AddCustomFieldCommand = new CaptionCommand<string>(string.Format(Resources.Add_f, Resources.CustomField), OnAddCustomField);

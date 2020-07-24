@@ -8,10 +8,10 @@ namespace Samba.Modules.WorkperiodModule
     /// Interaction logic for EndOfDayView.xaml
     /// </summary>
     /// 
-    [Export]
+    
     public partial class WorkPeriodsView : UserControl
     {
-        [ImportingConstructor]
+        
         public WorkPeriodsView(WorkPeriodsViewModel viewModel)
         {
             InitializeComponent();

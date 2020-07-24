@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Tickets;
 using Samba.Infrastructure.Settings;
 using Samba.Localization;
@@ -46,8 +46,8 @@ namespace Samba.Modules.PosModule
             {
                 _model.Quantity = value;
                 _model.ResetSelectedQuantity();
-                RaisePropertyChanged(() => Quantity);
-                RaisePropertyChanged(() => TotalPrice);
+                RaisePropertyChanged(nameof( Quantity));
+                RaisePropertyChanged(nameof( TotalPrice));
                 ResetSelectedQuantity();
             }
         }
@@ -96,16 +96,16 @@ namespace Samba.Modules.PosModule
 
         private void RefreshSelectedItem()
         {
-            RaisePropertyChanged(() => SelectedQuantity);
-            RaisePropertyChanged(() => Description);
-            RaisePropertyChanged(() => Background);
-            RaisePropertyChanged(() => Foreground);
-            RaisePropertyChanged(() => BorderThickness);
-            RaisePropertyChanged(() => State);
-            RaisePropertyChanged(() => IsStateVisible);
-            RaisePropertyChanged(() => IsTimerVisible);
-            RaisePropertyChanged(() => TimerDescription);
-            RaisePropertyChanged(() => TimerColor);
+            RaisePropertyChanged(nameof( SelectedQuantity));
+            RaisePropertyChanged(nameof( Description));
+            RaisePropertyChanged(nameof( Background));
+            RaisePropertyChanged(nameof( Foreground));
+            RaisePropertyChanged(nameof( BorderThickness));
+            RaisePropertyChanged(nameof( State));
+            RaisePropertyChanged(nameof( IsStateVisible));
+            RaisePropertyChanged(nameof( IsTimerVisible));
+            RaisePropertyChanged(nameof( TimerDescription));
+            RaisePropertyChanged(nameof( TimerColor));
         }
 
         public decimal Price
@@ -123,21 +123,21 @@ namespace Samba.Modules.PosModule
         public bool Selected
         {
             get { return Model.IsSelected; }
-            set { Model.IsSelected = value; UpdateItemColor(); RaisePropertyChanged(() => Selected); }
+            set { Model.IsSelected = value; UpdateItemColor(); RaisePropertyChanged(nameof( Selected)); }
         }
 
         private Brush _background;
         public Brush Background
         {
             get { return _background; }
-            set { _background = value; RaisePropertyChanged(() => Background); }
+            set { _background = value; RaisePropertyChanged(nameof( Background)); }
         }
 
         private Brush _foreground;
         public Brush Foreground
         {
             get { return _foreground; }
-            set { _foreground = value; RaisePropertyChanged(() => Foreground); }
+            set { _foreground = value; RaisePropertyChanged(nameof( Foreground)); }
         }
 
         public int BorderThickness { get { return IsLastSelected ? 1 : 0; } }
@@ -185,7 +185,7 @@ namespace Samba.Modules.PosModule
             set
             {
                 _isLastSelected = value;
-                RaisePropertyChanged(() => BorderThickness);
+                RaisePropertyChanged(nameof( BorderThickness));
             }
         }
 
@@ -241,27 +241,27 @@ namespace Samba.Modules.PosModule
         public void RefreshOrder()
         {
             RefreshProperties();
-            RaisePropertyChanged(() => State);
-            RaisePropertyChanged(() => TotalPriceStr);
-            RaisePropertyChanged(() => Quantity);
-            RaisePropertyChanged(() => Description);
-            RaisePropertyChanged(() => FontWeight);
-            RaisePropertyChanged(() => IsLocked);
+            RaisePropertyChanged(nameof( State));
+            RaisePropertyChanged(nameof( TotalPriceStr));
+            RaisePropertyChanged(nameof( Quantity));
+            RaisePropertyChanged(nameof( Description));
+            RaisePropertyChanged(nameof( FontWeight));
+            RaisePropertyChanged(nameof( IsLocked));
         }
 
         private void RefreshProperties()
         {
             _orderTagValues = null;
             _orderKey = null;
-            RaisePropertyChanged(() => OrderTagValues);
-            RaisePropertyChanged(() => OrderKey);
+            RaisePropertyChanged(nameof( OrderTagValues));
+            RaisePropertyChanged(nameof( OrderKey));
         }
 
         public void UpdatePrice(decimal value, string priceTag)
         {
             Model.UpdatePrice(value, priceTag);
-            RaisePropertyChanged(() => Price);
-            RaisePropertyChanged(() => TotalPrice);
+            RaisePropertyChanged(nameof( Price));
+            RaisePropertyChanged(nameof( TotalPrice));
         }
 
         public bool IsTaggedWith(OrderTagGroup orderTagGroup)

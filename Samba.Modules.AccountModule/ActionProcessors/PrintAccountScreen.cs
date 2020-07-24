@@ -10,13 +10,13 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.AccountModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class PrintAccountScreen : ActionType
+  
+   public class PrintAccountScreen : ActionType
     {
         private readonly IReportServiceClient _reportServiceClient;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public PrintAccountScreen(IReportServiceClient reportServiceClient, ICacheService cacheService)
         {
             _reportServiceClient = reportServiceClient;

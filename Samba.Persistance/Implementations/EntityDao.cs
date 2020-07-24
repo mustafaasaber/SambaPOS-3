@@ -14,7 +14,7 @@ using Samba.Persistance.Specification;
 
 namespace Samba.Persistance.Implementations
 {
-    class EntityDeleteValidator : SpecificationValidator<Entity>
+   public class EntityDeleteValidator : SpecificationValidator<Entity>
     {
         public override string GetErrorMessage(Entity model)
         {
@@ -26,10 +26,9 @@ namespace Samba.Persistance.Implementations
         }
     }
 
-    [Export(typeof(IEntityDao))]
-    class EntityDao : IEntityDao
+    //[Export(typeof(IEntityDao))]
+  public  class EntityDao : IEntityDao
     {
-        [ImportingConstructor]
         public EntityDao()
         {
             ValidatorRegistry.RegisterDeleteValidator(new EntityDeleteValidator());

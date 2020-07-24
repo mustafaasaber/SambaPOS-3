@@ -46,7 +46,7 @@ namespace Samba.Modules.AutomationModule
         public IEnumerable<string> Values
         {
             get { return _values; }
-            set { _values = value; RaisePropertyChanged(() => Values); }
+            set { _values = value; RaisePropertyChanged(nameof( Values)); }
         }
 
         public string Left
@@ -74,7 +74,7 @@ namespace Samba.Modules.AutomationModule
             }
         }
 
-        public string Operation { get { return _model.Operation; } set { _model.Operation = value; RaisePropertyChanged(() => Operation); } }
+        public string Operation { get { return _model.Operation; } set { _model.Operation = value; RaisePropertyChanged(nameof( Operation)); } }
         public string Right { get { return _model.Right; } set { _model.Right = value; } }
         public string Name { get { return _model.Name; } }
         public ICaptionCommand RemoveConstraintCommand { get { return _removeConstraintCommand; } }

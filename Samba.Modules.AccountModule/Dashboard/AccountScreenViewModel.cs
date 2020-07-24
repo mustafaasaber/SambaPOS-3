@@ -21,7 +21,7 @@ namespace Samba.Modules.AccountModule.Dashboard
     {
         private readonly ICacheDao _dataService;
 
-        [ImportingConstructor]
+        
         public AccountScreenViewModel(ICacheDao dataService)
         {
             _dataService = dataService;
@@ -71,7 +71,7 @@ namespace Samba.Modules.AccountModule.Dashboard
                 Resources.AutomationCommand.ToPlural());
             Model.SetAutomationCommandMaps(selectedValues.Cast<AccountScreenAutmationCommandMap>().ToList());
             _automationCommands = null;
-            RaisePropertyChanged(() => AutomationCommands);
+            RaisePropertyChanged(nameof( AutomationCommands));
         }
 
         private void OnAddScreenFilter(string obj)
@@ -91,7 +91,7 @@ namespace Samba.Modules.AccountModule.Dashboard
             Model.InjectFrom<EntityInjection>(new { AccountScreenValues = selectedValues.Cast<AccountScreenValue>().ToList() });
 
             _accountScreenFilters = null;
-            RaisePropertyChanged(() => AccountScreenFilters);
+            RaisePropertyChanged(nameof( AccountScreenFilters));
         }
 
         public override Type GetViewType()

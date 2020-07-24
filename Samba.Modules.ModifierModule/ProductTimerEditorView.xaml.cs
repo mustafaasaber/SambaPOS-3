@@ -19,10 +19,10 @@ namespace Samba.Modules.ModifierModule
     /// Interaction logic for ProductTimerEditorView.xaml
     /// </summary>
     
-    [Export]
+    
     public partial class ProductTimerEditorView : UserControl
     {
-        [ImportingConstructor]
+        
         public ProductTimerEditorView(ProductTimerEditorViewModel viewModel)
         {
             DataContext = viewModel;

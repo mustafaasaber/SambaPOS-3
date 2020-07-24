@@ -13,14 +13,14 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.PosModule
 {
-    [Export]
+    
     public class TicketOrdersViewModel : ObservableObject
     {
         private readonly ITicketService _ticketService;
         private readonly IApplicationState _applicationState;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public TicketOrdersViewModel(ITicketService ticketService, IApplicationState applicationState, ICacheService cacheService)
         {
             _ticketService = ticketService;
@@ -65,7 +65,7 @@ namespace Samba.Modules.PosModule
                 _selectedTicket = value;
                 _orders.Clear();
                 _orders.AddRange(_selectedTicket.Orders.Select(x => new OrderViewModel(x, _cacheService, _applicationState)).OrderBy(x => x.Model.CreatedDateTime.Ticks).ThenBy(x => x.OrderNumber).ThenBy(x => x.OrderKey).ThenBy(x => x.Model.Id));
-                RaisePropertyChanged(() => SelectedTicket);
+                RaisePropertyChanged(nameof( SelectedTicket));
                 Refresh();
             }
         }
@@ -95,7 +95,7 @@ namespace Samba.Modules.PosModule
 
         public void Refresh()
         {
-            RaisePropertyChanged(() => TicketBackground);
+            RaisePropertyChanged(nameof( TicketBackground));
         }
 
         public void RefreshSelectedOrders()

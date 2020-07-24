@@ -19,7 +19,7 @@ namespace Samba.Modules.EntityModule
         private readonly IAccountService _accountService;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public EntityViewModel(IAccountService accountService, ICacheService cacheService)
         {
             _accountService = accountService;
@@ -44,8 +44,8 @@ namespace Samba.Modules.EntityModule
                 Model.EntityTypeId = value.Id;
                 _entityType = null;
                 _customDataViewModel = null;
-                RaisePropertyChanged(() => CustomDataViewModel);
-                RaisePropertyChanged(() => EntityType);
+                RaisePropertyChanged(nameof( CustomDataViewModel));
+                RaisePropertyChanged(nameof( EntityType));
             }
         }
 
@@ -64,9 +64,9 @@ namespace Samba.Modules.EntityModule
                 _accountName = value;
                 Model.AccountId = _accountService.GetAccountIdByName(value);
                 if (Model.AccountId == 0)
-                    RaisePropertyChanged(() => AccountNames);
+                    RaisePropertyChanged(nameof( AccountNames));
                 _accountName = null;
-                RaisePropertyChanged(() => AccountName);
+                RaisePropertyChanged(nameof( AccountName));
             }
         }
 

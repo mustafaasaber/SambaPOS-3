@@ -19,10 +19,10 @@ namespace Samba.Modules.PosModule
     /// Interaction logic for TicketInfoView.xaml
     /// </summary>
     
-    [Export]
+    
     public partial class TicketInfoView : UserControl
     {
-        [ImportingConstructor]
+        
         public TicketInfoView(TicketInfoViewModel viewModel)
         {
             DataContext = viewModel;

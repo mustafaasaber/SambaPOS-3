@@ -29,7 +29,7 @@ namespace Samba.Modules.TicketModule
         private readonly ICacheDao _cacheDao;
         private readonly ISettingService _settingService;
 
-        [ImportingConstructor]
+        
         public TicketTypeViewModel(IMenuService menuService, ICacheDao cacheDao, ISettingService settingService)
         {
             _menuService = menuService;
@@ -100,7 +100,7 @@ namespace Samba.Modules.TicketModule
 
             Model.InjectFrom<EntityInjection>(new { MenuAssignments = selectedValues.Cast<MenuAssignment>().ToList() });
             _menuAssignments = null;
-            RaisePropertyChanged(() => MenuAssignments);
+            RaisePropertyChanged(nameof( MenuAssignments));
         }
 
         private void OnAddEntityType(string obj)
@@ -120,7 +120,7 @@ namespace Samba.Modules.TicketModule
 
             Model.InjectFrom<EntityInjection>(new { EntityTypeAssignments = selectedValues.Cast<EntityTypeAssignment>().ToList() });
             _entityTypeAssignments = null;
-            RaisePropertyChanged(() => EntityTypeAssignments);
+            RaisePropertyChanged(nameof( EntityTypeAssignments));
         }
 
         public override string GetModelTypeString()

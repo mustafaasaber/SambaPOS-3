@@ -13,14 +13,14 @@ using Samba.Services;
 
 namespace Samba.Presentation.ViewModels
 {
-    [Export]
+    
     public class TicketTotalsViewModel : ObservableObject
     {
         private readonly ICacheService _cacheService;
         private readonly AccountBalances _accountBalances;
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
+        
         public TicketTotalsViewModel(ICacheService cacheService, AccountBalances accountBalances,
             IApplicationState applicationState)
         {
@@ -185,38 +185,38 @@ namespace Samba.Presentation.ViewModels
 
         private void RefreshAll(object state)
         {
-            RaisePropertyChanged(() => Title);
-            RaisePropertyChanged(() => TitleWithAccountBalances);
-            RaisePropertyChanged(() => TicketRemainingLabel);
-            RaisePropertyChanged(() => TicketPaymentLabel);
-            RaisePropertyChanged(() => TicketChangePaymentLabel);
-            RaisePropertyChanged(() => TicketSubTotalLabel);
-            RaisePropertyChanged(() => TicketTaxLabel);
-            RaisePropertyChanged(() => TicketTotalLabel);
-            RaisePropertyChanged(() => TicketPlainTotalLabel);
+            RaisePropertyChanged(nameof( Title));
+            RaisePropertyChanged(nameof( TitleWithAccountBalances));
+            RaisePropertyChanged(nameof( TicketRemainingLabel));
+            RaisePropertyChanged(nameof( TicketPaymentLabel));
+            RaisePropertyChanged(nameof( TicketChangePaymentLabel));
+            RaisePropertyChanged(nameof( TicketSubTotalLabel));
+            RaisePropertyChanged(nameof( TicketTaxLabel));
+            RaisePropertyChanged(nameof( TicketTotalLabel));
+            RaisePropertyChanged(nameof( TicketPlainTotalLabel));
 
-            RaisePropertyChanged(() => IsTicketSubTotalVisible);
-            RaisePropertyChanged(() => IsPlainTotalVisible);
-            RaisePropertyChanged(() => IsTicketTaxTotalVisible);
-            RaisePropertyChanged(() => IsTicketRemainingVisible);
-            RaisePropertyChanged(() => IsTicketPaymentVisible);
-            RaisePropertyChanged(() => IsTicketChangePaymentVisible);
-            RaisePropertyChanged(() => IsTicketTotalVisible);
+            RaisePropertyChanged(nameof( IsTicketSubTotalVisible));
+            RaisePropertyChanged(nameof( IsPlainTotalVisible));
+            RaisePropertyChanged(nameof( IsTicketTaxTotalVisible));
+            RaisePropertyChanged(nameof( IsTicketRemainingVisible));
+            RaisePropertyChanged(nameof( IsTicketPaymentVisible));
+            RaisePropertyChanged(nameof( IsTicketChangePaymentVisible));
+            RaisePropertyChanged(nameof( IsTicketTotalVisible));
 
-            RaisePropertyChanged(() => TicketPlainTotalValue);
-            RaisePropertyChanged(() => TicketRemainingValue);
-            RaisePropertyChanged(() => TicketPaymentValue);
-            RaisePropertyChanged(() => TicketChangePaymentValue);
-            RaisePropertyChanged(() => TicketSubTotalValue);
-            RaisePropertyChanged(() => TicketTaxValue);
-            RaisePropertyChanged(() => TicketTotalValue);
+            RaisePropertyChanged(nameof( TicketPlainTotalValue));
+            RaisePropertyChanged(nameof( TicketRemainingValue));
+            RaisePropertyChanged(nameof( TicketPaymentValue));
+            RaisePropertyChanged(nameof( TicketChangePaymentValue));
+            RaisePropertyChanged(nameof( TicketSubTotalValue));
+            RaisePropertyChanged(nameof( TicketTaxValue));
+            RaisePropertyChanged(nameof( TicketTotalValue));
 
-            RaisePropertyChanged(() => PostServices);
-            RaisePropertyChanged(() => PreServices);
-            RaisePropertyChanged(() => PreServicesList);
-            RaisePropertyChanged(() => PostServicesList);
-            RaisePropertyChanged(() => Payments);
-            RaisePropertyChanged(() => ChangePayments);
+            RaisePropertyChanged(nameof( PostServices));
+            RaisePropertyChanged(nameof( PreServices));
+            RaisePropertyChanged(nameof( PreServicesList));
+            RaisePropertyChanged(nameof( PostServicesList));
+            RaisePropertyChanged(nameof( Payments));
+            RaisePropertyChanged(nameof( ChangePayments));
 
             PostServices.ForEach(x => x.Refresh());
             PreServices.ForEach(x => x.Refresh());

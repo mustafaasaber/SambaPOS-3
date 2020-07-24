@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using Samba.Localization.Properties;
+﻿using Samba.Localization.Properties;
 using Samba.Presentation.Services.Common;
 using Samba.Services;
 using Samba.Services.Common;
 
 namespace Samba.Presentation.Common.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class SendEmail : ActionType
+    public class SendEmail : ActionType
     {
         private readonly IEmailService _emailService;
 
-        [ImportingConstructor]
+
         public SendEmail(IEmailService emailService)
         {
             _emailService = emailService;
@@ -41,20 +35,20 @@ namespace Samba.Presentation.Common.ActionProcessors
         {
             return
                 new
-                    {
-                        SMTPServer = "",
-                        SMTPUser = "",
-                        SMTPPassword = "",
-                        SMTPPort = 0,
-                        ToEMailAddress = "",
-                        Subject = "",
-                        CCEmailAddresses = "",
-                        FromEMailAddress = "",
-                        EMailMessage = "",
-                        FileName = "",
-                        DeleteFile = false,
-                        BypassSslErrors = false
-                    };
+                {
+                    SMTPServer = "",
+                    SMTPUser = "",
+                    SMTPPassword = "",
+                    SMTPPort = 0,
+                    ToEMailAddress = "",
+                    Subject = "",
+                    CCEmailAddresses = "",
+                    FromEMailAddress = "",
+                    EMailMessage = "",
+                    FileName = "",
+                    DeleteFile = false,
+                    BypassSslErrors = false
+                };
         }
 
         protected override string GetActionName()

@@ -7,8 +7,8 @@ using Samba.Persistance.Data;
 
 namespace Samba.Persistance.Implementations
 {
-    [Export(typeof(IWorkPeriodDao))]
-    class WorkPeriodDao : IWorkPeriodDao
+    //[Export(typeof(IWorkPeriodDao))]
+  public  class WorkPeriodDao : IWorkPeriodDao
     {
         public void StartWorkPeriod(string description, IWorkspace workspace)
         {

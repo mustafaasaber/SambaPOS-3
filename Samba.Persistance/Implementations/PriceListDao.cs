@@ -1,19 +1,17 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using Samba.Domain.Models.Menus;
-using Samba.Infrastructure.Data;
+﻿using Samba.Domain.Models.Menus;
 using Samba.Infrastructure.Data.Validation;
 using Samba.Localization.Properties;
 using Samba.Persistance.Common;
 using Samba.Persistance.Data;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Samba.Persistance.Implementations
 {
-    [Export(typeof(IPriceListDao))]
-    class PriceListDao : IPriceListDao
+    //[Export(typeof(IPriceListDao))]
+    public class PriceListDao : IPriceListDao
     {
-        [ImportingConstructor]
+
         public PriceListDao()
         {
             ValidatorRegistry.RegisterSaveValidator(new MenuItemPriceDefinitionSaveValidator());

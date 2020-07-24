@@ -34,7 +34,7 @@ namespace Samba.Modules.MenuModule
             set
             {
                 _isChanged = value;
-                RaisePropertyChanged(() => IsChanged);
+                RaisePropertyChanged(nameof( IsChanged));
             }
         }
 

@@ -19,10 +19,10 @@ namespace Samba.Modules.NavigationModule
     /// Interaction logic for NavigationView.xaml
     /// </summary>
 
-    [Export]
+    
     public partial class NavigationView : UserControl
     {
-        [ImportingConstructor]
+        
         public NavigationView(NavigationViewModel viewModel)
         {
             InitializeComponent();

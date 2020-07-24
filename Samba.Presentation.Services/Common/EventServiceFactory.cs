@@ -1,4 +1,4 @@
-﻿using Microsoft.Practices.Prism.Events;
+﻿using Prism.Events;
 
 namespace Samba.Presentation.Services.Common
 {

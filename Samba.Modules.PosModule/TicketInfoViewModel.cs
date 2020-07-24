@@ -9,7 +9,7 @@ using Samba.Presentation.Common;
 
 namespace Samba.Modules.PosModule
 {
-    [Export]
+    
     public class TicketInfoViewModel : ObservableObject
     {
         public TicketInfoViewModel()
@@ -84,16 +84,16 @@ namespace Samba.Modules.PosModule
 
         public void Refresh()
         {
-            RaisePropertyChanged(() => Note);
-            RaisePropertyChanged(() => IsTicketNoteVisible);
-            RaisePropertyChanged(() => IsTicketTagged);
-            RaisePropertyChanged(() => TicketTagDisplay);
-            RaisePropertyChanged(() => IsTicketTimeVisible);
-            RaisePropertyChanged(() => IsLastPaymentDateVisible);
-            RaisePropertyChanged(() => IsLastOrderDateVisible);
-            RaisePropertyChanged(() => TicketCreationDate);
-            RaisePropertyChanged(() => TicketLastOrderDate);
-            RaisePropertyChanged(() => TicketLastPaymentDate);
+            RaisePropertyChanged(nameof( Note));
+            RaisePropertyChanged(nameof( IsTicketNoteVisible));
+            RaisePropertyChanged(nameof( IsTicketTagged));
+            RaisePropertyChanged(nameof( TicketTagDisplay));
+            RaisePropertyChanged(nameof( IsTicketTimeVisible));
+            RaisePropertyChanged(nameof( IsLastPaymentDateVisible));
+            RaisePropertyChanged(nameof( IsLastOrderDateVisible));
+            RaisePropertyChanged(nameof( TicketCreationDate));
+            RaisePropertyChanged(nameof( TicketLastOrderDate));
+            RaisePropertyChanged(nameof( TicketLastPaymentDate));
         }
     }
 

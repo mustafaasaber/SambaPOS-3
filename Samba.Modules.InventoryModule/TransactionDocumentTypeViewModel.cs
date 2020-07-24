@@ -46,8 +46,8 @@ namespace Samba.Modules.InventoryModule
                 Model.SourceEntityTypeId = value.Id;
                 _sourceEntityType = null;
                 _sourceEntities = null;
-                RaisePropertyChanged(() => SourceEntityType);
-                RaisePropertyChanged(() => SourceEntities);
+                RaisePropertyChanged(nameof( SourceEntityType));
+                RaisePropertyChanged(nameof( SourceEntities));
             }
         }
 
@@ -64,8 +64,8 @@ namespace Samba.Modules.InventoryModule
                 Model.TargetEntityTypeId = value.Id;
                 _targetEntityType = null;
                 _targetEntities = null;
-                RaisePropertyChanged(() => TargetEntityType);
-                RaisePropertyChanged(() => TargetEntities);
+                RaisePropertyChanged(nameof( TargetEntityType));
+                RaisePropertyChanged(nameof( TargetEntities));
             }
         }
 

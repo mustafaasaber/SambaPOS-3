@@ -13,7 +13,7 @@ using Samba.Presentation.ViewModels;
 
 namespace Samba.Modules.PaymentModule
 {
-    [Export]
+    
     public class PaymentEditorViewModel : ObservableObject
     {
         private readonly IApplicationState _applicationState;
@@ -33,7 +33,7 @@ namespace Samba.Modules.PaymentModule
         private readonly ChangeTemplatesViewModel _changeTemplatesViewModel;
         private readonly AccountBalances _accountBalances;
 
-        [ImportingConstructor]
+        
         public PaymentEditorViewModel(IApplicationState applicationState,
             TicketTotalsViewModel paymentTotals, PaymentEditor paymentEditor, NumberPadViewModel numberPadViewModel,
             OrderSelectorViewModel orderSelectorViewModel, ITicketService ticketService,
@@ -156,7 +156,7 @@ namespace Samba.Modules.PaymentModule
                 if (paymentDueAmount <= paidAmount)
                     _orderSelectorViewModel.PersistSelectedItems();
                 _numberPadViewModel.ResetValues();
-                RaisePropertyChanged(() => SelectedTicketTitle);
+                RaisePropertyChanged(nameof( SelectedTicketTitle));
             }
         }
 
@@ -179,7 +179,7 @@ namespace Samba.Modules.PaymentModule
             _commandButtonsViewModel.Update();
             _foreignCurrencyButtonsViewModel.UpdateCurrencyButtons();
 
-            RaisePropertyChanged(() => SelectedTicketTitle);
+            RaisePropertyChanged(nameof( SelectedTicketTitle));
         }
     }
 }

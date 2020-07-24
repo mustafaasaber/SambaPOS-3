@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Tasks;
 using Samba.Infrastructure.Messaging;
 using Samba.Presentation.Common;
@@ -38,8 +38,8 @@ namespace Samba.Modules.TaskModule.Widgets.TaskEditor
             {
                 Model.SetCompleted(value);
                 Persist();
-                RaisePropertyChanged(() => IsCompleted);
-                RaisePropertyChanged(() => IsCompletedCaption);
+                RaisePropertyChanged(nameof( IsCompleted));
+                RaisePropertyChanged(nameof( IsCompletedCaption));
             }
         }
         public string Content { get { return Model.Content ?? ""; } set { Model.Content = value; Persist(); } }

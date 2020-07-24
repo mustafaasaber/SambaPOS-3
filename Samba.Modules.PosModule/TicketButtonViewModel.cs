@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Entities;
 using Samba.Domain.Models.Tickets;
 using Samba.Infrastructure.Settings;
@@ -46,8 +46,8 @@ namespace Samba.Modules.PosModule
         private void OnSelectTicket(string obj)
         {
             IsSelected = !IsSelected;
-            RaisePropertyChanged(() => SelectionBackground);
-            RaisePropertyChanged(() => SelectionForeground);
+            RaisePropertyChanged(nameof( SelectionBackground));
+            RaisePropertyChanged(nameof( SelectionForeground));
             if (SelectionChanged != null) SelectionChanged.Invoke();
         }
 

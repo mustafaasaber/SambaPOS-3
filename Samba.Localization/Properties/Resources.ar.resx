@@ -130,7 +130,7 @@
     <value>عنوان الزر</value>
   </data>
   <data name="POS" xml:space="preserve">
-    <value>POS</value>
+    <value>نقاط البيع</value>
   </data>
   <data name="DisplayTicket" xml:space="preserve">
     <value>عرض التذكرة</value>
@@ -1109,7 +1109,7 @@
     <value>Quantity Total</value>
   </data>
   <data name="MissingRecipes" xml:space="preserve">
-    <value>Missing Recipes</value>
+    <value>المكونات الناقصة</value>
   </data>
   <data name="Permissions" xml:space="preserve">
     <value>الصلاحيات</value>
@@ -1540,7 +1540,7 @@
     <value>ثلاثة عشر</value>
   </data>
   <data name="ModifyVariable" xml:space="preserve">
-    <value>Modify Variable</value>
+    <value>تعديل المدخلات</value>
   </data>
   <data name="HideAccountsWithZeroBalance" xml:space="preserve">
     <value>Hide Accounts With Zero Balance</value>
@@ -1792,7 +1792,7 @@
     <value>عرض قائمة التذاكر</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>تسجيل الدخول</value>
+    <value>دخول</value>
   </data>
   <data name="NotEquals" xml:space="preserve">
     <value>Not Equals</value>
@@ -1858,7 +1858,7 @@
     <value>فترات العمل</value>
   </data>
   <data name="ModifyOrder" xml:space="preserve">
-    <value>Modify Order</value>
+    <value>تعديل الطلب</value>
   </data>
   <data name="UniqueTicketId" xml:space="preserve">
     <value>رقم تذكرة غير مكررة</value>
@@ -3091,7 +3091,7 @@
     <value>مبلغ ثابت من مجموع التذكرة</value>
   </data>
   <data name="PortPrinter" xml:space="preserve">
-    <value>طابعة Port</value>
+    <value>منفذ الطابعة</value>
   </data>
   <data name="ReportPrinter" xml:space="preserve">
     <value>طابعة التقرير</value>

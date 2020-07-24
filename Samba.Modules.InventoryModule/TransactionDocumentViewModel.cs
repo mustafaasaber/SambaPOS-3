@@ -22,7 +22,7 @@ namespace Samba.Modules.InventoryModule
         private readonly IInventoryService _inventoryService;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public TransactionDocumentViewModel(IApplicationState applicationState, IInventoryService inventoryService, ICacheService cacheService)
         {
             _applicationState = applicationState;
@@ -61,7 +61,7 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 _selectedTransactionItem = value;
-                RaisePropertyChanged(() => SelectedTransactionItem);
+                RaisePropertyChanged(nameof( SelectedTransactionItem));
             }
         }
 
@@ -99,7 +99,7 @@ namespace Samba.Modules.InventoryModule
             var tiv = new TransactionViewModel(ti, Workspace, _inventoryService, _cacheService);
             TransactionItems.Add(tiv);
             SelectedTransactionItem = tiv;
-            RaisePropertyChanged(() => TransactionItems);
+            RaisePropertyChanged(nameof( TransactionItems));
             OnRowInserted();
         }
 

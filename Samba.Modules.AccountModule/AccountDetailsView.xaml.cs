@@ -7,10 +7,10 @@ namespace Samba.Modules.AccountModule
     /// Interaction logic for AccountTransactionsView.xaml
     /// </summary>
 
-    [Export]
+    
     public partial class AccountDetailsView : UserControl
     {
-        [ImportingConstructor]
+        
         public AccountDetailsView(AccountDetailsViewModel viewModel)
         {
             DataContext = viewModel;

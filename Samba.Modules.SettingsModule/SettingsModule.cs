@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
+using Prism.Ioc;
+using Prism.Modularity;
 using Samba.Domain.Models.Settings;
 using Samba.Localization.Properties;
 using Samba.Modules.SettingsModule.BrowserViews;
@@ -9,10 +10,10 @@ using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.SettingsModule
 {
-    [ModuleExport(typeof(SettingsModule))]
+    [Module(ModuleName = "SettingsModule")]
     public class SettingsModule : ModuleBase
     {
-        [ImportingConstructor]
+        
         public SettingsModule()
         {
             AddDashboardCommand<SettingsViewModel>(Resources.LocalSettings, Resources.Settings, 20);
@@ -26,6 +27,10 @@ namespace Samba.Modules.SettingsModule
             AddDashboardCommand<SambaPosForum>(string.Format("SambaPOS {0}", Resources.Forum), Resources.SambaNetwork, 92);
             AddDashboardCommand<SambaPosDevelopment>(string.Format("SambaPOS {0}", Resources.Development), Resources.SambaNetwork, 93);
             AddDashboardCommand<SambaPosWiki>(string.Format("SambaPOS {0}", Resources.Wiki), Resources.SambaNetwork, 94);
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
         }
     }
 }

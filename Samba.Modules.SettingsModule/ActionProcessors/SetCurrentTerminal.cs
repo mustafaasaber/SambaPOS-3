@@ -1,16 +1,14 @@
-﻿using System.ComponentModel.Composition;
-using Samba.Localization.Properties;
+﻿using Samba.Localization.Properties;
 using Samba.Presentation.Services;
 using Samba.Services.Common;
 
 namespace Samba.Modules.SettingsModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class SetCurrentTerminal : ActionType
+    public class SetCurrentTerminal : ActionType
     {
         private readonly IApplicationStateSetter _applicationStateSetter;
 
-        [ImportingConstructor]
+
         public SetCurrentTerminal(IApplicationStateSetter applicationStateSetter)
         {
             _applicationStateSetter = applicationStateSetter;

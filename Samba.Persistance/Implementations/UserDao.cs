@@ -9,10 +9,10 @@ using Samba.Persistance.Data;
 
 namespace Samba.Persistance.Implementations
 {
-    [Export(typeof(IUserDao))]
-    class UserDao : IUserDao
+    //[Export(typeof(IUserDao))]
+   public class UserDao : IUserDao
     {
-        [ImportingConstructor]
+        //
         public UserDao()
         {
             ValidatorRegistry.RegisterDeleteValidator(new UserDeleteValidator());

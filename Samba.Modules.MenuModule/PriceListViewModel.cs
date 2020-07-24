@@ -17,7 +17,7 @@ namespace Samba.Modules.MenuModule
     {
         private readonly IPriceListService _priceListService;
 
-        [ImportingConstructor]
+        
         public PriceListViewModel(IPriceListService priceListService)
         {
             _priceListService = priceListService;
@@ -40,7 +40,7 @@ namespace Samba.Modules.MenuModule
                 priceViewModel.IsChanged = false;
             }
             _items = null;
-            RaisePropertyChanged(() => Items);
+            RaisePropertyChanged(nameof( Items));
         }
 
         public IEnumerable<string> PriceTags { get { return Items.SelectMany(x => x.Model.Prices.Select(y => y.GetTrimmedPriceTag())).Distinct(); } }

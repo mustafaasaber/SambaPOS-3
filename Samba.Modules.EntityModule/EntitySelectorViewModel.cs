@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Windows;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Entities;
 using Samba.Domain.Models.Tickets;
 using Samba.Infrastructure.Messaging;
@@ -17,7 +17,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.EntityModule
 {
-    [Export]
+    
     public class EntitySelectorViewModel : ObservableObject
     {
         public DelegateCommand<EntityScreenItemViewModel> EntitySelectionCommand { get; set; }
@@ -37,7 +37,7 @@ namespace Samba.Modules.EntityModule
         private readonly IPrinterService _printerService;
         private OperationRequest<Entity> _currentOperationRequest;
 
-        [ImportingConstructor]
+        
         public EntitySelectorViewModel(IApplicationState applicationState, IEntityService entityService,
             IUserService userService, ICacheService cacheService, IPrinterService printerService)
         {
@@ -137,10 +137,10 @@ namespace Samba.Modules.EntityModule
 
             UpdateEntityButtons(entityData);
 
-            RaisePropertyChanged(() => EntityScreenItems);
-            RaisePropertyChanged(() => SelectedEntityScreen);
-            RaisePropertyChanged(() => IsPageNavigatorVisible);
-            RaisePropertyChanged(() => ScreenVerticalAlignment);
+            RaisePropertyChanged(nameof( EntityScreenItems));
+            RaisePropertyChanged(nameof( SelectedEntityScreen));
+            RaisePropertyChanged(nameof( IsPageNavigatorVisible));
+            RaisePropertyChanged(nameof( ScreenVerticalAlignment));
         }
 
         private List<EntityScreenItem> GetEntityScreenItems(EntityScreen entityScreen, string stateFilter)

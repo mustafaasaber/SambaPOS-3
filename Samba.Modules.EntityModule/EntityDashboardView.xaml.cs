@@ -12,7 +12,7 @@ namespace Samba.Modules.EntityModule
     /// Interaction logic for ResourceDashboardView.xaml
     /// </summary>
 
-    [Export]
+    
     public partial class EntityDashboardView : UserControl
     {
         public EntityDashboardView()
@@ -20,7 +20,7 @@ namespace Samba.Modules.EntityModule
             InitializeComponent();
         }
 
-        [ImportingConstructor]
+        
         public EntityDashboardView(EntityDashboardViewModel viewModel)
         {
             InitializeComponent();

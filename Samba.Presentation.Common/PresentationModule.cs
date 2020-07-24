@@ -1,19 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
+﻿using Prism.Ioc;
+using Prism.Modularity;
 using Samba.Presentation.Common.Widgets;
+using System.Collections.Generic;
 
 namespace Samba.Presentation.Common
 {
-    [ModuleExport(typeof(PresentationModule))]
+    [Module(ModuleName = "PresentationModule")]
     public class PresentationModule : ModuleBase
     {
-        [ImportMany]
+
         public IEnumerable<IWidgetCreator> RegisteredCreators { get; set; }
 
+        public PresentationModule(IEnumerable<IWidgetCreator> _RegisteredCreators)
+        {
+            RegisteredCreators = _RegisteredCreators;
+        }
         protected override void OnInitialization()
         {
             foreach (var registeredCreator in RegisteredCreators)
@@ -21,6 +22,10 @@ namespace Samba.Presentation.Common
                 WidgetCreatorRegistry.RegisterWidgetCreator(registeredCreator);
             }
             base.OnInitialization();
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
         }
     }
 }

@@ -32,13 +32,13 @@ namespace Samba.Modules.ModifierModule
         public string FreeTagName
         {
             get { return _freeTagName; }
-            set { _freeTagName = value; RaisePropertyChanged(() => FreeTagName); }
+            set { _freeTagName = value; RaisePropertyChanged(nameof( FreeTagName)); }
         }
 
         public string FreeTagPriceStr
         {
             get { return FreeTagPrice.ToString(); }
-            set { FreeTagPrice = Convert.ToDecimal(value); RaisePropertyChanged(() => FreeTagPriceStr); }
+            set { FreeTagPrice = Convert.ToDecimal(value); RaisePropertyChanged(nameof( FreeTagPriceStr)); }
         }
 
         private decimal _freeTagPrice;
@@ -48,7 +48,7 @@ namespace Samba.Modules.ModifierModule
             set
             {
                 _freeTagPrice = value;
-                RaisePropertyChanged(() => FreeTagPrice);
+                RaisePropertyChanged(nameof( FreeTagPrice));
             }
         }
 

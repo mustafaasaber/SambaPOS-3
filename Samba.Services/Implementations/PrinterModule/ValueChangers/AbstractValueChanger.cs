@@ -55,7 +55,7 @@ namespace Samba.Services.Implementations.PrinterModule.ValueChangers
 
     public class AbstractValueChanger<T> : IValueChanger<T>
     {
-        [Import]
+        
         public FunctionRegistry FunctionRegistry { get; set; }
 
         public string Replace(PrinterTemplate template, string content, IEnumerable<T> models)

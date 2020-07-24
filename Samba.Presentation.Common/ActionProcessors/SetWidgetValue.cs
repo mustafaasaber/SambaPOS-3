@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using Samba.Localization.Properties;
+﻿using Samba.Localization.Properties;
 using Samba.Presentation.Common.Widgets;
 using Samba.Presentation.Services.Common;
 using Samba.Services.Common;
 
 namespace Samba.Presentation.Common.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class SetWidgetValue : ActionType
+    public class SetWidgetValue : ActionType
     {
         public override void Process(ActionData actionData)
         {

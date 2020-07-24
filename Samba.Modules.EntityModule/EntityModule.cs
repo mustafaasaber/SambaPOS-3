@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+﻿using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Domain.Models;
 using Samba.Domain.Models.Entities;
 using Samba.Localization.Properties;
@@ -11,15 +11,15 @@ using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.EntityModule
 {
-    [ModuleExport(typeof(EntityModule))]
-    class EntityModule : ModuleBase
+    [Module(ModuleName = "EntityModule")]
+
+    public class EntityModule : ModuleBase
     {
         private readonly IRegionManager _regionManager;
         private readonly IApplicationStateSetter _applicationStateSetter;
         private readonly EntityEditorView _entityEditorView;
         private readonly EntitySwitcherView _entitySwitcherView;
 
-        [ImportingConstructor]
         public EntityModule(IRegionManager regionManager, IUserService userService, IApplicationStateSetter applicationStateSetter,
             EntitySwitcherView entitySwitcherView, EntityEditorView entityEditorView)
         {
@@ -32,6 +32,11 @@ namespace Samba.Modules.EntityModule
             AddDashboardCommand<EntityCollectionViewModelBase<EntityViewModel, Entity>>(Resources.Entity.ToPlural(), Resources.Entities, 40);
             AddDashboardCommand<EntityCollectionViewModelBase<EntityScreenViewModel, EntityScreen>>(Resources.EntityScreen.ToPlural(), Resources.Entities, 41);
             AddDashboardCommand<BatchEntityEditorViewModel>(Resources.BatchEntityEditor, Resources.Entities, 40);
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+
         }
 
         protected override void OnInitialization()

@@ -14,7 +14,7 @@ namespace Samba.Presentation.ViewModels
             set
             {
                 _caption = value;
-                RaisePropertyChanged(() => Caption);
+                RaisePropertyChanged(nameof( Caption));
             }
         }
 

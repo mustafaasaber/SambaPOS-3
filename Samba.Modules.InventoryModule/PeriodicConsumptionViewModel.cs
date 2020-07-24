@@ -20,7 +20,7 @@ namespace Samba.Modules.InventoryModule
 
         public ICaptionCommand AddUnmappedItemsCommand { get; set; }
 
-        [ImportingConstructor]
+        
         public PeriodicConsumptionViewModel(IApplicationState applicationState,
             IInventoryService inventoryService, ICacheService cacheService)
         {
@@ -49,7 +49,7 @@ namespace Samba.Modules.InventoryModule
             {
                 _selectedWarehouseConsumption = value;
                 _selectedWarehouseConsumption.Refresh();
-                RaisePropertyChanged(() => SelectedWarehouseConsumption);
+                RaisePropertyChanged(nameof( SelectedWarehouseConsumption));
             }
         }
 

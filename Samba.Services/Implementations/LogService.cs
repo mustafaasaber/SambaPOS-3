@@ -9,8 +9,8 @@ using Samba.Localization.Properties;
 
 namespace Samba.Services.Implementations
 {
-    [Export(typeof(ILogService))]
-    class LogService : ILogService
+    //[Export(typeof(ILogService))]
+   public class LogService : ILogService
     {
         public void LogError(Exception e)
         {

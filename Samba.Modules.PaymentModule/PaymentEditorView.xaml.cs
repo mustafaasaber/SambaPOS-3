@@ -7,10 +7,10 @@ namespace Samba.Modules.PaymentModule
     /// Interaction logic for PaymentView.xaml
     /// </summary>
     
-    [Export]
+    
     public partial class PaymentEditorView : UserControl
     {
-        [ImportingConstructor]
+        
         public PaymentEditorView(PaymentEditorViewModel viewModel)
         {
             DataContext = viewModel;

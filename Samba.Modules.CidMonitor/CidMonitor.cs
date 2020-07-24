@@ -1,12 +1,15 @@
-﻿using Microsoft.Practices.Prism.MefExtensions.Modularity;
+﻿using Prism.Ioc;
+using Prism.Modularity;
 using Samba.Presentation.Common;
 
 namespace Samba.Modules.CidMonitor
 {
-    [ModuleExport(typeof(CidMonitor))]
+    [Module(ModuleName = "CidMonitor")]
     public class CidMonitor : ModuleBase
     {
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
 
-
+        }
     }
 }

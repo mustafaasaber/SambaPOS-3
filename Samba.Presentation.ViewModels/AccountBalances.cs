@@ -13,14 +13,14 @@ using Samba.Services;
 
 namespace Samba.Presentation.ViewModels
 {
-    [Export]
+    
     public class AccountBalances
     {
         private readonly IApplicationState _applicationState;
         private readonly ICacheService _cacheService;
         private readonly IAccountDao _accountDao;
 
-        [ImportingConstructor]
+        
         public AccountBalances(IApplicationState applicationState, ICacheService cacheService, IAccountDao accountDao)
         {
             _applicationState = applicationState;

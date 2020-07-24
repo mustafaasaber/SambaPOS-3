@@ -1,24 +1,21 @@
-﻿using System.ComponentModel.Composition;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using Samba.Domain.Models.Entities;
+﻿using Samba.Domain.Models.Entities;
 using Samba.Infrastructure.Helpers;
-using Samba.Presentation.Common;
 using Samba.Presentation.Common.Widgets;
 using Samba.Presentation.Services;
 using Samba.Services;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Samba.Modules.TaskModule.Widgets.TaskEditor
 {
-    [Export(typeof(IWidgetCreator))]
-    class TaskEditorWidgetCreator : IWidgetCreator
+    public class TaskEditorWidgetCreator : IWidgetCreator
     {
         private readonly ITaskService _taskService;
         private readonly ICacheService _cacheService;
         private readonly IMessagingService _messagingService;
 
-        [ImportingConstructor]
+
         public TaskEditorWidgetCreator(ITaskService taskService, ICacheService cacheService, IMessagingService messagingService)
         {
             _taskService = taskService;
@@ -70,6 +67,6 @@ namespace Samba.Modules.TaskModule.Widgets.TaskEditor
             return result;
         }
 
-        
+
     }
 }

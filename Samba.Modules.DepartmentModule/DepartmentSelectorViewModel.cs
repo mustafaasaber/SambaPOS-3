@@ -32,13 +32,13 @@ namespace Samba.Modules.DepartmentModule
             _applicationStateSetter.SetCurrentDepartment(departmentId);
             EventServiceFactory.EventService.PublishEvent(EventTopicNames.ActivatePosView);
             PermittedDepartments.ToList().ForEach(x => x.Refresh());
-            RaisePropertyChanged(() => PermittedDepartments);
+            RaisePropertyChanged(nameof( PermittedDepartments));
         }
 
         private void OnSelectedTicketChanged(EventParameters<IApplicationState> obj)
         {
             if (obj.Topic == EventTopicNames.ApplicationLockStateChanged)
-                RaisePropertyChanged(() => CanChangeDepartment);
+                RaisePropertyChanged(nameof( CanChangeDepartment));
         }
 
         public bool IsDepartmentSelectorVisible
@@ -75,7 +75,7 @@ namespace Samba.Modules.DepartmentModule
         {
             if (obj.Topic == EventTopicNames.WorkPeriodStatusChanged)
             {
-                RaisePropertyChanged(() => CanChangeDepartment);
+                RaisePropertyChanged(nameof( CanChangeDepartment));
             }
         }
 
@@ -84,9 +84,9 @@ namespace Samba.Modules.DepartmentModule
             if (obj.Topic == EventTopicNames.UserLoggedIn)
             {
                 _permittedDepartments = null;
-                RaisePropertyChanged(() => IsDepartmentSelectorVisible);
-                RaisePropertyChanged(() => PermittedDepartments);
-                RaisePropertyChanged(() => CanChangeDepartment);
+                RaisePropertyChanged(nameof( IsDepartmentSelectorVisible));
+                RaisePropertyChanged(nameof( PermittedDepartments));
+                RaisePropertyChanged(nameof( CanChangeDepartment));
                 if (obj.Value.UserRole.DepartmentId > 0)
                 {
                     _applicationStateSetter.SetSelectedEntityScreen(null);

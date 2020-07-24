@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using Samba.Localization.Properties;
+﻿using Samba.Localization.Properties;
 using Samba.Services.Common;
+using System.Text.RegularExpressions;
 
 namespace Samba.Presentation.Common.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class ModifyVariable : ActionType
+    public class ModifyVariable : ActionType
     {
         public override void Process(ActionData actionData)
         {

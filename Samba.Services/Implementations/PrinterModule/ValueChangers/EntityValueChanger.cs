@@ -3,12 +3,12 @@ using Samba.Domain.Models.Entities;
 
 namespace Samba.Services.Implementations.PrinterModule.ValueChangers
 {
-    [Export]
+    
     public class EntityValueChanger : AbstractValueChanger<Entity>
     {
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public EntityValueChanger(ICacheService cacheService)
         {
             _cacheService = cacheService;

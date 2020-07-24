@@ -8,15 +8,15 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.AccountModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class PrintAccountTransactionDocument : ActionType
+  
+  public  class PrintAccountTransactionDocument : ActionType
     {
         private readonly IAccountService _accountService;
         private readonly ICacheService _cacheService;
         private readonly IApplicationState _applicationState;
         private readonly IPrinterService _printerService;
 
-        [ImportingConstructor]
+        
         public PrintAccountTransactionDocument(IAccountService accountService, ICacheService cacheService, IApplicationState applicationState,
             IPrinterService printerService)
         {

@@ -16,7 +16,7 @@ namespace Samba.Modules.AutomationModule
     {
         private readonly IAutomationService _automationService;
 
-        [ImportingConstructor]
+        
         public RuleActionViewModel(IAutomationService automationService)
         {
             _automationService = automationService;
@@ -38,7 +38,7 @@ namespace Samba.Modules.AutomationModule
             {
                 Model.ActionType = value;
                 ParameterValues = CreateParameterValues(value);
-                RaisePropertyChanged(() => IsParameterLabelVisible);
+                RaisePropertyChanged(nameof( IsParameterLabelVisible));
             }
         }
 
@@ -65,7 +65,7 @@ namespace Samba.Modules.AutomationModule
             set
             {
                 _parameterValues = value;
-                RaisePropertyChanged(() => ParameterValues);
+                RaisePropertyChanged(nameof( ParameterValues));
             }
         }
 

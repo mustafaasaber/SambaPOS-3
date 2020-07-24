@@ -20,7 +20,7 @@ namespace Samba.Modules.EntityModule
     {
         private readonly IEntityDao _entityDao;
 
-        [ImportingConstructor]
+        
         public EntityScreenViewModel(IEntityDao entityDao)
         {
             _entityDao = entityDao;
@@ -96,7 +96,7 @@ namespace Samba.Modules.EntityModule
                 Model.AddScreenItem(choosenValue);
             }
             _entityScreenItems = null;
-            RaisePropertyChanged(() => EntityScreenItems);
+            RaisePropertyChanged(nameof( EntityScreenItems));
         }
 
         public override Type GetViewType()

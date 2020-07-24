@@ -22,7 +22,7 @@ namespace Samba.Modules.PrinterModule
         private readonly IPrinterDao _printerDao;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public PrintJobViewModel(IMenuService menuService, IPrinterDao printerDao, ICacheService cacheService)
         {
             _newPrinterMaps = new List<PrinterMap>();

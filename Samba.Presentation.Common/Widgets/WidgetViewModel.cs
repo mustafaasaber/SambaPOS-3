@@ -47,7 +47,7 @@ namespace Samba.Presentation.Common.Widgets
         public bool IsEnabled
         {
             get { return _isEnabled; }
-            set { _isEnabled = value; RaisePropertyChanged(() => IsEnabled); }
+            set { _isEnabled = value; RaisePropertyChanged(nameof( IsEnabled)); }
         }
 
         [Browsable(false)]
@@ -61,14 +61,14 @@ namespace Samba.Presentation.Common.Widgets
         public int X
         {
             get { return _model.XLocation; }
-            set { _model.XLocation = value; RaisePropertyChanged(() => X); }
+            set { _model.XLocation = value; RaisePropertyChanged(nameof( X)); }
         }
 
         [Spinnable(1, 10, 0, int.MaxValue)]
         public int Y
         {
             get { return _model.YLocation; }
-            set { _model.YLocation = value; RaisePropertyChanged(() => Y); }
+            set { _model.YLocation = value; RaisePropertyChanged(nameof( Y)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.Height)]
@@ -76,7 +76,7 @@ namespace Samba.Presentation.Common.Widgets
         public int Height
         {
             get { return _model.Height; }
-            set { _model.Height = value; RaisePropertyChanged(() => Height); }
+            set { _model.Height = value; RaisePropertyChanged(nameof( Height)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.Width)]
@@ -84,7 +84,7 @@ namespace Samba.Presentation.Common.Widgets
         public int Width
         {
             get { return _model.Width; }
-            set { _model.Width = value; RaisePropertyChanged(() => Width); }
+            set { _model.Width = value; RaisePropertyChanged(nameof( Width)); }
         }
 
         [Browsable(false)]
@@ -108,8 +108,8 @@ namespace Samba.Presentation.Common.Widgets
             set
             {
                 _model.Angle = value;
-                RaisePropertyChanged(() => Angle);
-                RaisePropertyChanged(() => RotateTransform);
+                RaisePropertyChanged(nameof( Angle));
+                RaisePropertyChanged(nameof( RotateTransform));
             }
         }
 
@@ -119,8 +119,8 @@ namespace Samba.Presentation.Common.Widgets
             set
             {
                 _model.Scale = value;
-                RaisePropertyChanged(() => Scale);
-                RaisePropertyChanged(() => ScaleTransform);
+                RaisePropertyChanged(nameof( Scale));
+                RaisePropertyChanged(nameof( ScaleTransform));
             }
         }
 
@@ -128,7 +128,7 @@ namespace Samba.Presentation.Common.Widgets
         public CornerRadius CornerRadius
         {
             get { return new CornerRadius(_model.CornerRadius); }
-            set { _model.CornerRadius = Convert.ToInt32(value.BottomLeft); RaisePropertyChanged(() => CornerRadius); }
+            set { _model.CornerRadius = Convert.ToInt32(value.BottomLeft); RaisePropertyChanged(nameof( CornerRadius)); }
         }
 
         [Browsable(false)]
@@ -159,7 +159,7 @@ namespace Samba.Presentation.Common.Widgets
         public bool AutoRefresh
         {
             get { return Model.AutoRefresh; }
-            set { Model.AutoRefresh = value; RaisePropertyChanged(() => AutoRefresh); }
+            set { Model.AutoRefresh = value; RaisePropertyChanged(nameof( AutoRefresh)); }
         }
 
         [LocalizedDisplayName(ResourceStrings.AutoRefreshInterval)]

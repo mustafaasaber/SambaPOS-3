@@ -7,12 +7,12 @@ using Samba.Services.Common;
 
 namespace Samba.Services.Implementations.SettingsModule
 {
-    [Export(typeof(ISettingService))]
+    //[Export(typeof(ISettingService))]
     public class SettingService : ISettingService
     {
         private readonly ISettingDao _settingDao;
 
-        [ImportingConstructor]
+        //
         public SettingService(ISettingDao settingDao)
         {
             _settingDao = settingDao;

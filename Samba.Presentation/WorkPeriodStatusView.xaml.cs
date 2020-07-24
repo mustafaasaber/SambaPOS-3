@@ -14,13 +14,13 @@ namespace Samba.Presentation
     /// Interaction logic for WorkPeriodStatusViewModel.xaml
     /// </summary>
 
-    [Export]
+    
     public partial class WorkPeriodStatusView : UserControl
     {
         private Timer _timer;
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
+        
         public WorkPeriodStatusView(IApplicationState applicationState)
         {
             InitializeComponent();

@@ -12,7 +12,7 @@ using Samba.Presentation.Services.Common.DataGeneration;
 
 namespace Samba.Modules.AccountModule.Dashboard
 {
-    [Export, PartCreationPolicy(CreationPolicy.NonShared)]
+    //[Export, PartCreationPolicy(CreationPolicy.NonShared)]
     public class AccountViewModel : EntityViewModelBase<Account>, IEntityCreator<Account>
     {
         private IEnumerable<AccountType> _accountTypes;
@@ -33,7 +33,7 @@ namespace Samba.Modules.AccountModule.Dashboard
             {
                 Model.AccountTypeId = value.Id;
                 _accountType = null;
-                RaisePropertyChanged(() => AccountType);
+                RaisePropertyChanged(nameof( AccountType));
             }
         }
 
@@ -54,7 +54,7 @@ namespace Samba.Modules.AccountModule.Dashboard
             set
             {
                 Model.ForeignCurrencyId = value != null ? value.Id : 0;
-                RaisePropertyChanged(() => ForeignCurrency);
+                RaisePropertyChanged(nameof( ForeignCurrency));
             }
         }
 

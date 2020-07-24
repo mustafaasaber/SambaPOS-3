@@ -12,13 +12,13 @@ using Samba.Services;
 
 namespace Samba.Modules.EntityModule
 {
-    [Export]
+    
     public class EntityDashboardViewModel : ObservableObject
     {
         private readonly IApplicationState _applicationState;
         private readonly IEntityService _entityService;
 
-        [ImportingConstructor]
+        
         public EntityDashboardViewModel(IApplicationState applicationState, IEntityService entityService)
         {
             _applicationState = applicationState;
@@ -41,7 +41,7 @@ namespace Samba.Modules.EntityModule
             {
                 Widgets.Remove(viewModel);
                 _entityService.RemoveWidget(viewModel.GetWidget());
-                RaisePropertyChanged(() => Widgets);
+                RaisePropertyChanged(nameof( Widgets));
                 SaveTrackableEntityScreenItems();
                 LoadTrackableEntityScreenItems();
             }
@@ -59,7 +59,7 @@ namespace Samba.Modules.EntityModule
             set
             {
                 _isDesignModeActive = value;
-                RaisePropertyChanged(() => IsDesignModeActive);
+                RaisePropertyChanged(nameof( IsDesignModeActive));
             }
         }
 
@@ -74,8 +74,8 @@ namespace Samba.Modules.EntityModule
                 Widgets = new ObservableCollection<IDiagram>(entityScreen.Widgets.Select(x => WidgetCreatorRegistry.CreateWidgetViewModel(x, _applicationState)));
             }
             Widgets.Where(x => x.AutoRefresh).ToList().ForEach(x => x.Refresh());
-            RaisePropertyChanged(() => Widgets);
-            RaisePropertyChanged(() => SelectedEntityScreen);
+            RaisePropertyChanged(nameof( Widgets));
+            RaisePropertyChanged(nameof( SelectedEntityScreen));
         }
 
         public void AddWidget(string creatorName)
@@ -93,7 +93,7 @@ namespace Samba.Modules.EntityModule
             IsDesignModeActive = true;
             Widgets = new ObservableCollection<IDiagram>(_entityService.LoadWidgets(SelectedEntityScreen.Name).Select(x => WidgetCreatorRegistry.CreateWidgetViewModel(x, _applicationState)));
             Widgets.ToList().ForEach(x => x.DesignMode = true);
-            RaisePropertyChanged(() => Widgets);
+            RaisePropertyChanged(nameof( Widgets));
         }
 
         public void SaveTrackableEntityScreenItems()
@@ -105,7 +105,7 @@ namespace Samba.Modules.EntityModule
             Widgets.ToList().ForEach(x => x.DesignMode = false);
             _entityService.SaveEntityScreenItems();
             Widgets.ToList().ForEach(x => x.Refresh());
-            RaisePropertyChanged(() => Widgets);
+            RaisePropertyChanged(nameof( Widgets));
         }
     }
 }

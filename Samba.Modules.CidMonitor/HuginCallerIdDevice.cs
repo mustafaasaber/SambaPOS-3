@@ -1,22 +1,21 @@
-﻿using System;
-using System.ComponentModel.Composition;
-using System.IO.Ports;
-using System.Text.RegularExpressions;
-using Samba.Presentation.Common.Services;
+﻿using Samba.Presentation.Common.Services;
 using Samba.Presentation.Services;
 using Samba.Services;
 using Samba.Services.Common;
+using System;
+using System.IO.Ports;
+using System.Text.RegularExpressions;
 
 namespace Samba.Modules.CidMonitor
 {
-    [Export(typeof(IDevice))]
-    class HuginCallerIdDevice : AbstractCidDevice
+    //[Export(typeof(IDevice))]
+    public class HuginCallerIdDevice : AbstractCidDevice
     {
         private SerialPort _port;
         private GenericModemSettings _settings;
         public GenericModemSettings Settings { get { return _settings ?? (_settings = LoadSettings<GenericModemSettings>()); } }
 
-        [ImportingConstructor]
+
         public HuginCallerIdDevice(IApplicationState applicationState, ICacheService cacheService, IEntityService entityService)
             : base(cacheService, applicationState, entityService)
         {

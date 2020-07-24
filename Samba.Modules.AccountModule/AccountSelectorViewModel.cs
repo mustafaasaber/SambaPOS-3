@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Linq;
-using Microsoft.Practices.Prism.Events;
+using Prism.Events;
 using Samba.Domain.Models;
 using Samba.Domain.Models.Accounts;
 using Samba.Localization.Properties;
@@ -16,7 +16,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.AccountModule
 {
-    [Export]
+    
     public class AccountSelectorViewModel : ObservableObject
     {
         private readonly IAccountService _accountService;
@@ -39,7 +39,7 @@ namespace Samba.Modules.AccountModule
         public ICaptionCommand AccountButtonSelectedCommand { get; set; }
         public ICaptionCommand AutomationCommandSelectedCommand { get; set; }
 
-        [ImportingConstructor]
+        
         public AccountSelectorViewModel(IAccountService accountService, ICacheService cacheService, IApplicationState applicationState, IEntityService entityService,
             IReportServiceClient reportServiceClient)
         {
@@ -166,9 +166,9 @@ namespace Samba.Modules.AccountModule
             _accounts.Clear();
             _accounts.AddRange(_accountService.GetAccountScreenRows(accountScreen, _applicationState.CurrentWorkPeriod));
 
-            RaisePropertyChanged(() => BatchDocumentButtons);
-            RaisePropertyChanged(() => AccountButtons);
-            RaisePropertyChanged(() => AutomationCommands);
+            RaisePropertyChanged(nameof( BatchDocumentButtons));
+            RaisePropertyChanged(nameof( AccountButtons));
+            RaisePropertyChanged(nameof( AutomationCommands));
 
             OnRefreshed();
         }

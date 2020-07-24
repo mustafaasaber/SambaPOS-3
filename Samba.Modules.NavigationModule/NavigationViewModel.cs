@@ -7,7 +7,7 @@ using Samba.Presentation.Common.Services;
 
 namespace Samba.Modules.NavigationModule
 {
-    [Export]
+    
     public class NavigationViewModel : ObservableObject
     {
         public ObservableCollection<ICategoryCommand> CategoryView
@@ -21,7 +21,7 @@ namespace Samba.Modules.NavigationModule
 
         public void Refresh()
         {
-            RaisePropertyChanged(() => CategoryView);
+            RaisePropertyChanged(nameof( CategoryView));
         }
     }
 }

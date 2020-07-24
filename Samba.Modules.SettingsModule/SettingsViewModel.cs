@@ -22,7 +22,7 @@ namespace Samba.Modules.SettingsModule
         private readonly IMessagingService _messagingService;
         private readonly IDeviceService _deviceService;
 
-        [ImportingConstructor]
+        
         public SettingsViewModel(ISettingService settingService, IMessagingService messagingService, IDeviceService deviceService)
         {
             _settingService = settingService;
@@ -113,7 +113,7 @@ namespace Samba.Modules.SettingsModule
         public string CallerIdDeviceName
         {
             get { return LocalSettings.CallerIdDeviceName; }
-            set { LocalSettings.CallerIdDeviceName = value; RaisePropertyChanged(() => CanEditDeviceSettings); }
+            set { LocalSettings.CallerIdDeviceName = value; RaisePropertyChanged(nameof( CanEditDeviceSettings)); }
         }
 
         public string WindowScale
@@ -152,7 +152,7 @@ namespace Samba.Modules.SettingsModule
             set
             {
                 LocalSettings.OverrideWindowsRegionalSettings = value;
-                RaisePropertyChanged(() => OverrideWindowsRegionalSettings);
+                RaisePropertyChanged(nameof( OverrideWindowsRegionalSettings));
             }
         }
 

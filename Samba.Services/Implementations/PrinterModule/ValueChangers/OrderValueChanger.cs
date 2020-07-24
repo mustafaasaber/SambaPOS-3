@@ -6,14 +6,14 @@ using Samba.Domain.Models.Tickets;
 
 namespace Samba.Services.Implementations.PrinterModule.ValueChangers
 {
-    [Export]
+    
     public class OrderValueChanger : AbstractValueChanger<Order>
     {
         private readonly OrderTagValueChanger _orderTagValueChanger;
         private readonly OrderStateValueChanger _orderStateValueChanger;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public OrderValueChanger(OrderTagValueChanger orderTagValueChanger, OrderStateValueChanger orderStateValueChanger, ICacheService cacheService)
         {
             _orderTagValueChanger = orderTagValueChanger;

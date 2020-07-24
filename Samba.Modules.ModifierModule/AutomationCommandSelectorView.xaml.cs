@@ -20,10 +20,10 @@ namespace Samba.Modules.ModifierModule
     /// Interaction logic for AutomationCommandSelectorView.xaml
     /// </summary>
 
-    [Export]
+    
     public partial class AutomationCommandSelectorView : UserControl
     {
-        [ImportingConstructor]
+        
         public AutomationCommandSelectorView(AutomationCommandSelectorViewModel viewModel)
         {
             DataContext = viewModel;

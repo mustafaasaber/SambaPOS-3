@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using Samba.Localization.Properties;
+﻿using Samba.Localization.Properties;
 using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
 using Samba.Services;
 using Samba.Services.Common;
+using System.Linq;
 
 namespace Samba.Presentation.Common.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class SetActiveTicketType : ActionType
+    public class SetActiveTicketType : ActionType
     {
         private readonly ICacheService _cacheService;
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
+
         public SetActiveTicketType(ICacheService cacheService, IApplicationState applicationState)
         {
             _cacheService = cacheService;
@@ -44,7 +39,7 @@ namespace Samba.Presentation.Common.ActionProcessors
 
         protected override object GetDefaultData()
         {
-            return new {TicketTypeName = ""};
+            return new { TicketTypeName = "" };
         }
 
         protected override string GetActionName()

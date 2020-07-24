@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services;
@@ -9,14 +10,13 @@ using Samba.Services;
 
 namespace Samba.Modules.ManagementModule
 {
-    [ModuleExport(typeof(ManagementModule))]
+    [Module(ModuleName = "ManagementModule")]
     public class ManagementModule : VisibleModuleBase
     {
         private readonly IRegionManager _regionManager;
         private readonly ManagementView _dashboardView;
         private readonly IUserService _userService;
 
-        [ImportingConstructor]
         public ManagementModule(IRegionManager regionManager, ManagementView dashboardView, IUserService userService)
             : base(regionManager, AppScreens.Management)
         {
@@ -47,6 +47,11 @@ namespace Samba.Modules.ManagementModule
         {
             _regionManager.RegisterViewWithRegion(RegionNames.MainRegion, typeof(ManagementView));
             _regionManager.RegisterViewWithRegion(RegionNames.UserRegion, typeof(KeyboardButtonView));
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+
         }
     }
 }

@@ -6,12 +6,12 @@ using Samba.Presentation.Services;
 
 namespace Samba.Modules.LoginModule
 {
-    [Export]
+    
     public class LoginViewModel
     {
         private readonly IUserService _userService;
 
-        [ImportingConstructor]
+        
         public LoginViewModel(IUserService userService)
         {
             _userService = userService;
@@ -32,7 +32,7 @@ namespace Samba.Modules.LoginModule
             set { LocalSettings.LogoPath = value; }
         }
 
-        public string AppLabel { get { return "SAMBA POS " + LocalSettings.AppVersion + " - " + GetDatabaseLabel(); } }
+        public string AppLabel { get { return "Ashoam POS " + LocalSettings.AppVersion + " - " + GetDatabaseLabel(); } }
         public string AdminPasswordHint { get { return GetAdminPasswordHint(); } }
         public string SqlHint { get { return GetSqlHint(); } }
 

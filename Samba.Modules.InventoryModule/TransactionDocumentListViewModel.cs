@@ -13,7 +13,7 @@ namespace Samba.Modules.InventoryModule
     {
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
+        
         public TransactionDocumentListViewModel(IApplicationState applicationState)
         {
             _applicationState = applicationState;

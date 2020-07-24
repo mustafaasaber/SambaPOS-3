@@ -13,7 +13,7 @@ namespace Samba.Modules.MenuModule
     {
         private readonly IPriceListService _priceListService;
 
-        [ImportingConstructor]
+        
         public MenuItemPriceDefinitionViewModel(IPriceListService priceListService)
         {
             _priceListService = priceListService;

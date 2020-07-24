@@ -12,13 +12,12 @@ using Samba.Presentation.Services;
 
 namespace Samba.Modules.AutomationModule.WidgetCreators
 {
-    [Export(typeof(IWidgetCreator))]
-    class AutomationButtonWidgetCreator : IWidgetCreator
+   public class AutomationButtonWidgetCreator : IWidgetCreator
     {
         private readonly IAutomationDao _automationDao;
         private readonly IValueConverter _brushConverter;
 
-        [ImportingConstructor]
+        
         public AutomationButtonWidgetCreator(IAutomationDao automationDao)
         {
             _automationDao = automationDao;

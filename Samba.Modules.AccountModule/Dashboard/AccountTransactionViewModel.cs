@@ -68,11 +68,11 @@ namespace Samba.Modules.AccountModule.Dashboard
                     _targetAccounts = null;
                     AccountTransactionType = value;
                 }
-                RaisePropertyChanged(() => AccountTransactionType);
-                RaisePropertyChanged(() => SourceAccount);
-                RaisePropertyChanged(() => TargetAccount);
-                RaisePropertyChanged(() => SourceAccounts);
-                RaisePropertyChanged(() => TargetAccounts);
+                RaisePropertyChanged(nameof( AccountTransactionType));
+                RaisePropertyChanged(nameof( SourceAccount));
+                RaisePropertyChanged(nameof( TargetAccount));
+                RaisePropertyChanged(nameof( SourceAccounts));
+                RaisePropertyChanged(nameof( TargetAccounts));
             }
         }
 
@@ -82,7 +82,7 @@ namespace Samba.Modules.AccountModule.Dashboard
             set
             {
                 SourceAccountId = value.Id;
-                RaisePropertyChanged(() => SourceAccount);
+                RaisePropertyChanged(nameof( SourceAccount));
             }
         }
 
@@ -92,7 +92,7 @@ namespace Samba.Modules.AccountModule.Dashboard
             set
             {
                 TargetAccountId = value.Id;
-                RaisePropertyChanged(() => TargetAccount);
+                RaisePropertyChanged(nameof( TargetAccount));
             }
         }
 

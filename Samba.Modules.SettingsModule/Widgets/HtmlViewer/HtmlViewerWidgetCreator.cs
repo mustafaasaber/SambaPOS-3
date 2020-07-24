@@ -11,10 +11,9 @@ using Samba.Presentation.Services;
 
 namespace Samba.Modules.SettingsModule.Widgets.HtmlViewer
 {
-    [Export(typeof(IWidgetCreator))]
     public class HtmlViewerWidgetCreator : IWidgetCreator
     {
-        [ImportingConstructor]
+        
         public HtmlViewerWidgetCreator()
         {
 

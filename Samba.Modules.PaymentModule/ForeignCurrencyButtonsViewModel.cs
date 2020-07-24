@@ -9,7 +9,7 @@ using Samba.Services;
 
 namespace Samba.Modules.PaymentModule
 {
-    [Export]
+    
     public class ForeignCurrencyButtonsViewModel : ObservableObject
     {
         private readonly ICaptionCommand _foreignCurrencySelectedCommand;
@@ -20,7 +20,7 @@ namespace Samba.Modules.PaymentModule
         private readonly ISettingService _settingService;
         private readonly TenderedValueViewModel _tenderedValueViewModel;
 
-        [ImportingConstructor]
+        
         public ForeignCurrencyButtonsViewModel(PaymentEditor paymentEditor, OrderSelectorViewModel orderSelectorViewModel,
             ICacheService cacheService, PaymentButtonsViewModel paymentButtonsViewModel, ISettingService settingService, TenderedValueViewModel tenderedValueViewModel)
         {
@@ -105,7 +105,7 @@ namespace Samba.Modules.PaymentModule
                 var pm = _tenderedValueViewModel.GetPaymentDueValue() / commandButtonViewModel.Parameter.ExchangeRate;
                 commandButtonViewModel.Caption = string.Format(format, pm);
             }
-            RaisePropertyChanged(() => ForeignCurrencyButtons);
+            RaisePropertyChanged(nameof( ForeignCurrencyButtons));
         }
 
         public void UpdatePaymentAmount(decimal value)

@@ -19,10 +19,10 @@ namespace Samba.Modules.PaymentModule
     /// Interaction logic for TenderedValueView.xaml
     /// </summary>
     
-    [Export]
+    
     public partial class TenderedValueView : UserControl
     {
-        [ImportingConstructor]
+        
         public TenderedValueView(TenderedValueViewModel viewModel)
         {
             DataContext = viewModel;

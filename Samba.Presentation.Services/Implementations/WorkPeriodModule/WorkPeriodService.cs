@@ -9,7 +9,7 @@ using Samba.Services.Common;
 
 namespace Samba.Presentation.Services.Implementations.WorkPeriodModule
 {
-    [Export(typeof(IWorkPeriodService))]
+    //[Export(typeof(IWorkPeriodService))]
     public class WorkPeriodService : IWorkPeriodService
     {
         private readonly IApplicationStateSetter _applicationStateSetter;
@@ -17,16 +17,17 @@ namespace Samba.Presentation.Services.Implementations.WorkPeriodModule
         private readonly IWorkPeriodDao _workPeriodDao;
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
-        public WorkPeriodService(IWorkPeriodDao workPeriodDao, IApplicationState applicationState, IApplicationStateSetter applicationStateSetter, ILogService logService)
+        //
+        public WorkPeriodService(IWorkPeriodDao workPeriodDao, IApplicationState applicationState, IApplicationStateSetter applicationStateSetter, ILogService logService , IEnumerable<IWorkPeriodProcessor> _workPeriodProcessors)
         {
             _workPeriodDao = workPeriodDao;
             _applicationState = applicationState;
             _applicationStateSetter = applicationStateSetter;
             _logService = logService;
+            WorkPeriodProcessors = _workPeriodProcessors;
         }
 
-        [ImportMany]
+        //[ImportMany]
         public IEnumerable<IWorkPeriodProcessor> WorkPeriodProcessors { get; set; }
 
         public WorkPeriod CurrentWorkPeriod { get { return _applicationState.CurrentWorkPeriod; } }

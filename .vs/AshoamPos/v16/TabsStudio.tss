@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Presentation.Services\Common\DataGeneration\DataCreationService.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Infrastructure.Data\Injection\EntityInjection.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Infrastructure\Helpers\JsonHelper.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Infrastructure\Cron\DaysOfWeekCronEntry.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\MyData\Ashoam\SambaPOS-3\Samba.Infrastructure\Cron\CronEntryBase.cs</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>

@@ -20,12 +20,12 @@ namespace Samba.Presentation.Services.Implementations.InventoryModule
         public decimal Total { get; set; }
     }
 
-    [Export(typeof(IWorkPeriodProcessor))]
+    //[Export(typeof(IWorkPeriodProcessor))]
     public class InventoryWorkperiodProcessor : IWorkPeriodProcessor
     {
         private readonly IInventoryService _inventoryService;
 
-        [ImportingConstructor]
+        //
         public InventoryWorkperiodProcessor(IInventoryService inventoryService)
         {
             _inventoryService = inventoryService;
@@ -42,7 +42,7 @@ namespace Samba.Presentation.Services.Implementations.InventoryModule
         }
     }
 
-    [Export(typeof(IInventoryService))]
+    //[Export(typeof(IInventoryService))]
     public class InventoryService : IInventoryService
     {
         private readonly IInventoryDao _inventoryDao;
@@ -50,7 +50,7 @@ namespace Samba.Presentation.Services.Implementations.InventoryModule
         private readonly ICacheService _cacheService;
         private readonly IMenuService _menuService;
 
-        [ImportingConstructor]
+        //
         public InventoryService(IInventoryDao inventoryDao, IApplicationState applicationState, ICacheService cacheService, IMenuService menuService)
         {
             _inventoryDao = inventoryDao;

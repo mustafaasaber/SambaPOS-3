@@ -6,14 +6,14 @@ using Samba.Services.Common;
 
 namespace Samba.Presentation.Services.Implementations.EntityModule
 {
-    [Export(typeof(IEntityServiceClient))]
+    //[Export(typeof(IEntityServiceClient))]
     public class EntityServiceClient : IEntityServiceClient
     {
         private readonly IApplicationState _applicationState;
         private readonly ICacheService _cacheService;
         private readonly IEntityDao _entityDao;
 
-        [ImportingConstructor]
+        //
         public EntityServiceClient(IApplicationState applicationState, ICacheService cacheService, IEntityDao entityDao)
         {
             _applicationState = applicationState;

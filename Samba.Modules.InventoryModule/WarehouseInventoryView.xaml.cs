@@ -8,10 +8,10 @@ namespace Samba.Modules.InventoryModule
     /// Interaction logic for ResourceInventoryView.xaml
     /// </summary>
     
-    [Export]
+    
     public partial class WarehouseInventoryView : UserControl
     {
-        [ImportingConstructor]
+        
         public WarehouseInventoryView(WarehouseInventoryViewModel viewModel)
         {
             DataContext = viewModel;

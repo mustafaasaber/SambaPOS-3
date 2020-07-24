@@ -74,7 +74,7 @@ namespace Samba.Modules.EntityModule.Widgets.EntityButton
                 if (_buttonColor != value)
                 {
                     _buttonColor = value;
-                    RaisePropertyChanged(() => ButtonColor);
+                    RaisePropertyChanged(nameof( ButtonColor));
                 }
             }
         }

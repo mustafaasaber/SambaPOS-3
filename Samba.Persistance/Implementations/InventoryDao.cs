@@ -13,10 +13,10 @@ using Samba.Persistance.Specification;
 
 namespace Samba.Persistance.Implementations
 {
-    [Export(typeof(IInventoryDao))]
-    class InventoryDao : IInventoryDao
+    //[Export(typeof(IInventoryDao))]
+   public  class InventoryDao : IInventoryDao
     {
-        [ImportingConstructor]
+        //
         public InventoryDao()
         {
             ValidatorRegistry.RegisterSaveValidator(new NonDuplicateSaveValidator<InventoryItem>(string.Format(Resources.SaveErrorDuplicateItemName_f, Resources.InventoryItem)));

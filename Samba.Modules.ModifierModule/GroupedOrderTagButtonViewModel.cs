@@ -46,7 +46,7 @@ namespace Samba.Modules.ModifierModule
             set
             {
                 _orderTagValue = value;
-                RaisePropertyChanged(() => OrderTagValue);
+                RaisePropertyChanged(nameof( OrderTagValue));
             }
         }
 
@@ -59,7 +59,7 @@ namespace Samba.Modules.ModifierModule
             set
             {
                 _name = value;
-                RaisePropertyChanged(() => Name);
+                RaisePropertyChanged(nameof( Name));
             }
         }
 

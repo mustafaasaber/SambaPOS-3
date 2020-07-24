@@ -41,7 +41,7 @@ namespace Samba.Presentation.Common.ModelBase
         public void RefreshCommands()
         {
             _allCommands = null;
-            RaisePropertyChanged(() => AllCommands);
+            RaisePropertyChanged(nameof( AllCommands));
         }
 
         public void RemoveCommand(ICaptionCommand command)
@@ -49,7 +49,7 @@ namespace Samba.Presentation.Common.ModelBase
             if (AllCommands.Contains(command))
             {
                 AllCommands.Remove(command);
-                RaisePropertyChanged(() => AllCommands);
+                RaisePropertyChanged(nameof( AllCommands));
             }
         }
 

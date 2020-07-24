@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.Practices.Prism.ViewModel;
+﻿using Prism.Mvvm;
+using System;
 
 namespace Samba.Presentation.Common
 {
-    public abstract class ObservableObject : NotificationObject
+    public abstract class ObservableObject : BindableBase
     {
         ~ObservableObject()
         {

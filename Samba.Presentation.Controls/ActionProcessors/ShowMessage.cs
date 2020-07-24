@@ -8,12 +8,12 @@ using Samba.Services.Common;
 
 namespace Samba.Presentation.Controls.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class ShowMessage : ActionType
+    //[Export(typeof(IActionType))]
+    public class ShowMessage : ActionType
     {
         private readonly IUserInteraction _userInteraction;
 
-        [ImportingConstructor]
+        
         public ShowMessage(IUserInteraction userInteraction)
         {
             _userInteraction = userInteraction;

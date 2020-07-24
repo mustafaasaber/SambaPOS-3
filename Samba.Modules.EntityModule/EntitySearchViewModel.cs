@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Timers;
 using System.Windows.Input;
 using System.Windows.Threading;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models;
 using Samba.Domain.Models.Entities;
 using Samba.Infrastructure.Settings;
@@ -21,7 +21,7 @@ using Samba.Services;
 
 namespace Samba.Modules.EntityModule
 {
-    [Export]
+    
     public class EntitySearchViewModel : ObservableObject
     {
         public event EventHandler SelectedEntityTypeChanged;
@@ -57,11 +57,11 @@ namespace Samba.Modules.EntityModule
             set
             {
                 _canCreateNewEntity = value;
-                RaisePropertyChanged(() => CanCreateNewEntity);
+                RaisePropertyChanged(nameof( CanCreateNewEntity));
             }
         }
 
-        [ImportingConstructor]
+        
         public EntitySearchViewModel(IApplicationState applicationState, ICacheService cacheService, IEntityService entityService)
         {
             _updateTimer = new Timer(250);
@@ -101,7 +101,7 @@ namespace Samba.Modules.EntityModule
                                                       _applicationState.SelectedEntityScreen.SearchValueReplacePattern,
                                                       (match) => match.Groups[1].Value);
                     }
-                    RaisePropertyChanged(() => SearchString);
+                    RaisePropertyChanged(nameof( SearchString));
                     ResetTimer();
                 }
             }
@@ -114,7 +114,7 @@ namespace Samba.Modules.EntityModule
             set
             {
                 _searchLabel = value;
-                RaisePropertyChanged(() => SearchLabel);
+                RaisePropertyChanged(nameof( SearchLabel));
             }
         }
 
@@ -125,7 +125,7 @@ namespace Samba.Modules.EntityModule
             set
             {
                 _isEditEntityCommandVisible = value;
-                RaisePropertyChanged(() => IsEditEntityCommandVisible);
+                RaisePropertyChanged(nameof( IsEditEntityCommandVisible));
             }
         }
 
@@ -136,7 +136,7 @@ namespace Samba.Modules.EntityModule
             set
             {
                 _isCreateEntityCommandVisible = value;
-                RaisePropertyChanged(() => IsCreateEntityCommandVisible);
+                RaisePropertyChanged(nameof( IsCreateEntityCommandVisible));
             }
         }
 
@@ -147,7 +147,7 @@ namespace Samba.Modules.EntityModule
             set
             {
                 _isDisplayAccountCommandVisible = value;
-                RaisePropertyChanged(() => IsDisplayAccountCommandVisible);
+                RaisePropertyChanged(nameof( IsDisplayAccountCommandVisible));
             }
         }
 
@@ -170,7 +170,7 @@ namespace Samba.Modules.EntityModule
             set
             {
                 _isKeyboardVisible = value;
-                RaisePropertyChanged(() => IsKeyboardVisible);
+                RaisePropertyChanged(nameof( IsKeyboardVisible));
             }
         }
 
@@ -187,15 +187,15 @@ namespace Samba.Modules.EntityModule
             {
                 _selectedEntityType = value;
                 ClearSearchValues();
-                RaisePropertyChanged(() => SelectedEntityType);
-                RaisePropertyChanged(() => SelectEntityCommandCaption);
-                RaisePropertyChanged(() => CreateEntityCommandCaption);
-                RaisePropertyChanged(() => EditEntityCommandCaption);
-                RaisePropertyChanged(() => RemoveEntityCommandCaption);
-                RaisePropertyChanged(() => IsEntitySelectorVisible);
-                RaisePropertyChanged(() => IsInventorySelectorVisible);
-                RaisePropertyChanged(() => PrimaryFieldName);
-                RaisePropertyChanged(() => PrimaryFieldFormat);
+                RaisePropertyChanged(nameof( SelectedEntityType));
+                RaisePropertyChanged(nameof( SelectEntityCommandCaption));
+                RaisePropertyChanged(nameof( CreateEntityCommandCaption));
+                RaisePropertyChanged(nameof( EditEntityCommandCaption));
+                RaisePropertyChanged(nameof( RemoveEntityCommandCaption));
+                RaisePropertyChanged(nameof( IsEntitySelectorVisible));
+                RaisePropertyChanged(nameof( IsInventorySelectorVisible));
+                RaisePropertyChanged(nameof( PrimaryFieldName));
+                RaisePropertyChanged(nameof( PrimaryFieldFormat));
                 InvokeSelectedEntityTypeChanged(EventArgs.Empty);
             }
         }
@@ -222,8 +222,8 @@ namespace Samba.Modules.EntityModule
             set
             {
                 _focusedEntity = value;
-                RaisePropertyChanged(() => FocusedEntity);
-                RaisePropertyChanged(() => SelectedEntity);
+                RaisePropertyChanged(nameof( FocusedEntity));
+                RaisePropertyChanged(nameof( SelectedEntity));
             }
         }
 
@@ -334,9 +334,9 @@ namespace Samba.Modules.EntityModule
                 }
             }
 
-            RaisePropertyChanged(() => SelectedEntityType);
-            RaisePropertyChanged(() => SelectedEntity);
-            RaisePropertyChanged(() => EntityTypes);
+            RaisePropertyChanged(nameof( SelectedEntityType));
+            RaisePropertyChanged(nameof( SelectedEntity));
+            RaisePropertyChanged(nameof( EntityTypes));
         }
 
         public void ResetSearch()
@@ -394,7 +394,7 @@ namespace Samba.Modules.EntityModule
                                {
                                    FoundEntities.Clear();
                                    FoundEntities.AddRange(result.Select(x => new EntitySearchResultViewModel(x, SelectedEntityType)));
-                                   RaisePropertyChanged(() => SelectedEntity);
+                                   RaisePropertyChanged(nameof( SelectedEntity));
                                    CommandManager.InvalidateRequerySuggested();
                                }));
 

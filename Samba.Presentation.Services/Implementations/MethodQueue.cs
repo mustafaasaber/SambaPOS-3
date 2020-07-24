@@ -7,12 +7,12 @@ using Samba.Domain.Models.Users;
 
 namespace Samba.Presentation.Services.Implementations
 {
-    [Export(typeof(IMethodQueue))]
+    //[Export(typeof(IMethodQueue))]
     public class MethodQueue : IMethodQueue
     {
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
+        //
         public MethodQueue(IApplicationState applicationState)
         {
             _applicationState = applicationState;

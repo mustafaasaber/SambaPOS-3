@@ -1,15 +1,15 @@
-﻿using System;
-using System.ComponentModel.Composition;
-using System.IO.Ports;
-using Samba.Presentation.Common.Services;
+﻿using Samba.Presentation.Common.Services;
 using Samba.Presentation.Services;
 using Samba.Services;
 using Samba.Services.Common;
+using System;
+using System.ComponentModel.Composition;
+using System.IO.Ports;
 
 namespace Samba.Modules.CidMonitor
 {
-    [Export(typeof(IDevice))]
-    class CometDevice : AbstractCidDevice
+    //[Export(typeof(IDevice))]
+    public class CometDevice : AbstractCidDevice
     {
         private SerialPort _port;
         private GenericModemSettings _settings;
@@ -17,7 +17,7 @@ namespace Samba.Modules.CidMonitor
         int[] _buffer = new int[255];
         int _pointer;
 
-        [ImportingConstructor]
+
         public CometDevice(IApplicationState applicationState, ICacheService cacheService, IEntityService entityService)
             : base(cacheService, applicationState, entityService)
         {
@@ -50,7 +50,7 @@ namespace Samba.Modules.CidMonitor
             }
             catch (Exception e)
             {
-                InteractionService.UserIntraction.DisplayPopup("","Comet CID Error", e.Message);
+                InteractionService.UserIntraction.DisplayPopup("", "Comet CID Error", e.Message);
                 return false;
             }
 
@@ -130,7 +130,8 @@ namespace Samba.Modules.CidMonitor
                     int param_length = 0;
                     switch (data[i])
                     {
-                        case TIMEDATE: bytes_remaining--; i++; // Move to next byte and decrease bytes left
+                        case TIMEDATE:
+                            bytes_remaining--; i++; // Move to next byte and decrease bytes left
                             param_length = data[i]; // Read in length of this parameter
                             bytes_remaining--; i++; // Move to next byte and decrease bytes left
                             // You would parse the time/date here.
@@ -139,7 +140,8 @@ namespace Samba.Modules.CidMonitor
                             bytes_remaining -= param_length; i += param_length;
                             break;
 
-                        case CALLING_NUMBER: bytes_remaining--; i++; // Move to next byte and decrease bytes left
+                        case CALLING_NUMBER:
+                            bytes_remaining--; i++; // Move to next byte and decrease bytes left
                             param_length = data[i]; // Read in length of this parameter
                             bytes_remaining--; i++; // Move to next byte and decrease bytes left
                             string number = "";
@@ -151,7 +153,8 @@ namespace Samba.Modules.CidMonitor
                             CIDNumber = number;
                             break;
 
-                        case CALLING_NAME: bytes_remaining--; i++; // Move to next byte and decrease bytes left
+                        case CALLING_NAME:
+                            bytes_remaining--; i++; // Move to next byte and decrease bytes left
                             param_length = data[i]; // Read in length of this parameter
                             bytes_remaining--; i++; // Move to next byte and decrease bytes left
                             string name = "";
@@ -163,7 +166,8 @@ namespace Samba.Modules.CidMonitor
                             CIDName = name;
                             break;
 
-                        case WHY_NO_NUMBER: bytes_remaining--; i++; // Move to next byte and decrease bytes left
+                        case WHY_NO_NUMBER:
+                            bytes_remaining--; i++; // Move to next byte and decrease bytes left
                             param_length = data[i]; // Read in length of this parameter
                             bytes_remaining--; i++; // Move to next byte and decrease bytes left
                             // You would parse the why no number here.
@@ -172,7 +176,8 @@ namespace Samba.Modules.CidMonitor
                             bytes_remaining -= param_length; i += param_length;
                             break;
 
-                        case CALL_TYPE: bytes_remaining--; i++; // Move to next byte and decrease bytes left
+                        case CALL_TYPE:
+                            bytes_remaining--; i++; // Move to next byte and decrease bytes left
                             param_length = data[i]; // Read in length of this parameter
                             bytes_remaining--; i++; // Move to next byte and decrease bytes left
                             // You would parse the call type here.
@@ -182,7 +187,8 @@ namespace Samba.Modules.CidMonitor
                             break;
 
                         // DISMISS ANY OTHER PARAMETERS
-                        default: bytes_remaining--; i++; // Move to next byte and decrease bytes left
+                        default:
+                            bytes_remaining--; i++; // Move to next byte and decrease bytes left
                             param_length = data[i]; // Read in length of this parameter
                             bytes_remaining--; i++; // Move to next byte and decrease bytes left
                             bytes_remaining -= param_length; i += param_length;

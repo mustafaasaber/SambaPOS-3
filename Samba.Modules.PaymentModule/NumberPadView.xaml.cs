@@ -19,10 +19,10 @@ namespace Samba.Modules.PaymentModule
     /// Interaction logic for NumberPadView.xaml
     /// </summary>
     
-    [Export]
+    
     public partial class NumberPadView : UserControl
     {
-        [ImportingConstructor]
+        
         public NumberPadView(NumberPadViewModel viewModel)
         {
             DataContext = viewModel;

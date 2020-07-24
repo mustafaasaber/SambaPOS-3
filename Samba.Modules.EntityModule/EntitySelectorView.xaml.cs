@@ -7,10 +7,10 @@ namespace Samba.Modules.EntityModule
     /// Interaction logic for LocationSelectorView.xaml
     /// </summary>
 
-    [Export]
+    
     public partial class EntitySelectorView : UserControl
     {
-        [ImportingConstructor]
+        
         public EntitySelectorView(EntitySelectorViewModel viewModel)
         {
             InitializeComponent();

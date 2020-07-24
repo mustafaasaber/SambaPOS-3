@@ -17,10 +17,10 @@ using Samba.Persistance.Specification;
 
 namespace Samba.Persistance.Implementations
 {
-    [Export(typeof(IAccountDao))]
-    class AccountDao : IAccountDao
+    //[Export(typeof(IAccountDao))]
+   public class AccountDao : IAccountDao
     {
-        [ImportingConstructor]
+        //
         public AccountDao()
         {
             ValidatorRegistry.RegisterDeleteValidator(new AccountDeleteValidator());

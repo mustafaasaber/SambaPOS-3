@@ -24,7 +24,7 @@ namespace Samba.Modules.SettingsModule
 
         private readonly ISettingService _settingService;
 
-        [ImportingConstructor]
+        
         public ProgramSettingsViewModel(ISettingService settingService)
         {
             _settingService = settingService;

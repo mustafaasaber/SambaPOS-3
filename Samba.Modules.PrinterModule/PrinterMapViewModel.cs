@@ -76,9 +76,9 @@ namespace Samba.Modules.PrinterModule
             set
             {
                 Model.MenuItemGroupCode = value;
-                RaisePropertyChanged(() => MenuItemGroupCode);
-                RaisePropertyChanged(() => MenuItemGroupCodeLabel);
-                RaisePropertyChanged(() => MenuItems);
+                RaisePropertyChanged(nameof( MenuItemGroupCode));
+                RaisePropertyChanged(nameof( MenuItemGroupCodeLabel));
+                RaisePropertyChanged(nameof( MenuItems));
             }
         }
 

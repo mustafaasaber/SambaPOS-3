@@ -36,8 +36,8 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 UpdateInventoryItem(value);
-                RaisePropertyChanged(() => Name);
-                RaisePropertyChanged(() => UnitName);
+                RaisePropertyChanged(nameof( Name));
+                RaisePropertyChanged(nameof( UnitName));
             }
         }
 
@@ -55,7 +55,7 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 Model.Quantity = value;
-                RaisePropertyChanged(() => Quantity);
+                RaisePropertyChanged(nameof( Quantity));
             }
         }
 

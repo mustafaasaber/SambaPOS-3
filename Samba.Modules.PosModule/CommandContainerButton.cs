@@ -55,7 +55,7 @@ namespace Samba.Modules.PosModule
             {
                 SelectedValue = GetNextValue();
             }
-            RaisePropertyChanged(() => Display);
+            RaisePropertyChanged(nameof( Display));
         }
 
         internal string GetNextValue()

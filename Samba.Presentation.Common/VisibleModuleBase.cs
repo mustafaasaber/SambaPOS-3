@@ -1,8 +1,9 @@
-﻿using Microsoft.Practices.Prism.Regions;
-using Microsoft.Practices.ServiceLocation;
+﻿using Prism.Regions;
+using CommonServiceLocator;
 using Samba.Presentation.Common.Commands;
 using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
+using Prism.Ioc;
 
 namespace Samba.Presentation.Common
 {
@@ -41,11 +42,13 @@ namespace Samba.Presentation.Common
             Activate();
         }
 
+    
         public abstract object GetVisibleView();
 
         protected sealed override void OnPostInitialization()
         {
             if (_navigationCommand != null)
+                //TODO: SomeWork Here
                 _navigationCommand.PublishEvent(EventTopicNames.NavigationCommandAdded);
             base.OnPostInitialization();
         }

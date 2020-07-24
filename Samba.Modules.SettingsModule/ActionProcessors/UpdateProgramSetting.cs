@@ -1,17 +1,15 @@
-﻿using System.ComponentModel.Composition;
-using Samba.Localization.Properties;
+﻿using Samba.Localization.Properties;
 using Samba.Presentation.Services.Common;
 using Samba.Services;
 using Samba.Services.Common;
 
 namespace Samba.Modules.SettingsModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class UpdateProgramSetting : ActionType
+    public class UpdateProgramSetting : ActionType
     {
         private readonly ISettingService _settingService;
 
-        [ImportingConstructor]
+
         public UpdateProgramSetting(ISettingService settingService)
         {
             _settingService = settingService;

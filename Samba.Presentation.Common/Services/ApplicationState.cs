@@ -19,8 +19,8 @@ using Stateless;
 
 namespace Samba.Presentation.Common.Services
 {
-    [Export(typeof(IApplicationState))]
-    [Export(typeof(IApplicationStateSetter))]
+    //[Export(typeof(IApplicationState))]
+    //[Export(typeof(IApplicationStateSetter))]
     public class ApplicationState : AbstractService, IApplicationState, IApplicationStateSetter
     {
         private readonly IDepartmentService _departmentService;
@@ -30,7 +30,7 @@ namespace Samba.Presentation.Common.Services
         private readonly INotificationService _notificationService;
         private readonly StateMachine<AppScreens, AppScreens> _screenState;
 
-        [ImportingConstructor]
+        //
         public ApplicationState(IDepartmentService departmentService, ISettingService settingService,
             ICacheService cacheService, IExpressionService expressionService, INotificationService notificationService)
         {

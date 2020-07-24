@@ -10,7 +10,7 @@ using Samba.Services;
 
 namespace Samba.Modules.EntityModule
 {
-    [Export]
+    
     public class EntityEditorViewModel : ObservableObject
     {
         private readonly ICacheService _cacheService;
@@ -23,7 +23,7 @@ namespace Samba.Modules.EntityModule
         public ICaptionCommand SelectEntityCommand { get; set; }
         public ICaptionCommand CreateAccountCommand { get; set; }
 
-        [ImportingConstructor]
+        
         public EntityEditorViewModel(ICacheService cacheService, IAccountService accountService, IUserService userService,
             ITicketServiceBase ticketServiceBase, IApplicationState applicationState, IEntityService entityService)
         {
@@ -104,8 +104,8 @@ namespace Samba.Modules.EntityModule
                 var entityType = _cacheService.GetEntityTypeById(obj.Value.SelectedItem.EntityTypeId);
                 SelectedEntity = new EntitySearchResultViewModel(obj.Value.SelectedItem, entityType);
                 CustomDataViewModel = new EntityCustomDataViewModel(obj.Value.SelectedItem, entityType);
-                RaisePropertyChanged(() => CustomDataViewModel);
-                RaisePropertyChanged(() => IsEntitySelectorVisible);
+                RaisePropertyChanged(nameof( CustomDataViewModel));
+                RaisePropertyChanged(nameof( IsEntitySelectorVisible));
             }
         }
 
@@ -124,8 +124,8 @@ namespace Samba.Modules.EntityModule
             {
                 _selectedEntity = value;
                 SelectedEntity.AccountCustomDataViewModel.UpdateNewEntityQueryFields();
-                RaisePropertyChanged(() => SelectedEntity);
-                RaisePropertyChanged(() => SelectEntityCommandCaption);
+                RaisePropertyChanged(nameof( SelectedEntity));
+                RaisePropertyChanged(nameof( SelectEntityCommandCaption));
             }
         }
 

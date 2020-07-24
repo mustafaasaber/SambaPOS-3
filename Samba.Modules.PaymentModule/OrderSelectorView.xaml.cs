@@ -19,10 +19,10 @@ namespace Samba.Modules.PaymentModule
     /// Interaction logic for OrderSelectorView.xaml
     /// </summary>
     
-    [Export]
+    
     public partial class OrderSelectorView : UserControl
     {
-        [ImportingConstructor]
+        
         public OrderSelectorView(OrderSelectorViewModel viewModel)
         {
             DataContext = viewModel;

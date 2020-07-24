@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
+using Prism.Ioc;
+using Prism.Modularity;
 using Samba.Domain.Models.Menus;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
@@ -8,10 +9,10 @@ using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.MenuModule
 {
-    [ModuleExport(typeof(MenuModule))]
+    [Module(ModuleName = "MenuModule")]
     public class MenuModule : ModuleBase
     {
-        [ImportingConstructor]
+        
         public MenuModule()
         {
             AddDashboardCommand<EntityCollectionViewModelBase<MenuItemViewModel, MenuItem>>(Resources.ProductList, Resources.Products, 33);
@@ -20,6 +21,11 @@ namespace Samba.Modules.MenuModule
             AddDashboardCommand<MenuItemPriceDefinitionListViewModel>(Resources.PriceDefinitions, Resources.Products, 33);
             AddDashboardCommand<EntityCollectionViewModelBase<TaxTemplateViewModel, TaxTemplate>>(Resources.TaxTemplate.ToPlural(), Resources.Products, 33);
             AddDashboardCommand<EntityCollectionViewModelBase<ProductTimerViewModel, ProductTimer>>(Resources.ProductTimer.ToPlural(), Resources.Products, 33);
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+
         }
     }
 }

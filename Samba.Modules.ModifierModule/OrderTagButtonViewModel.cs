@@ -41,8 +41,8 @@ namespace Samba.Modules.ModifierModule
 
         public void Refresh()
         {
-            RaisePropertyChanged(() => Color);
-            RaisePropertyChanged(() => DisplayText);
+            RaisePropertyChanged(nameof( Color));
+            RaisePropertyChanged(nameof( DisplayText));
         }
     }
 }

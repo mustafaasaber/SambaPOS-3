@@ -14,7 +14,7 @@ namespace Samba.Presentation
     /// Interaction logic for MessageClientStatusView.xaml
     /// </summary>
     /// 
-    [Export]
+    
     public partial class MessageClientStatusView : UserControl
     {
         private readonly IMessagingService _messagingService;
@@ -40,7 +40,6 @@ namespace Samba.Presentation
                 }));
         }
 
-        [ImportingConstructor]
         public MessageClientStatusView(IMessagingService messagingService)
         {
             _messagingService = messagingService;

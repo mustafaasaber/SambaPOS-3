@@ -13,7 +13,7 @@ namespace Samba.Infrastructure.Data.SQL
 
         public ReadOnlyEFWorkspace(CommonDbContext context)
         {
-            _context = context;
+            _context = (CommonDbContext)context;
         }
 
         public IEnumerable<T> Query<T>(Expression<Func<T, bool>> predictate, params Expression<Func<T, object>>[] includes) where T : class

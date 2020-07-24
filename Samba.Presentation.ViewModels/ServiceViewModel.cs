@@ -39,8 +39,8 @@ namespace Samba.Presentation.ViewModels
 
         public void Refresh()
         {
-            RaisePropertyChanged(() => Amount);
-            RaisePropertyChanged(() => Description);
+            RaisePropertyChanged(nameof( Amount));
+            RaisePropertyChanged(nameof( Description));
         }
     }
 }

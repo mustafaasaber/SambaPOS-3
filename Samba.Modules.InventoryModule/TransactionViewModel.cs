@@ -73,7 +73,7 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 Model.SourceWarehouseId = value != null ? value.Id : 0;
-                RaisePropertyChanged(() => SourceWarehouse);
+                RaisePropertyChanged(nameof( SourceWarehouse));
             }
         }
 
@@ -83,7 +83,7 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 Model.TargetWarehouseId = value != null ? value.Id : 0;
-                RaisePropertyChanged(() => TargetWarehouse);
+                RaisePropertyChanged(nameof( TargetWarehouse));
             }
         }
 
@@ -111,9 +111,9 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 UpdateInventoryItem(value);
-                RaisePropertyChanged(() => Name);
-                RaisePropertyChanged(() => UnitName);
-                RaisePropertyChanged(() => UnitNames);
+                RaisePropertyChanged(nameof( Name));
+                RaisePropertyChanged(nameof( UnitName));
+                RaisePropertyChanged(nameof( UnitNames));
             }
         }
 
@@ -124,7 +124,7 @@ namespace Samba.Modules.InventoryModule
             {
                 Model.Unit = value;
                 Model.Multiplier = value == InventoryItem.TransactionUnit ? InventoryItem.TransactionUnitMultiplier : 1;
-                RaisePropertyChanged(() => UnitName);
+                RaisePropertyChanged(nameof( UnitName));
             }
         }
 
@@ -155,8 +155,8 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 Model.Quantity = value;
-                RaisePropertyChanged(() => Quantity);
-                RaisePropertyChanged(() => TotalPrice);
+                RaisePropertyChanged(nameof( Quantity));
+                RaisePropertyChanged(nameof( TotalPrice));
             }
         }
 
@@ -166,8 +166,8 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 Model.Price = value;
-                RaisePropertyChanged(() => Price);
-                RaisePropertyChanged(() => TotalPrice);
+                RaisePropertyChanged(nameof( Price));
+                RaisePropertyChanged(nameof( TotalPrice));
             }
         }
 
@@ -177,8 +177,8 @@ namespace Samba.Modules.InventoryModule
             set
             {
                 Model.Price = (value / Model.Quantity);
-                RaisePropertyChanged(() => Price);
-                RaisePropertyChanged(() => TotalPrice);
+                RaisePropertyChanged(nameof( Price));
+                RaisePropertyChanged(nameof( TotalPrice));
             }
         }
 

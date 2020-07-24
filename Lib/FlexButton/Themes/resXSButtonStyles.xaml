@@ -1,7 +1,6 @@
-<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:FlexButton">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FlexButton">
 
     <SolidColorBrush x:Key="brushClearGlass" Color="#2F000000" />
     <SolidColorBrush x:Key="brushOuterBorder" Color="#4CFFFDFF" />
@@ -10,15 +9,15 @@
 
     <Storyboard x:Key="GlowOn">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Glow" Storyboard.TargetProperty="(UIElement.Opacity)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
-            <SplineDoubleKeyFrame KeyTime="00:00:00.1" Value="1"/>
+            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
+            <SplineDoubleKeyFrame KeyTime="00:00:00.1" Value="1" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
     <Storyboard x:Key="GlowOff">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Glow" Storyboard.TargetProperty="(UIElement.Opacity)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
-            <SplineDoubleKeyFrame KeyTime="00:00:00.5" Value="0"/>
+            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1" />
+            <SplineDoubleKeyFrame KeyTime="00:00:00.5" Value="0" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 

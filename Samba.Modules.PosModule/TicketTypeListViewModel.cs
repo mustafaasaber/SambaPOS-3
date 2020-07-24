@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Linq;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Entities;
 using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
@@ -12,14 +12,14 @@ using Samba.Services;
 
 namespace Samba.Modules.PosModule
 {
-    [Export]
+    
     public class TicketTypeListViewModel : ObservableObject
     {
         private readonly ICacheService _cacheService;
         public DelegateCommand<TicketType> SelectionCommand { get; set; }
         public CaptionCommand<string> CloseCommand { get; set; }
 
-        [ImportingConstructor]
+        
         public TicketTypeListViewModel(ICacheService cacheService)
         {
             _cacheService = cacheService;
@@ -44,8 +44,8 @@ namespace Samba.Modules.PosModule
         {
             TicketTypeList.Clear();
             TicketTypeList.AddRange(_cacheService.GetTicketTypes());
-            RaisePropertyChanged(() => RowCount);
-            RaisePropertyChanged(() => ColumnCount);
+            RaisePropertyChanged(nameof( RowCount));
+            RaisePropertyChanged(nameof( ColumnCount));
         }
 
         public int ColumnCount { get { return TicketTypeList.Count % 7 == 0 ? TicketTypeList.Count / 7 : (TicketTypeList.Count / 7) + 1; } }

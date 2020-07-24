@@ -40,8 +40,8 @@ namespace Samba.Modules.InventoryModule
         {
             _periodicConsumptionItems = null;
             _costItems = null;
-            RaisePropertyChanged(() => PeriodicConsumptionItems);
-            RaisePropertyChanged(() => CostItems);
+            RaisePropertyChanged(nameof( PeriodicConsumptionItems));
+            RaisePropertyChanged(nameof( CostItems));
         }
 
         public void AddMissingItems()

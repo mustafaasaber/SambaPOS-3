@@ -8,7 +8,7 @@ using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.ModifierModule
 {
-    [Export]
+    
     public class TicketLogViewerViewModel : ObservableObject
     {
 
@@ -26,11 +26,11 @@ namespace Samba.Modules.ModifierModule
             set
             {
                 _selectedTicket = value;
-                RaisePropertyChanged(() => SelectedTicket);
+                RaisePropertyChanged(nameof( SelectedTicket));
                 if (SelectedTicket != null)
                 {
                     _logs = null;
-                    RaisePropertyChanged(() => Logs);
+                    RaisePropertyChanged(nameof( Logs));
                 }
             }
         }
@@ -39,7 +39,7 @@ namespace Samba.Modules.ModifierModule
         public IEnumerable<TicketLogValue> Logs
         {
             get { return _logs ?? (_logs = SelectedTicket != null ? SelectedTicket.GetTicketLogValues() : null); }
-            set { _logs = value; RaisePropertyChanged(() => Logs); }
+            set { _logs = value; RaisePropertyChanged(nameof( Logs)); }
         }
 
         private void OnClose(string obj)

@@ -14,7 +14,7 @@ namespace Samba.Services.Implementations.PrinterModule.ValueChangers
         public decimal TotalAmount { get { return OrderTotal; } }
     }
 
-    [Export]
+    
     public class TaxValueChanger : AbstractValueChanger<TaxValue>
     {
         public override string GetTargetTag()

@@ -6,12 +6,12 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.AutomationModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class SendMessage : ActionType
+
+   public class SendMessage : ActionType
     {
         private readonly IMessagingService _messagingService;
 
-        [ImportingConstructor]
+        
         public SendMessage(IMessagingService messagingService)
         {
             _messagingService = messagingService;

@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.Composition;
-using System.Xml;
-using ICSharpCode.AvalonEdit.Highlighting;
+﻿using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
+using Prism.Ioc;
+using Prism.Modularity;
 using Samba.Domain.Models.Automation;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
@@ -11,16 +10,16 @@ using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
 using Samba.Services;
 using Samba.Services.Common;
+using System.Xml;
 
 namespace Samba.Modules.AutomationModule
 {
-    [ModuleExport(typeof(AutomationModule))]
-    class AutomationModule : ModuleBase
+    [Module(ModuleName = "AutomationModule")]
+    public class AutomationModule : ModuleBase
     {
         private readonly IAutomationService _automationService;
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
         public AutomationModule(IAutomationService automationService, IApplicationState applicationState)
         {
             _automationService = automationService;
@@ -58,6 +57,11 @@ namespace Samba.Modules.AutomationModule
             using (var stream = type.Assembly.GetManifestResourceStream(fullName))
             using (var reader = new XmlTextReader(stream))
                 return HighlightingLoader.Load(reader, HighlightingManager.Instance);
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+
         }
     }
 }

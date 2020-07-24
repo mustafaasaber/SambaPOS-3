@@ -1,19 +1,17 @@
-﻿using System;
-using System.ComponentModel.Composition;
-using System.Diagnostics;
-using Samba.Localization.Properties;
+﻿using Samba.Localization.Properties;
 using Samba.Presentation.Services.Common;
 using Samba.Services;
 using Samba.Services.Common;
+using System;
+using System.Diagnostics;
 
 namespace Samba.Presentation.Common.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class StartProcess : ActionType
+    public class StartProcess : ActionType
     {
         private readonly ILogService _logService;
 
-        [ImportingConstructor]
+
         public StartProcess(ILogService logService)
         {
             _logService = logService;

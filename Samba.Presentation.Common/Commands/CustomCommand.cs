@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 
 namespace Samba.Presentation.Common.Commands
 {

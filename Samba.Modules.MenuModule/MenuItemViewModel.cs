@@ -18,7 +18,7 @@ namespace Samba.Modules.MenuModule
     {
         private readonly IMenuService _menuService;
 
-        [ImportingConstructor]
+        
         public MenuItemViewModel(IMenuService menuService)
         {
             AddPortionCommand = new CaptionCommand<string>(string.Format(Resources.Add_f, Resources.Portion), OnAddPortion);

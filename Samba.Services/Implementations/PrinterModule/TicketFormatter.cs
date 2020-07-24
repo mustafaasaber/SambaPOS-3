@@ -11,14 +11,14 @@ using Samba.Services.Implementations.PrinterModule.ValueChangers;
 
 namespace Samba.Services.Implementations.PrinterModule
 {
-    [Export]
+    //
     public class TicketFormatter
     {
         private readonly IExpressionService _expressionService;
         private readonly ISettingService _settingService;
         private readonly TicketValueChanger _ticketValueChanger;
 
-        [ImportingConstructor]
+        //
         public TicketFormatter(IExpressionService expressionService, ISettingService settingService, TicketValueChanger ticketValueChanger)
         {
             _expressionService = expressionService;

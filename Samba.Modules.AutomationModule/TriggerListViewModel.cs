@@ -11,7 +11,7 @@ namespace Samba.Modules.AutomationModule
         private readonly ITriggerService _triggerService;
         private readonly IMethodQueue _methodQueue;
 
-        [ImportingConstructor]
+        
         public TriggerListViewModel(ITriggerService triggerService, IMethodQueue methodQueue)
         {
             _triggerService = triggerService;

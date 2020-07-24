@@ -5,7 +5,7 @@ using Samba.Domain.Models.Tasks;
 
 namespace Samba.Presentation.Services.Implementations.TaskModule
 {
-    [Export]
+    
     public class TaskParser
     {
         [ImportMany(typeof(ITokenParser))]

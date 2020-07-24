@@ -10,12 +10,12 @@ using Samba.Presentation.Controls.ListViewLM;
 
 namespace Samba.Modules.EntityModule
 {
-    [Export]
+    
     public partial class EntitySearchView : UserControl
     {
         public EntitySearchViewModel ViewModel { get; set; }
 
-        [ImportingConstructor]
+        
         public EntitySearchView(EntitySearchViewModel viewModel)
         {
             DataContext = viewModel;

@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using Microsoft.Practices.Prism.Events;
+using Prism.Events;
 using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.PosModule
@@ -12,7 +12,7 @@ namespace Samba.Modules.PosModule
     /// </summary>
     /// 
 
-    [Export]
+    
     public partial class MenuItemSelectorView : UserControl
     {
         private readonly GridLength _thin = GridLength.Auto;
@@ -23,7 +23,7 @@ namespace Samba.Modules.PosModule
 
         private readonly MenuItemSelectorViewModel _viewModel;
 
-        [ImportingConstructor]
+        
         public MenuItemSelectorView(MenuItemSelectorViewModel viewModel)
         {
             DataContext = viewModel;
@@ -78,6 +78,11 @@ namespace Samba.Modules.PosModule
             var sw = DataContext as MenuItemSelectorViewModel;
             if (sw == null) return;
             NumeratorRow.Height = sw.IsNumeratorVisible ? _auto45 : _thin;
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

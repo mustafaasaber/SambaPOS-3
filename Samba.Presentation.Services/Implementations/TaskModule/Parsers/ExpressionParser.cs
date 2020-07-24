@@ -10,7 +10,7 @@ namespace Samba.Presentation.Services.Implementations.TaskModule.Parsers
     {
         private readonly IExpressionService _expressionService;
 
-        [ImportingConstructor]
+        
         public ExpressionParser(IExpressionService expressionService)
         {
             _expressionService = expressionService;

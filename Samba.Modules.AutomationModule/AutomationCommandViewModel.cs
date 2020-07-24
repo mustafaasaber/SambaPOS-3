@@ -9,7 +9,7 @@ namespace Samba.Modules.AutomationModule
     [Export, PartCreationPolicy(CreationPolicy.NonShared)]
     public class AutomationCommandViewModel : EntityViewModelBaseWithMap<AutomationCommand, AutomationCommandMap, AutomationCommandMapViewModel>
     {
-        [ImportingConstructor]
+        
         public AutomationCommandViewModel()
         {
         }

@@ -4,8 +4,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Windows;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Events;
+using Prism.Commands;
+using Prism.Events;
 using Samba.Domain.Models.Menus;
 using Samba.Domain.Models.Tickets;
 using Samba.Infrastructure.Helpers;
@@ -20,7 +20,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.PosModule
 {
-    [Export]
+    
     public class MenuItemSelectorViewModel : ObservableObject
     {
         private ScreenMenu _currentScreenMenu;
@@ -44,7 +44,7 @@ namespace Samba.Modules.PosModule
         public ScreenMenuCategory SelectedCategory
         {
             get { return _selectedCategory; }
-            set { _selectedCategory = value; RaisePropertyChanged(() => SelectedCategory); }
+            set { _selectedCategory = value; RaisePropertyChanged(nameof( SelectedCategory)); }
         }
 
         public int SubButtonRows
@@ -69,9 +69,9 @@ namespace Samba.Modules.PosModule
             {
                 _applicationStateSetter.SetNumberpadValue(value);
                 FilterMenuItems(_applicationState.NumberPadValue);
-                RaisePropertyChanged(() => NumeratorValue);
-                RaisePropertyChanged(() => IsNumberpadEditorVisible);
-                RaisePropertyChanged(() => QuickNumeratorValue);
+                RaisePropertyChanged(nameof( NumeratorValue));
+                RaisePropertyChanged(nameof( IsNumberpadEditorVisible));
+                RaisePropertyChanged(nameof( QuickNumeratorValue));
             }
         }
 
@@ -79,7 +79,7 @@ namespace Samba.Modules.PosModule
         public string[] AlphaButtonValues { get; set; }
 
         private bool _isSelectedItemsVisible;
-        public bool IsSelectedItemsVisible { get { return _isSelectedItemsVisible; } set { _isSelectedItemsVisible = value; RaisePropertyChanged(() => IsSelectedItemsVisible); } }
+        public bool IsSelectedItemsVisible { get { return _isSelectedItemsVisible; } set { _isSelectedItemsVisible = value; RaisePropertyChanged(nameof( IsSelectedItemsVisible)); } }
 
         public bool IsQuickNumeratorVisible { get { return SelectedCategory != null && SelectedCategory.IsQuickNumeratorVisible; } }
         public bool IsNumeratorVisible { get { return SelectedCategory != null && SelectedCategory.IsNumeratorVisible; } }
@@ -116,7 +116,7 @@ namespace Samba.Modules.PosModule
         private readonly ISettingService _settingService;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public MenuItemSelectorViewModel(IApplicationState applicationState, IApplicationStateSetter applicationStateSetter,
             ISettingService settingService, ICacheService cacheService)
         {
@@ -285,6 +285,7 @@ namespace Samba.Modules.PosModule
 
             _currentScreenMenu = _cacheService.GetScreenMenu(screenMenuId);
 
+            
             Categories = CreateCategoryButtons(_currentScreenMenu);
             MostUsedItemsCategory = null;
             MostUsedMenuItems = CreateMostUsedMenuItems(_currentScreenMenu);
@@ -294,12 +295,12 @@ namespace Samba.Modules.PosModule
                 OnCategoryCommandExecute(Categories[0].Category);
                 Categories.Clear();
             }
-            RaisePropertyChanged(() => Categories);
-            RaisePropertyChanged(() => CategoriesVerticalAlignment);
-            RaisePropertyChanged(() => MostUsedMenuItems);
-            RaisePropertyChanged(() => MostUsedItemsCategory);
-            RaisePropertyChanged(() => CategoryColumnCount);
-            RaisePropertyChanged(() => CategoryColumnWidthRate);
+            RaisePropertyChanged(nameof( Categories));
+            RaisePropertyChanged(nameof( CategoriesVerticalAlignment));
+            RaisePropertyChanged(nameof( MostUsedMenuItems));
+            RaisePropertyChanged(nameof( MostUsedItemsCategory));
+            RaisePropertyChanged(nameof( CategoryColumnCount));
+            RaisePropertyChanged(nameof( CategoryColumnWidthRate));
         }
 
         private ObservableCollection<ScreenMenuItemButton> CreateMostUsedMenuItems(ScreenMenu screenMenu)
@@ -350,10 +351,10 @@ namespace Samba.Modules.PosModule
                 }
             }
 
-            RaisePropertyChanged(() => MenuItems);
-            RaisePropertyChanged(() => IsPageNumberNavigatorVisible);
-            RaisePropertyChanged(() => MenuItemsVerticalAlignment);
-            RaisePropertyChanged(() => SubButtonRows);
+            RaisePropertyChanged(nameof( MenuItems));
+            RaisePropertyChanged(nameof( IsPageNumberNavigatorVisible));
+            RaisePropertyChanged(nameof( MenuItemsVerticalAlignment));
+            RaisePropertyChanged(nameof( SubButtonRows));
         }
 
         private string GetCategorySubButtonColor(string name, ScreenMenuCategory category)
@@ -382,13 +383,13 @@ namespace Samba.Modules.PosModule
 
             AlphaButtonValues = string.IsNullOrEmpty(category.AlphaButtonValues) ? new string[0] : category.AlphaButtonValues.Split(',');
 
-            RaisePropertyChanged(() => IsQuickNumeratorVisible);
-            RaisePropertyChanged(() => IsNumeratorVisible);
-            RaisePropertyChanged(() => IsNumberpadEditorVisible);
-            RaisePropertyChanged(() => QuickNumeratorValues);
-            RaisePropertyChanged(() => AlphaButtonValues);
-            RaisePropertyChanged(() => MenuItemsVerticalAlignment);
-            RaisePropertyChanged(() => IsSelectedItemsVisible);
+            RaisePropertyChanged(nameof( IsQuickNumeratorVisible));
+            RaisePropertyChanged(nameof( IsNumeratorVisible));
+            RaisePropertyChanged(nameof( IsNumberpadEditorVisible));
+            RaisePropertyChanged(nameof( QuickNumeratorValues));
+            RaisePropertyChanged(nameof( AlphaButtonValues));
+            RaisePropertyChanged(nameof( MenuItemsVerticalAlignment));
+            RaisePropertyChanged(nameof( IsSelectedItemsVisible));
         }
 
         private ObservableCollection<ScreenMenuItemButton> CreateMenuButtons(ScreenMenuCategory category, int pageNo, string tag)

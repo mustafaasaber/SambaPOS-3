@@ -3,7 +3,7 @@ using Samba.Domain.Models.Accounts;
 
 namespace Samba.Services.Implementations.PrinterModule.ValueChangers
 {
-    [Export]
+    
     public class AccountTransactionValueChanger : AbstractValueChanger<AccountTransaction>
     {
         public override string GetTargetTag()

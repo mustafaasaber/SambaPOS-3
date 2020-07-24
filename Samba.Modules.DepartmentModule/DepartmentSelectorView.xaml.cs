@@ -9,12 +9,12 @@ namespace Samba.Modules.DepartmentModule
     /// Interaction logic for DepartmentButtonView.xaml
     /// </summary>
 
-    [Export]
+    
     public partial class DepartmentSelectorView : UserControl
     {
         private readonly IApplicationStateSetter _applicationStateSetter;
 
-        [ImportingConstructor]
+        
         public DepartmentSelectorView(IApplicationStateSetter applicationStateSetter, IApplicationState applicationState,
              IUserService userService)
         {

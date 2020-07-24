@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.Composition;
-using Samba.Localization.Properties;
+﻿using Samba.Localization.Properties;
 using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
 using Samba.Services;
@@ -7,15 +6,14 @@ using Samba.Services.Common;
 
 namespace Samba.Presentation.Common.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class UpdatePriceTag : ActionType
+    public class UpdatePriceTag : ActionType
     {
         private readonly IDepartmentService _departmentService;
         private readonly IMethodQueue _methodQueue;
         private readonly ITriggerService _triggerService;
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
+
         public UpdatePriceTag(IDepartmentService departmentService, IMethodQueue methodQueue, ITriggerService triggerService,
             IApplicationState applicationState)
         {

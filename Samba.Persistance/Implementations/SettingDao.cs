@@ -10,10 +10,9 @@ using Samba.Persistance.Data;
 
 namespace Samba.Persistance.Implementations
 {
-    [Export(typeof(ISettingDao))]
-    class SettingDao : ISettingDao
+   public class SettingDao : ISettingDao
     {
-        [ImportingConstructor]
+   
         public SettingDao()
         {
             ValidatorRegistry.RegisterDeleteValidator(new NumeratorDeleteValidator());

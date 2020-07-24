@@ -1,24 +1,22 @@
-﻿using System.ComponentModel.Composition;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using Samba.Domain.Models.Entities;
+﻿using Samba.Domain.Models.Entities;
 using Samba.Persistance;
 using Samba.Presentation.Common.Widgets;
 using Samba.Presentation.Services;
 using Samba.Services;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Samba.Modules.TicketModule.Widgets.TicketLister
 {
-    [Export(typeof(IWidgetCreator))]
-    class TicketListerWidgetCreator : IWidgetCreator
+    public class TicketListerWidgetCreator : IWidgetCreator
     {
         private readonly ITicketServiceBase _ticketServiceBase;
         private readonly IPrinterService _printerService;
         private readonly ICacheService _cacheService;
         private readonly IAutomationDao _automationDao;
 
-        [ImportingConstructor]
+
         public TicketListerWidgetCreator(ITicketServiceBase ticketServiceBase, IPrinterService printerService,
             ICacheService cacheService, IAutomationDao automationDao)
         {
@@ -59,7 +57,7 @@ namespace Samba.Modules.TicketModule.Widgets.TicketLister
             ret.SetBinding(UIElement.RenderTransformProperty, transformBinding);
             ret.SetBinding(Control.FontFamilyProperty, fontNameBinding);
             ret.ListBox.SetBinding(FrameworkElement.LayoutTransformProperty, scaleTransformBinding);
-            
+
             return ret;
         }
 

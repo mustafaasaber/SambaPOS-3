@@ -14,6 +14,7 @@ namespace Samba.Infrastructure.Data.Validation
         /// </summary>
         public void Add<T>(T value)
         {
+            //Mustafa
             _dictionary.Add(typeof(T), value);
         }
 

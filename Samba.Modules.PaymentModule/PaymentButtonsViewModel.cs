@@ -6,12 +6,12 @@ using Samba.Presentation.Services;
 
 namespace Samba.Modules.PaymentModule
 {
-    [Export]
+    
     public class PaymentButtonsViewModel : ObservableObject
     {
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
+        
         public PaymentButtonsViewModel(IApplicationState applicationState)
         {
             _applicationState = applicationState;
@@ -23,7 +23,7 @@ namespace Samba.Modules.PaymentModule
         public void Update(ForeignCurrency foreignCurrency)
         {
             PaymentButtonGroup.Update(_applicationState.GetPaymentScreenPaymentTypes(), foreignCurrency);
-            RaisePropertyChanged(() => PaymentButtonGroup);
+            RaisePropertyChanged(nameof( PaymentButtonGroup));
         }
 
         public void SetButtonCommands(ICaptionCommand makePaymentCommand, ICaptionCommand settleCommand, ICaptionCommand closeCommand)

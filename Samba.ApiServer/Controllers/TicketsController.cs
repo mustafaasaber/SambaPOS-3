@@ -10,13 +10,13 @@ using Samba.Persistance;
 
 namespace Samba.ApiServer.Controllers
 {
-    [Export]
+    
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class TicketsController : SambaApiController
     {
         private readonly ITicketDao _ticketDao;
 
-        [ImportingConstructor]
+        
         public TicketsController(ITicketDao ticketDao)
         {
             _ticketDao = ticketDao;

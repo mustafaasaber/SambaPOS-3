@@ -1,11 +1,11 @@
-﻿using System.ComponentModel;
-using System.IO.Ports;
-using PropertyTools.DataAnnotations;
+﻿using PropertyTools.DataAnnotations;
 using Samba.Presentation.Common.ModelBase;
+using System.ComponentModel;
+using System.IO.Ports;
 
 namespace Samba.Modules.CidMonitor
 {
-    class GenericModemSettings : AbstractCidSettings
+    public class GenericModemSettings : AbstractCidSettings
     {
         private NameWithValue _portNameValue;
 

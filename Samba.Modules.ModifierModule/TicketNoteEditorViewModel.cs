@@ -7,7 +7,7 @@ using Samba.Presentation.Services.Common;
 
 namespace Samba.Modules.ModifierModule
 {
-    [Export]
+    
     public class TicketNoteEditorViewModel : ObservableObject
     {
         private Ticket _selectedTicket;
@@ -17,7 +17,7 @@ namespace Samba.Modules.ModifierModule
             set
             {
                 _selectedTicket = value;
-                RaisePropertyChanged(() => SelectedTicket);
+                RaisePropertyChanged(nameof( SelectedTicket));
             }
         }
 

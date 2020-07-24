@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using Samba.Domain.Models.Menus;
+﻿using Samba.Domain.Models.Menus;
 using Samba.Persistance;
 using Samba.Persistance.Common;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Samba.Services.Implementations.MenuModule
 {
-    [Export(typeof(IPriceListService))]
-    class PriceListService : IPriceListService
+    //[Export(typeof(IPriceListService))]
+    public class PriceListService : IPriceListService
     {
         private readonly IPriceListDao _priceListDao;
 
-        [ImportingConstructor]
+
         public PriceListService(IPriceListDao priceListDao)
         {
             _priceListDao = priceListDao;

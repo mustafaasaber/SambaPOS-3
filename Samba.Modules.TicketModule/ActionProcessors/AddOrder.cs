@@ -13,14 +13,13 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.TicketModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class AddOrder : ActionType
+  public  class AddOrder : ActionType
     {
         private readonly ICacheService _cacheService;
         private readonly ITicketService _ticketService;
         private readonly ILogService _logService;
 
-        [ImportingConstructor]
+        
         public AddOrder(ICacheService cacheService, ITicketService ticketService, ILogService logService)
         {
             _cacheService = cacheService;

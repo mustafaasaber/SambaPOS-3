@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Microsoft.Practices.Prism.Modularity;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
+using Prism.Ioc;
+using Prism.Modularity;
 using Samba.Presentation.Common.Commands;
 using Samba.Presentation.Common.ModelBase;
 using Samba.Presentation.Services.Common;
@@ -106,7 +107,20 @@ namespace Samba.Presentation.Common
 
         private static void OnExecute<TView>(TView obj) where TView : VisibleViewModelBase
         {
+            var sd = typeof(TView);
             CommonEventPublisher.PublishViewAddedEvent(ObjectCache.Activate<TView>());
+        }
+
+        public abstract void RegisterTypes(IContainerRegistry containerRegistry);
+        
+
+        public void OnInitialized(IContainerProvider containerProvider)
+        {
+            var moduleLifecycleService = ServiceLocator.Current.GetInstance<IModuleInitializationService>();
+            moduleLifecycleService.RegisterForStage(OnPreInitialization, ModuleInitializationStage.PreInitialization);
+            moduleLifecycleService.RegisterForStage(OnInitialization, ModuleInitializationStage.Initialization);
+            moduleLifecycleService.RegisterForStage(OnPostInitialization, ModuleInitializationStage.PostInitialization);
+            moduleLifecycleService.RegisterForStage(OnStartUp, ModuleInitializationStage.StartUp);
         }
     }
 }

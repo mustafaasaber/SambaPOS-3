@@ -60,14 +60,14 @@ namespace Samba.Modules.EntityModule
                 _selectedEntityType = value;
                 SearchValue = "";
                 RefreshItems();
-                RaisePropertyChanged(() => SelectedEntityType);
+                RaisePropertyChanged(nameof( SelectedEntityType));
             }
         }
 
         public ObservableCollection<EntityListerRow> Entities
         {
             get { return _entities; }
-            set { _entities = value; RaisePropertyChanged(() => Entities); }
+            set { _entities = value; RaisePropertyChanged(nameof( Entities)); }
         }
 
         public bool DisplayLimitWarning { get; set; }
@@ -75,7 +75,7 @@ namespace Samba.Modules.EntityModule
         public string SearchValue
         {
             get { return _searchValue; }
-            set { _searchValue = value; RaisePropertyChanged(() => SearchValue); }
+            set { _searchValue = value; RaisePropertyChanged(nameof( SearchValue)); }
         }
 
         public IList<ICaptionCommand> Commands { get; set; }
@@ -130,7 +130,7 @@ namespace Samba.Modules.EntityModule
         public bool IsModified
         {
             get { return _isModified; }
-            set { _isModified = value; RaisePropertyChanged(() => IsModified); }
+            set { _isModified = value; RaisePropertyChanged(nameof( IsModified)); }
         }
 
         public string this[string fieldName]

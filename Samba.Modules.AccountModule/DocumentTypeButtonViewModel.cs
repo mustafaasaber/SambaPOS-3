@@ -1,4 +1,4 @@
-﻿using Microsoft.Practices.Prism.Commands;
+﻿using Prism.Commands;
 using Samba.Domain.Models.Accounts;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services.Common;

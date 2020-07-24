@@ -41,9 +41,9 @@ namespace Samba.Modules.AccountModule
                 _accountName = value;
                 SelectedAccountId = _accountService.GetAccountIdByName(value);
                 if (SelectedAccountId == 0)
-                    RaisePropertyChanged(() => AccountNames);
+                    RaisePropertyChanged(nameof( AccountNames));
                 _accountName = null;
-                RaisePropertyChanged(() => AccountName);
+                RaisePropertyChanged(nameof( AccountName));
             }
         }
 
@@ -65,8 +65,8 @@ namespace Samba.Modules.AccountModule
             set
             {
                 _accountType = value;
-                RaisePropertyChanged(() => AccountType);
-                RaisePropertyChanged(() => TemplateName);
+                RaisePropertyChanged(nameof( AccountType));
+                RaisePropertyChanged(nameof( TemplateName));
             }
         }
 

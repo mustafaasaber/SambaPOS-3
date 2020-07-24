@@ -17,7 +17,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.PosModule
 {
-    [Export]
+    
     public class TicketListViewModel : ObservableObject
     {
         private readonly ICaptionCommand _executeAutomationCommand;
@@ -26,7 +26,7 @@ namespace Samba.Modules.PosModule
         private readonly IApplicationState _applicationState;
         private readonly IUserService _userService;
 
-        [ImportingConstructor]
+        
         public TicketListViewModel(ITicketService ticketService, ITicketServiceBase ticketServiceBase,
             IApplicationState applicationState, IUserService userService)
         {
@@ -182,17 +182,17 @@ namespace Samba.Modules.PosModule
         private void Refresh()
         {
             _tickets.ForEach(x => x.SelectionChanged = ItemSelectionChanged);
-            RaisePropertyChanged(() => Tickets);
-            RaisePropertyChanged(() => RowCount);
-            RaisePropertyChanged(() => TotalRemainingAmountLabel);
-            RaisePropertyChanged(() => ListName);
+            RaisePropertyChanged(nameof( Tickets));
+            RaisePropertyChanged(nameof( RowCount));
+            RaisePropertyChanged(nameof( TotalRemainingAmountLabel));
+            RaisePropertyChanged(nameof( ListName));
             CommandButtons = CreateCommandButtons();
-            RaisePropertyChanged(() => CommandButtons);
+            RaisePropertyChanged(nameof( CommandButtons));
         }
 
         private void ItemSelectionChanged()
         {
-            RaisePropertyChanged(() => SelectedItemsCount);
+            RaisePropertyChanged(nameof( SelectedItemsCount));
         }
 
     }

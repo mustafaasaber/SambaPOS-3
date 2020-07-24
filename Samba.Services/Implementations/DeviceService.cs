@@ -5,10 +5,14 @@ using Samba.Services.Common;
 
 namespace Samba.Services.Implementations
 {
-    [Export(typeof(IDeviceService))]
-    class DeviceService : IDeviceService
+    //[Export(typeof(IDeviceService))]
+  public  class DeviceService : IDeviceService
     {
-        [ImportMany]
+        public DeviceService(IEnumerable<IDevice> devices)
+        {
+            Devices = devices;
+        }
+        //[ImportMany]
         public IEnumerable<IDevice> Devices { get; set; }
 
         public IEnumerable<string> GetDeviceNames(DeviceType deviceType)

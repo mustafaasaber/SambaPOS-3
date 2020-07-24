@@ -20,7 +20,7 @@ namespace Samba.Presentation.Services.Implementations.TaskModule
         private DateTime _lastReadTime;
         private readonly TaskCache _taskCache;
 
-        [ImportingConstructor]
+        
         public TaskService(ITaskDao taskDao, IWorkPeriodService workPeriodService, TaskParser taskParser)
         {
             _taskDao = taskDao;

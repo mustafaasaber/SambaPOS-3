@@ -13,7 +13,7 @@ namespace Samba.Infrastructure.Data.SQL
 
         public EFWorkspace(CommonDbContext context)
         {
-            _context = context;
+            _context = (CommonDbContext)context;
             if (_context.Database.Connection.ConnectionString.EndsWith(".sdf"))
                 _context.ObjContext().Connection.Open();
         }
@@ -30,7 +30,7 @@ namespace Samba.Infrastructure.Data.SQL
 
         public void MarkUnchanged2(IEntityClass item)
         {
-            _context.Entry(item).State = EntityState.Unchanged;
+            _context.Entry(item).State =System.Data.Entity. EntityState.Unchanged;
         }
 
         public void MarkUnchanged<T>(T item) where T : class, IEntityClass

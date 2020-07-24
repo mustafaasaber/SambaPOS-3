@@ -14,7 +14,7 @@ namespace Samba.Services.Implementations.PrinterModule.ObjectFormatters
         private readonly ISettingService _settingService;
         private readonly AccountTransactionDocumentValueChanger _valueChanger;
 
-        [ImportingConstructor]
+        
         public AccountTransactionDocumentFormatter(IExpressionService expressionService, ISettingService settingService,
             AccountTransactionDocumentValueChanger valueChanger)
         {

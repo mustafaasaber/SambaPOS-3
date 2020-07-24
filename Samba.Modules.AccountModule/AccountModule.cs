@@ -1,18 +1,20 @@
-﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+﻿using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Domain.Models;
 using Samba.Domain.Models.Accounts;
 using Samba.Localization.Properties;
+using Samba.Modules.AccountModule.ActionProcessors;
 using Samba.Modules.AccountModule.Dashboard;
 using Samba.Presentation.Common;
 using Samba.Presentation.Common.ModelBase;
 using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
+using Samba.Services.Common;
 
 namespace Samba.Modules.AccountModule
 {
-    [ModuleExport(typeof(AccountModule))]
+    [Module(ModuleName = "AccountModule")]
     public class AccountModule : VisibleModuleBase
     {
         private readonly IRegionManager _regionManager;
@@ -25,7 +27,6 @@ namespace Samba.Modules.AccountModule
         private readonly BatchDocumentCreatorView _batchDocumentCreatorView;
         private readonly BatchDocumentCreatorViewModel _batchDocumentCreatorViewModel;
 
-        [ImportingConstructor]
         public AccountModule(IRegionManager regionManager,
             IUserService userService, IApplicationState applicationState,
             AccountSelectorView accountSelectorView, AccountSelectorViewModel accountSelectorViewModel,
@@ -55,6 +56,12 @@ namespace Samba.Modules.AccountModule
             PermissionRegistry.RegisterPermission(PermissionNames.CreateAccount, PermissionCategories.Account, Resources.CanCreateAccount);
 
             SetNavigationCommand(Resources.Accounts, Resources.Common, "Images/Xls.png", 30);
+        }
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.RegisterSingleton<IActionType, CreateAccountTransaction>(nameof(CreateAccountTransaction));
+            containerRegistry.RegisterSingleton<IActionType, CreateAccountTransactionDocument>(nameof(CreateAccountTransactionDocument));
+
         }
 
         protected override void OnInitialization()

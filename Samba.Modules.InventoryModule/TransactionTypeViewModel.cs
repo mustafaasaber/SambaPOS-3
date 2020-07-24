@@ -32,8 +32,8 @@ namespace Samba.Modules.InventoryModule
                 Model.SourceWarehouseTypeId = value != null ? value.Id : 0;
                 _sourceWarehouseType = null;
                 _sourceWarehouses = null;
-                RaisePropertyChanged(() => SourceWarehouseType);
-                RaisePropertyChanged(() => SourceWarehouses);
+                RaisePropertyChanged(nameof( SourceWarehouseType));
+                RaisePropertyChanged(nameof( SourceWarehouses));
             }
         }
 
@@ -50,8 +50,8 @@ namespace Samba.Modules.InventoryModule
                 Model.TargetWarehouseTypeId = value != null ? value.Id : 0;
                 _targetWarehouseType = null;
                 _targetWarehouses = null;
-                RaisePropertyChanged(() => TargetWarehouseType);
-                RaisePropertyChanged(() => TargetWarehouses);
+                RaisePropertyChanged(nameof( TargetWarehouseType));
+                RaisePropertyChanged(nameof( TargetWarehouses));
             }
         }
 

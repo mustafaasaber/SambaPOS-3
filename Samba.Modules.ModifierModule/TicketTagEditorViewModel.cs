@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Windows.Input;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Tickets;
 using Samba.Infrastructure.Helpers;
 using Samba.Localization.Properties;
@@ -17,7 +17,7 @@ using Samba.Services;
 
 namespace Samba.Modules.ModifierModule
 {
-    [Export]
+    
     public class TicketTagEditorViewModel : ObservableObject
     {
         private static readonly AlphanumComparator AlphanumericComparator = new AlphanumComparator();
@@ -25,7 +25,7 @@ namespace Samba.Modules.ModifierModule
         private readonly ICacheService _cacheService;
         private readonly ITicketService _ticketService;
 
-        [ImportingConstructor]
+        
         public TicketTagEditorViewModel(IApplicationState applicationState, ICacheService cacheService, ITicketService ticketService)
         {
             _applicationState = applicationState;
@@ -45,7 +45,7 @@ namespace Samba.Modules.ModifierModule
             set
             {
                 _selectedTicket = value;
-                RaisePropertyChanged(() => SelectedTicket);
+                RaisePropertyChanged(nameof( SelectedTicket));
                 SelectedTicketTagData = null;
                 TicketTags.Clear();
             }
@@ -65,7 +65,7 @@ namespace Samba.Modules.ModifierModule
             set
             {
                 _freeTag = value;
-                RaisePropertyChanged(() => FreeTag);
+                RaisePropertyChanged(nameof( FreeTag));
             }
         }
 
@@ -157,9 +157,9 @@ namespace Samba.Modules.ModifierModule
                 return true;
             }
 
-            RaisePropertyChanged(() => TagColumnCount);
-            RaisePropertyChanged(() => IsFreeTagEditorVisible);
-            RaisePropertyChanged(() => FilteredTextBoxType);
+            RaisePropertyChanged(nameof( TagColumnCount));
+            RaisePropertyChanged(nameof( IsFreeTagEditorVisible));
+            RaisePropertyChanged(nameof( FilteredTextBoxType));
             return false;
         }
     }

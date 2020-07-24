@@ -7,14 +7,14 @@ using Samba.Services.Implementations.ExpressionModule.Accessors;
 
 namespace Samba.Services.Implementations.ExpressionModule
 {
-    [Export(typeof(IExpressionService))]
-    class ExpressionService : IExpressionService
+    //[Export(typeof(IExpressionService))]
+  public  class ExpressionService : IExpressionService
     {
         private readonly IAutomationDao _automationDao;
         private Dictionary<string, string> _scripts;
         private Dictionary<string, string> Scripts { get { return _scripts ?? (_scripts = _automationDao.GetScripts()); } }
 
-        [ImportingConstructor]
+        //
         public ExpressionService(IAutomationDao automationDao, IEntityService entityService)
         {
             _automationDao = automationDao;

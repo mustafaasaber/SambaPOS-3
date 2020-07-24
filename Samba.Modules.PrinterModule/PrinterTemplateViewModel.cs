@@ -17,7 +17,7 @@ namespace Samba.Modules.PrinterModule
     {
         private readonly IPrinterService _printerService;
 
-        [ImportingConstructor]
+        
         public PrinterTemplateViewModel(IPrinterService printerService)
         {
             _printerService = printerService;
@@ -40,7 +40,7 @@ namespace Samba.Modules.PrinterModule
             set
             {
                 _templateText = value;
-                RaisePropertyChanged(() => TemplateText);
+                RaisePropertyChanged(nameof( TemplateText));
             }
         }
 

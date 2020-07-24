@@ -19,10 +19,10 @@ namespace Samba.Modules.BasicReports
     /// Interaction logic for BasicReportView.xaml
     /// </summary>
     /// 
-    [Export]
+    
     public partial class BasicReportView : UserControl
     {
-        [ImportingConstructor]
+        
         public BasicReportView(BasicReportViewModel viewModel)
         {
             InitializeComponent();

@@ -6,12 +6,10 @@ using Samba.Persistance.Common;
 
 namespace Samba.Services.Implementations.MenuModule
 {
-    [Export(typeof(IMenuService))]
     public class MenuService : IMenuService
     {
         private readonly IMenuDao _menuDao;
 
-        [ImportingConstructor]
         public MenuService(IMenuDao menuDao)
         {
             _menuDao = menuDao;

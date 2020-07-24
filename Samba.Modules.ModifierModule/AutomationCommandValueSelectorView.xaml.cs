@@ -8,10 +8,10 @@ namespace Samba.Modules.ModifierModule
     /// Interaction logic for SelectedOrdersView.xaml
     /// </summary>
     /// 
-    [Export]
+    
     public partial class AutomationCommandValueSelectorView : UserControl
     {
-        [ImportingConstructor]
+        
         public AutomationCommandValueSelectorView(AutomationCommandValueSelectorViewModel viewModel)
         {
             DataContext = viewModel;

@@ -1,14 +1,17 @@
 ﻿using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Domain.Models.Tickets;
+using Samba.Modules.PaymentModule.ActionProcessors;
 using Samba.Presentation.Common;
 using Samba.Presentation.Services.Common;
+using Samba.Services.Common;
 
 namespace Samba.Modules.PaymentModule
 {
-    [ModuleExport(typeof(PaymentModule))]
-    class PaymentModule : VisibleModuleBase
+    [Module(ModuleName = "PaymentModule")]
+  public  class PaymentModule : VisibleModuleBase
     {
         private readonly IRegionManager _regionManager;
         private readonly PaymentEditorView _paymentEditorView;
@@ -16,7 +19,7 @@ namespace Samba.Modules.PaymentModule
         private readonly ReturningAmountView _returningAmountView;
         private readonly ChangeTemplatesView _changeTemplatesView;
 
-        [ImportingConstructor]
+        
         public PaymentModule(IRegionManager regionManager, PaymentEditorView paymentEditorView, TenderedValueView tenderedValueView,
             ReturningAmountView returningAmountView, NumberPadViewModel numberPadViewModel, ChangeTemplatesView changeTemplatesView)
             : base(regionManager, AppScreens.PaymentView)
@@ -91,6 +94,12 @@ namespace Samba.Modules.PaymentModule
         public void ActivateChangeTemplates()
         {
             _regionManager.ActivateRegion(RegionNames.PaymentTenderedValueRegion, _changeTemplatesView);
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.RegisterSingleton<IActionType, DisplayPaymentScreen>(nameof(DisplayPaymentScreen));
+
         }
     }
 }

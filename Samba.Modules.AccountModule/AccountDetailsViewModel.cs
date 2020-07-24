@@ -18,7 +18,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.AccountModule
 {
-    [Export]
+    
     public class AccountDetailsViewModel : ObservableObject
     {
         private readonly IApplicationState _applicationState;
@@ -33,7 +33,7 @@ namespace Samba.Modules.AccountModule
         public ICaptionCommand DisplayTicketCommand { get; set; }
         public ICaptionCommand PrintAccountCommand { get; set; }
 
-        [ImportingConstructor]
+        
         public AccountDetailsViewModel(IApplicationState applicationState, IAccountService accountService,
             ICacheService cacheService, IReportService reportService)
         {
@@ -55,14 +55,14 @@ namespace Samba.Modules.AccountModule
         public DateTime? Start
         {
             get { return _start; }
-            set { _start = value; RaisePropertyChanged(() => StartDateString); }
+            set { _start = value; RaisePropertyChanged(nameof( StartDateString)); }
         }
 
         private DateTime? _end;
         public DateTime? End
         {
             get { return _end; }
-            set { _end = value; RaisePropertyChanged(() => EndDateString); }
+            set { _end = value; RaisePropertyChanged(nameof( EndDateString)); }
         }
 
         public string StartDateString { get { return Start.HasValue ? Start.GetValueOrDefault().ToString("dd MM yyyy") : ""; } set { SetStartDate(value); } }
@@ -117,7 +117,7 @@ namespace Samba.Modules.AccountModule
                 {
                     SelectedAccountType = _cacheService.GetAccountTypeById(value.AccountTypeId);
                 }
-                RaisePropertyChanged(() => SelectedAccount);
+                RaisePropertyChanged(nameof( SelectedAccount));
                 UpdateTemplates();
                 FilterType = Resources.Default;
             }
@@ -139,7 +139,7 @@ namespace Samba.Modules.AccountModule
                 Start = null;
                 End = null;
                 DisplayTransactions();
-                RaisePropertyChanged(() => FilterType);
+                RaisePropertyChanged(nameof( FilterType));
             }
         }
 
@@ -174,7 +174,7 @@ namespace Samba.Modules.AccountModule
             AccountSummaries.Clear();
             AccountSummaries.AddRange(transactionData.Summaries);
 
-            RaisePropertyChanged(() => TotalBalance);
+            RaisePropertyChanged(nameof( TotalBalance));
         }
 
         private void OnDisplayAccountTransactions(EventParameters<OperationRequest<AccountData>> obj)

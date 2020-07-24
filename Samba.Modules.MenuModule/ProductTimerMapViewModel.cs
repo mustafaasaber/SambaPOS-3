@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 using Samba.Domain.Models.Menus;
 using Samba.Persistance;
 using Samba.Persistance.Common;
@@ -31,9 +31,9 @@ namespace Samba.Modules.MenuModule
             {
                 Model.MenuItemGroupCode = value;
                 MenuItemId = 0;
-                RaisePropertyChanged(() => MenuItemGroupCode);
-                RaisePropertyChanged(() => MenuItemGroupCodeLabel);
-                RaisePropertyChanged(() => MenuItems);
+                RaisePropertyChanged(nameof( MenuItemGroupCode));
+                RaisePropertyChanged(nameof( MenuItemGroupCodeLabel));
+                RaisePropertyChanged(nameof( MenuItems));
             }
         }
 
@@ -45,8 +45,8 @@ namespace Samba.Modules.MenuModule
             set
             {
                 Model.MenuItemId = value;
-                RaisePropertyChanged(() => MenuItemId);
-                RaisePropertyChanged(() => MenuItemLabel);
+                RaisePropertyChanged(nameof( MenuItemId));
+                RaisePropertyChanged(nameof( MenuItemLabel));
             }
         }
 

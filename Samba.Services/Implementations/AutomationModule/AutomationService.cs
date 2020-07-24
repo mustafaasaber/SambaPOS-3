@@ -17,13 +17,13 @@ using Samba.Services.Common;
 
 namespace Samba.Services.Implementations.AutomationModule
 {
-    [Export(typeof(IAutomationService))]
-    class AutomationService : IAutomationService
+    //[Export(typeof(IAutomationService))]
+   public class AutomationService : IAutomationService
     {
         private readonly IDeviceService _deviceService;
         private readonly RuleActionTypeRegistry _ruleActionTypeRegistry;
 
-        [ImportingConstructor]
+        //
         public AutomationService(IDeviceService deviceService, RuleActionTypeRegistry ruleActionTypeRegistry)
         {
             _deviceService = deviceService;

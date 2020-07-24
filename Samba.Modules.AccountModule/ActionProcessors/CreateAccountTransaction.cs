@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using Samba.Domain.Models.Tickets;
+﻿using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
 using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
 using Samba.Services;
 using Samba.Services.Common;
+using System.ComponentModel.Composition;
+using System.Linq;
 
 namespace Samba.Modules.AccountModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class CreateAccountTransaction : ActionType
+
+    public class CreateAccountTransaction : ActionType
     {
         private readonly ICacheService _cacheService;
         private readonly ITicketService _ticketService;
 
-        [ImportingConstructor]
+
         public CreateAccountTransaction(ICacheService cacheService, ITicketService ticketService)
         {
             _cacheService = cacheService;

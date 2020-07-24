@@ -16,7 +16,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.AccountModule
 {
-    [Export]
+    
     public class DocumentCreatorViewModel : ObservableObject
     {
         private readonly IAccountService _accountService;
@@ -25,7 +25,7 @@ namespace Samba.Modules.AccountModule
         private readonly IApplicationState _applicationState;
         private string _description;
 
-        [ImportingConstructor]
+        
         public DocumentCreatorViewModel(IAccountService accountService, ICacheService cacheService, IPrinterService printerService, IApplicationState applicationState)
         {
             _accountService = accountService;
@@ -47,10 +47,10 @@ namespace Samba.Modules.AccountModule
             Amount = _accountService.GetDefaultAmount(obj.Value.DocumentType, obj.Value.Account);
             AccountSelectors = GetAccountSelectors().ToList();
 
-            RaisePropertyChanged(() => Description);
-            RaisePropertyChanged(() => Amount);
-            RaisePropertyChanged(() => AccountName);
-            RaisePropertyChanged(() => IsPrintCommandVisible);
+            RaisePropertyChanged(nameof( Description));
+            RaisePropertyChanged(nameof( Amount));
+            RaisePropertyChanged(nameof( AccountName));
+            RaisePropertyChanged(nameof( IsPrintCommandVisible));
         }
 
         private IEnumerable<AccountSelectViewModel> GetAccountSelectors()
@@ -96,7 +96,7 @@ namespace Samba.Modules.AccountModule
             set
             {
                 _accountSelectors = value;
-                RaisePropertyChanged(() => AccountSelectors);
+                RaisePropertyChanged(nameof( AccountSelectors));
             }
         }
 

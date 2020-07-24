@@ -17,7 +17,7 @@ namespace Samba.Modules.TaskModule
         public ICaptionCommand AddCustomFieldCommand { get; set; }
         public ICaptionCommand DeleteCustomFieldCommand { get; set; }
 
-        [ImportingConstructor]
+        
         public TaskTypeViewModel()
         {
             AddCustomFieldCommand = new CaptionCommand<string>(Resources.Add, OnAddCustomField);
@@ -49,7 +49,7 @@ namespace Samba.Modules.TaskModule
                 Workspace.Delete(SelectedCustomField.Model);
             Model.TaskCustomFields.Remove(SelectedCustomField.Model);
             _taskCustomFields = null;
-            RaisePropertyChanged(() => TaskCustomFields);
+            RaisePropertyChanged(nameof( TaskCustomFields));
         }
 
         private bool CanDeleteCustomField(string arg)
@@ -62,7 +62,7 @@ namespace Samba.Modules.TaskModule
             var cf = new TaskCustomField();
             Model.TaskCustomFields.Add(cf);
             _taskCustomFields = null;
-            RaisePropertyChanged(() => TaskCustomFields);
+            RaisePropertyChanged(nameof( TaskCustomFields));
         }
     }
 

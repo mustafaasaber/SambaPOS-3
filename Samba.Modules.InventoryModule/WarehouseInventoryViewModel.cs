@@ -10,7 +10,7 @@ using Samba.Services;
 
 namespace Samba.Modules.InventoryModule
 {
-    [Export]
+    
     public class WarehouseInventoryViewModel : ObservableObject
     {
         private readonly IInventoryService _inventoryService;
@@ -19,7 +19,7 @@ namespace Samba.Modules.InventoryModule
 
         public ICaptionCommand WarehouseButtonSelectedCommand { get; set; }
 
-        [ImportingConstructor]
+        
         public WarehouseInventoryViewModel(IInventoryService inventoryService, ICacheService cacheService, IApplicationState applicationState)
         {
             _inventoryService = inventoryService;
@@ -39,7 +39,7 @@ namespace Samba.Modules.InventoryModule
             _warehouses = null;
             _warehouseButtons = null;
             UpdateSelectedWarehouse(warehouseId);
-            RaisePropertyChanged(() => WarehouseButtons);
+            RaisePropertyChanged(nameof( WarehouseButtons));
         }
 
         private void UpdateSelectedWarehouse(int warehouseId)
@@ -50,9 +50,9 @@ namespace Samba.Modules.InventoryModule
             SelectedWarehouseConsumption = pc.WarehouseConsumptions.Single(x => x.WarehouseId == SelectedWarehouse.Id);
             _periodicConsumptionItems = null;
             _costItems = null;
-            RaisePropertyChanged(() => PeriodicConsumptionItems);
-            RaisePropertyChanged(() => CostItems);
-            RaisePropertyChanged(() => SelectedWarehouse);
+            RaisePropertyChanged(nameof( PeriodicConsumptionItems));
+            RaisePropertyChanged(nameof( CostItems));
+            RaisePropertyChanged(nameof( SelectedWarehouse));
         }
 
         private IEnumerable<Warehouse> _warehouses;
@@ -117,7 +117,7 @@ namespace Samba.Modules.InventoryModule
 
         public void Refresh()
         {
-            RaisePropertyChanged(() => ButtonColor);
+            RaisePropertyChanged(nameof( ButtonColor));
         }
     }
 }

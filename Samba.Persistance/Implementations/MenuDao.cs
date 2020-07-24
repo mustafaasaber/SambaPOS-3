@@ -1,22 +1,21 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using Samba.Domain.Models.Inventory;
+﻿using Samba.Domain.Models.Inventory;
 using Samba.Domain.Models.Menus;
 using Samba.Domain.Models.Tickets;
-using Samba.Infrastructure.Data;
 using Samba.Infrastructure.Data.Validation;
 using Samba.Localization.Properties;
 using Samba.Persistance.Common;
 using Samba.Persistance.Data;
 using Samba.Persistance.Specification;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
 
 namespace Samba.Persistance.Implementations
 {
-    [Export(typeof(IMenuDao))]
-    class MenuDao : IMenuDao
+    //[Export(typeof(IMenuDao))]
+    public class MenuDao : IMenuDao
     {
-        [ImportingConstructor]
+        //
         public MenuDao()
         {
             ValidatorRegistry.RegisterSaveValidator(new NonDuplicateSaveValidator<MenuItem>(string.Format(Resources.SaveErrorDuplicateItemName_f, Resources.MenuItem)));
@@ -31,7 +30,7 @@ namespace Samba.Persistance.Implementations
 
         public IEnumerable<string> GetMenuItemNames()
         {
-            return Dao.Select<MenuItem, string>(x => x.Name, null).OrderBy(x=>x);
+            return Dao.Select<MenuItem, string>(x => x.Name, null).OrderBy(x => x);
         }
 
         public IEnumerable<string> GetMenuItemGroupCodes()
@@ -85,7 +84,7 @@ namespace Samba.Persistance.Implementations
         }
     }
 
-    public class ScreenMenuDeleteValidator:SpecificationValidator<ScreenMenu>
+    public class ScreenMenuDeleteValidator : SpecificationValidator<ScreenMenu>
     {
         public override string GetErrorMessage(ScreenMenu model)
         {

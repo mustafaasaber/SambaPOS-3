@@ -16,7 +16,7 @@ using Samba.Persistance;
 
 namespace Samba.Services.Implementations.PrinterModule.ValueChangers
 {
-    [Export]
+    //
     public class FunctionRegistry
     {
         private readonly IAccountDao _accountDao;
@@ -28,7 +28,7 @@ namespace Samba.Services.Implementations.PrinterModule.ValueChangers
         public IDictionary<Type, ArrayList> Functions = new Dictionary<Type, ArrayList>();
         public IDictionary<string, string> Descriptions = new Dictionary<string, string>();
 
-        [ImportingConstructor]
+        //
         public FunctionRegistry(IAccountDao accountDao, IDepartmentService departmentService, ISettingService settingService,
             ICacheService cacheService, IEntityService entityService)
         {

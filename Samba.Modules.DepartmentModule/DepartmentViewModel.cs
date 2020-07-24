@@ -11,14 +11,14 @@ using Samba.Services;
 
 namespace Samba.Modules.DepartmentModule
 {
-    [Export, PartCreationPolicy(CreationPolicy.NonShared)]
+    //[Export, PartCreationPolicy(CreationPolicy.NonShared)]
     public class DepartmentViewModel : EntityViewModelBase<Department>
     {
         private readonly IMenuService _menuService;
         private readonly IPriceListService _priceListService;
         private readonly ICacheService _cacheService;
 
-        [ImportingConstructor]
+        
         public DepartmentViewModel(IMenuService menuService, IPriceListService priceListService, ICacheService cacheService)
         {
             _menuService = menuService;

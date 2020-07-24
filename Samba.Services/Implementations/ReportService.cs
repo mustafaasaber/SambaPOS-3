@@ -1,23 +1,21 @@
-﻿using System;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Windows;
-using Samba.Domain.Models.Accounts;
+﻿using Samba.Domain.Models.Accounts;
 using Samba.Domain.Models.Settings;
 using Samba.Infrastructure.Settings;
 using Samba.Localization.Properties;
 using Samba.Services.Common;
+using System.Linq;
+using System.Windows;
 
 namespace Samba.Services.Implementations
 {
-    [Export(typeof(IReportService))]
-    class ReportService : IReportService
+    //[Export(typeof(IReportService))]
+    public class ReportService : IReportService
     {
         private readonly IAccountService _accountService;
         private readonly IPrinterService _printerService;
         private readonly ISettingService _settingService;
 
-        [ImportingConstructor]
+        //
         public ReportService(IAccountService accountService, IPrinterService printerService, ISettingService settingService)
         {
             _accountService = accountService;

@@ -7,12 +7,12 @@ using Samba.Persistance.Data;
 
 namespace Samba.Services.Implementations.DepartmentModule
 {
-    [Export(typeof(IDepartmentService))]
+    //[Export(typeof(IDepartmentService))]
     public class DepartmentService : IDepartmentService
     {
         private readonly ICacheDao _cacheDao;
 
-        [ImportingConstructor]
+        //
         public DepartmentService(ICacheDao cacheDao)
         {
             _cacheDao = cacheDao;

@@ -1,26 +1,23 @@
-﻿using System;
-using System.ComponentModel.Composition;
-using System.Linq.Expressions;
-using System.Windows.Threading;
-using Samba.Domain.Models.Tickets;
+﻿using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
 using Samba.Persistance.Specification;
 using Samba.Presentation.Services;
 using Samba.Presentation.Services.Common;
 using Samba.Services;
 using Samba.Services.Common;
+using System;
+using System.Linq.Expressions;
 
 namespace Samba.Modules.PrinterModule.ActionProcessors
 {
-    [Export(typeof(IActionType))]
-    class ExecutePrintJob : ActionType
+    public class ExecutePrintJob : ActionType
     {
         private readonly ITicketService _ticketService;
         private readonly IApplicationState _applicationState;
         private readonly ICacheService _cacheService;
         private readonly IPrinterService _printerService;
 
-        [ImportingConstructor]
+
         public ExecutePrintJob(ITicketService ticketService, IApplicationState applicationState, ICacheService cacheService, IPrinterService printerService)
         {
             _ticketService = ticketService;
@@ -88,17 +85,17 @@ namespace Samba.Modules.PrinterModule.ActionProcessors
         {
             return
                 new
-                    {
-                        PrintJobName = "",
-                        PrintTicket = true,
-                        HighPriority = false,
-                        OrderStateName = "",
-                        OrderState = "",
-                        OrderStateValue = "",
-                        OrderTagName = "",
-                        OrderTagValue = "",
-                        Copies = 1
-                    };
+                {
+                    PrintJobName = "",
+                    PrintTicket = true,
+                    HighPriority = false,
+                    OrderStateName = "",
+                    OrderState = "",
+                    OrderStateValue = "",
+                    OrderTagName = "",
+                    OrderTagValue = "",
+                    Copies = 1
+                };
         }
 
         protected override string GetActionName()

@@ -16,14 +16,14 @@ using Samba.Services.Common;
 
 namespace Samba.Services.Implementations.AccountModule
 {
-    [Export(typeof(IAccountService))]
+    //[Export(typeof(IAccountService))]
     public class AccountService : IAccountService
     {
         private readonly ICacheService _cacheService;
         private readonly IAccountDao _accountDao;
         private readonly AccountRowBuilder _accountRowBuilder;
 
-        [ImportingConstructor]
+        //
         public AccountService(ICacheService cacheService, IAccountDao accountDao, AccountRowBuilder accountRowBuilder)
         {
             _cacheService = cacheService;

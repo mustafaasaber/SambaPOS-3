@@ -4,6 +4,7 @@
     {
         public const string PosSubRegion = "PosSubRegion";
         public const string PosMainRegion = "PosMainRegion";
+        public const string KeyBoardViewRegion = "KeyBoardViewRegion";
         public const string MainRegion = "MainRegion";
         public const string UserRegion = "UserRegion";
         public const string RightUserRegion = "RightUserRegion";

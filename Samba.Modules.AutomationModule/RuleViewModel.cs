@@ -26,7 +26,7 @@ namespace Samba.Modules.AutomationModule
         public ICaptionCommand AddConstraintCommand { get; set; }
         public ICaptionCommand RemoveConstraintCommand { get; set; }
 
-        [ImportingConstructor]
+        
         public RuleViewModel(IAutomationService automationService, IAutomationDao automationDao)
         {
             _automationService = automationService;
@@ -54,7 +54,7 @@ namespace Samba.Modules.AutomationModule
             set
             {
                 _constraints = value;
-                RaisePropertyChanged(() => Constraints);
+                RaisePropertyChanged(nameof( Constraints));
             }
         }
 
@@ -73,7 +73,7 @@ namespace Samba.Modules.AutomationModule
             set
             {
                 _ruleConstraintValues = value;
-                RaisePropertyChanged(() => RuleConstraintValues);
+                RaisePropertyChanged(nameof( RuleConstraintValues));
             }
         }
 
@@ -140,7 +140,7 @@ namespace Samba.Modules.AutomationModule
             choosenValues.Cast<ActionContainer>().OrderBy(x => x.SortOrder).ToList().ForEach(x => Model.Actions.Add(x));
             _actions = new ObservableCollection<ActionContainerViewModel>(Model.Actions.OrderBy(x => x.SortOrder).Select(x => new ActionContainerViewModel(x, this, _automationService, _automationDao)));
 
-            RaisePropertyChanged(() => Actions);
+            RaisePropertyChanged(nameof( Actions));
 
         }
 
@@ -191,8 +191,8 @@ namespace Samba.Modules.AutomationModule
             _ruleConstraintValues.Clear();
             _ruleConstraintValues.AddRange(Model.GetRuleConstraintValues()
                 .Select(x => new RuleConstraintValueViewModel(x, customRuleConstraintNames, RemoveConstraintCommand)));
-            RaisePropertyChanged(() => RuleConstraintValues);
-            RaisePropertyChanged(() => IsConstraintsVisible);
+            RaisePropertyChanged(nameof( RuleConstraintValues));
+            RaisePropertyChanged(nameof( IsConstraintsVisible));
         }
 
         private static IList<string> EnumToLocalizedList(Type type)

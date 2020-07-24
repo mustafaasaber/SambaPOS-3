@@ -8,13 +8,13 @@ using Samba.Persistance;
 
 namespace Samba.ApiServer.Controllers
 {
-    [Export]
+    
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class EntitiesController : SambaApiController
     {
         private readonly IEntityDao _entityDao;
 
-        [ImportingConstructor]
+        
         public EntitiesController(IEntityDao entityDao)
         {
             _entityDao = entityDao;

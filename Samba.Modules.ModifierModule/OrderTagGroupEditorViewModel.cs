@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.Linq;
-using Microsoft.Practices.Prism.Commands;
+using Prism.Commands;
 using Samba.Domain.Models.Menus;
 using Samba.Domain.Models.Tickets;
 using Samba.Localization.Properties;
@@ -17,14 +17,14 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.ModifierModule
 {
-    [Export]
+    
     public class OrderTagGroupEditorViewModel : ObservableObject
     {
         private readonly IApplicationState _applicationState;
         private readonly ICacheService _cacheService;
         private readonly AutomationCommandSelectorViewModel _automationCommandSelectorViewModel;
 
-        [ImportingConstructor]
+        
         public OrderTagGroupEditorViewModel(IUserService userService, IApplicationState applicationState, ICacheService cacheService,
             AutomationCommandSelectorViewModel automationCommandSelectorViewModel)
         {
@@ -64,8 +64,8 @@ namespace Samba.Modules.ModifierModule
             set
             {
                 _removeMode = value;
-                RaisePropertyChanged(() => RemoveMode);
-                RaisePropertyChanged(() => RemoveModeButtonColor);
+                RaisePropertyChanged(nameof( RemoveMode));
+                RaisePropertyChanged(nameof( RemoveModeButtonColor));
             }
         }
 
@@ -177,10 +177,10 @@ namespace Samba.Modules.ModifierModule
         {
             SelectedTicket = ticket;
             _automationCommandSelectorViewModel.SelectedTicket = ticket;
-            RaisePropertyChanged(() => SelectedTicket);
-            RaisePropertyChanged(() => SelectedOrder);
-            RaisePropertyChanged(() => IsPortionsVisible);
-            RaisePropertyChanged(() => AutomationCommandSelectorViewModel);
+            RaisePropertyChanged(nameof( SelectedTicket));
+            RaisePropertyChanged(nameof( SelectedOrder));
+            RaisePropertyChanged(nameof( IsPortionsVisible));
+            RaisePropertyChanged(nameof( AutomationCommandSelectorViewModel));
         }
 
         public bool ShouldDisplay(Ticket value, IEnumerable<Order> selectedOrders)
@@ -200,7 +200,7 @@ namespace Samba.Modules.ModifierModule
                     SelectedItemPortions.AddRange(portions);
                 }
 
-                RaisePropertyChanged(() => IsPortionsVisible);
+                RaisePropertyChanged(nameof( IsPortionsVisible));
 
                 var orderTagGroups = _applicationState.GetOrderTagGroups(SelectedOrder.MenuItemId).Where(x => !x.Hidden).ToList();
 

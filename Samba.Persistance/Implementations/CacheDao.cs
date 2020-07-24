@@ -19,10 +19,9 @@ using Samba.Persistance.Data;
 
 namespace Samba.Persistance.Implementations
 {
-    [Export(typeof(ICacheDao))]
-    class CacheDao : ICacheDao
+   public class CacheDao : ICacheDao
     {
-        [ImportingConstructor]
+    
         public CacheDao()
         {
             ValidatorRegistry.RegisterDeleteValidator<Department>(

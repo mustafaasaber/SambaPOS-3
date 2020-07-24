@@ -1,8 +1,9 @@
 ﻿using System;
 using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Events;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Events;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Samba.Domain.Models.Users;
 using Samba.Localization.Properties;
 using Samba.Presentation.Common;
@@ -12,7 +13,7 @@ using Samba.Services.Common;
 
 namespace Samba.Modules.NavigationModule
 {
-    [ModuleExport(typeof(NavigationModule))]
+    [Module(ModuleName = "NavigationModule")]
     public class NavigationModule : VisibleModuleBase
     {
         private readonly IRegionManager _regionManager;
@@ -20,7 +21,6 @@ namespace Samba.Modules.NavigationModule
         private readonly IUserService _userService;
         private readonly IApplicationState _applicationState;
 
-        [ImportingConstructor]
         public NavigationModule(IRegionManager regionManager, NavigationView navigationView, IUserService userService,
             IApplicationState applicationState)
             : base(regionManager, AppScreens.Navigation)
@@ -64,6 +64,11 @@ namespace Samba.Modules.NavigationModule
         public override object GetVisibleView()
         {
             return _navigationView;
+        }
+
+        public override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+
         }
 
         protected override void OnInitialization()

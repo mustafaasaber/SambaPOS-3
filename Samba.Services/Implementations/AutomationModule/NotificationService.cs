@@ -4,12 +4,12 @@ using Samba.Services.Common;
 
 namespace Samba.Services.Implementations.AutomationModule
 {
-    [Export(typeof(INotificationService))]
-    class NotificationService : INotificationService
+    //[Export(typeof(INotificationService))]
+   public class NotificationService : INotificationService
     {
         private readonly RuleExecutor _ruleExecutor;
 
-        [ImportingConstructor]
+        //
         public NotificationService(RuleExecutor ruleExecutor)
         {
             _ruleExecutor = ruleExecutor;

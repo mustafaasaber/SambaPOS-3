@@ -3,7 +3,7 @@ using Samba.Domain.Models.Tickets;
 
 namespace Samba.Services.Implementations.PrinterModule.ValueChangers
 {
-    [Export]
+    
     public class ChangePaymentValueChanger : AbstractValueChanger<ChangePayment>
     {
         public override string GetTargetTag()

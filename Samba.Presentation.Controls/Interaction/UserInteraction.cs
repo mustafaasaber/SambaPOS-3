@@ -104,7 +104,7 @@ namespace Samba.Presentation.Controls.Interaction
         }
     }
 
-    [Export(typeof(IUserInteraction))]
+    //[Export(typeof(IUserInteraction))]
     public class UserInteraction : IUserInteraction
     {
         private readonly IMethodQueue _methodQueue;
@@ -116,7 +116,7 @@ namespace Samba.Presentation.Controls.Interaction
 
         private PopupWindow _popupWindow;
 
-        [ImportingConstructor]
+        //
         public UserInteraction(IMethodQueue methodQueue, IApplicationState applicationState)
         {
             _methodQueue = methodQueue;
@@ -257,6 +257,7 @@ namespace Samba.Presentation.Controls.Interaction
             if (KeyboardWindow.IsVisible)
                 HideKeyboard();
             else ShowKeyboard();
+
         }
 
         public void ToggleSplashScreen()
